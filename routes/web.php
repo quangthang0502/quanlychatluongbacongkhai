@@ -15,6 +15,6 @@
  *  Login
  */
 
-Route::get('/login', 'Auth\LoginController@login')->name('login');
+Route::get('/', 'Auth\LoginController@login')->name('login');
 
-Route::get('/', 'MainController@dashboard')->name('dashboard');
+Route::get('/dashboard', 'MainController@dashboard')->name('dashboard');
