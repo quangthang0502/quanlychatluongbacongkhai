@@ -1,6 +1,6 @@
 @extends('index')
 
-@section('title', 'Dashboard')
+@section('title', $title)
 
 @section('content')
     Quang thang
