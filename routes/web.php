@@ -15,6 +15,11 @@
  *  Login
  */
 
-Route::get('/', 'Auth\LoginController@login')->name('login');
+Route::get('/', 'Auth\LoginController@index')->name('login');
+Route::post('/', 'Auth\LoginController@login');
+Route::get('/dang-xuat', 'Auth\LoginController@logout')->name('logout');
 
-Route::get('/dashboard', 'MainController@dashboard')->name('dashboard');
+Route::group(['middleware' => 'auth'], function (){
+
+	Route::get('/dashboard', 'MainController@dashboard')->name('dashboard');
+});
