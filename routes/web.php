@@ -22,4 +22,8 @@ Route::get('/dang-xuat', 'Auth\LoginController@logout')->name('logout');
 Route::group(['middleware' => 'auth'], function (){
 
 	Route::get('/dashboard', 'MainController@dashboard')->name('dashboard');
+
+	Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function (){
+		Route::get('quan-ly-user', 'UserController@index')->name('admin.index');
+	});
 });

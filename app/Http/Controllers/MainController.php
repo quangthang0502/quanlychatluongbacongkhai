@@ -3,13 +3,21 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class MainController extends Controller {
-	const DIR_NAME = 'dashboard.';
-	
+
 	public function dashboard() {
+
+		$user = Auth::user();
+
+		if ( $user->type == 0 ) {
+			$dirName = 'admin.';
+		} else {
+			$dirName = 'dashboard.';
+		}
 		$title = 'Dashboard';
 
-		return view( self::DIR_NAME . __FUNCTION__, compact( 'title' ) );
+		return view( $dirName . __FUNCTION__, compact( 'title' ) );
 	}
 }

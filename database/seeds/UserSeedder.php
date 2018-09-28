@@ -20,5 +20,21 @@ class UserSeedder extends Seeder
 		    'password' => bcrypt('123456'),
 			'role' => Role::getRole(0)
 	    ]);
+
+	    User::create([
+		    'name' => "Nguyễn Sỹ Quang Thắng 1",
+		    'email' => 'client@admin.com',
+		    'password' => bcrypt('123456'),
+		    'role' => Role::getRole(0),
+		    'type' => 2
+	    ]);
+
+	    User::create([
+		    'name' => "Đại học công nghệ",
+		    'email' => 'uet@vnu.edu.vn',
+		    'password' => bcrypt('123456'),
+		    'role' => Role::getRole(0),
+		    'type' => 3
+	    ]);
     }
 }
