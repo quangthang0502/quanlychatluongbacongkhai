@@ -13,3 +13,5 @@
 <link href="{{url('css/material-dashboard.css')}}" rel="stylesheet" />
 <!-- CSS Just for demo purpose, don't include it in your project -->
 <link href="{{url('css/demo.css')}}" rel="stylesheet" />
+
+<link rel="stylesheet" href="{{url('css/thang.css')}}">

@@ -9,6 +9,18 @@
 function getUser(){
 	return session()->get( 'userData' );
 }
+/*
+ * showNotification
+ */
+
+function showNotification(){
+	if (session()->has('success')){
+		return "demo.showNotification('top','right', 'success', '".session()->get('success')."');";
+	}
+	if (session()->has('success')){
+		return "demo.showNotification('top','right', 'success', '".session()->get('success')."');";
+	}
+}
 
 /*
 |--------------------------------------------------------------------------

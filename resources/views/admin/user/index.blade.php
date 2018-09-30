@@ -11,6 +11,7 @@
                         <div class="card-header card-header-primary">
                             <h4 class="card-title ">Danh sách user</h4>
                             <p class="card-category">Đây là danh sách các user đưới quyền quản lý của bạn</p>
+                            <a href="{{route('admin.user.create')}}" class="btn btn-info t-create-btn"><span class="fa fa-plus"></span></a>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -30,11 +31,11 @@
                                             <td>{{$item->id}}</td>
                                             <td>{{$item->name}}</td>
                                             <td>{{$item->email}}</td>
-                                            <td>{{$item->type}}</td>
+                                            <td>{{($item->type == 2) ? 'Editor' : 'School Manager'}}</td>
                                             <td class="text-primary">
                                                 <div class="btn-group">
-                                                    <button type="button" class="btn btn-warning">Sửa</button>
-                                                    <button type="button" class="btn btn-danger">xóa</button>
+                                                    <button type="button" class="btn btn-sm btn-warning">Sửa</button>
+                                                    <button type="button" class="btn btn-sm btn-danger">xóa</button>
                                                 </div>
                                             </td>
                                         </tr>

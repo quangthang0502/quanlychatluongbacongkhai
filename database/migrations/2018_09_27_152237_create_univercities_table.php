@@ -29,6 +29,7 @@ class CreateUnivercitiesTable extends Migration
             $table->string('thoi_gian_bat_dau_dao_tao')->nullable();
             $table->date('thoi_gian_cap_bang_khoa_dau')->nullable();
             $table->integer('gioi_thieu_id')->nullable();
+	        $table->string('slug');
             $table->timestamps();
         });
     }

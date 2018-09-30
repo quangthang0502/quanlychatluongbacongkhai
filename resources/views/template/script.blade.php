@@ -4,7 +4,7 @@
 <script src="{{url('js/core/bootstrap-material-design.min.js')}}" type="text/javascript"></script>
 <script src="{{url('js/plugins/perfect-scrollbar.jquery.min.js')}}"></script>
 <!--  Google Maps Plugin    -->
-{{--<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>--}}
+
 <!-- Chartist JS -->
 <script src="{{url('js/plugins/chartist.min.js')}}"></script>
 <!--  Notifications Plugin    -->
@@ -13,10 +13,9 @@
 <script src="{{url('js/material-dashboard.min.js')}}" type="text/javascript"></script>
 <!-- Material Dashboard DEMO methods, don't include it in your project! -->
 <script src="{{url('js/demo.js')}}"></script>
-<script>
-    $(document).ready(function() {
-        // Javascript method's body can be found in assets/js/demos.js
-        md.initDashboardPageCharts();
 
-    });
+<script>
+    $(document).ready(function () {
+        {!! showNotification() !!}
+    })
 </script>

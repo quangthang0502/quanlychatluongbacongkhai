@@ -17,10 +17,10 @@
                     <p>Dashboard</p>
                 </a>
             </li>
-            <li class="nav-item {{isActiveRoute('admin.index')}}">
-                <a class="nav-link" href="{{route('admin.index')}}">
+            <li class="nav-item {{isActiveRoute('admin.user.index')}}">
+                <a class="nav-link" href="{{route('admin.user.index')}}">
                     <i class="material-icons">person</i>
-                    <p>Thêm user mới</p>
+                    <p>Thêm tài khoản mới</p>
                 </a>
             </li>
             <li class="nav-item ">

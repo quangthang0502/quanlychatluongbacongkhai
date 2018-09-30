@@ -22,5 +22,6 @@ class Univercity extends Model {
 		'thoi_gian_bat_dau_dao_tao',
 		'thoi_gian_cap_bang_khoa_dau',
 		'gioi_thieu_id',
+		'slug'
 	];
 }
