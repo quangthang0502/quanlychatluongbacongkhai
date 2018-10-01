@@ -18,6 +18,7 @@ class UserController extends Controller {
 	}
 
 	public function index() {
+		/** @var User $manager */
 		$manager = Auth::user();
 
 		$users = User::findUserBySomeFeilds( $manager->university_id, $manager->type );

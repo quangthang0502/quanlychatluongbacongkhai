@@ -1,4 +1,4 @@
-@extends('admin.include.template')
+@extends('index')
 
 @section('title', $title)
 
@@ -11,7 +11,7 @@
                         <div class="card-header card-header-primary">
                             <h4 class="card-title ">Danh sách user</h4>
                             <p class="card-category">Đây là danh sách các user đưới quyền quản lý của bạn</p>
-                            <a href="{{route('admin.user.create')}}" class="btn btn-info t-create-btn"><span class="fa fa-plus"></span></a>
+                            <a href="{{route('university.user.create', $slug)}}" class="btn btn-info t-create-btn"><span class="fa fa-plus"></span></a>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -31,11 +31,11 @@
                                             <td>{{$item->id}}</td>
                                             <td>{{$item->name}}</td>
                                             <td>{{$item->email}}</td>
-                                            <td>{{($item->type == 2) ? 'Editor' : 'School Manager'}}</td>
+                                            <td>Nhân viên quản lý</td>
                                             <td class="text-primary">
                                                 <div class="btn-group" style="color: #fff !important;">
-                                                    <a href="{{route('admin.user.edit', $item->id)}}" type="button" class="btn btn-sm btn-warning">Sửa</a>
-                                                    <a href="{{route('admin.user.delete', $item->id)}}" class="btn btn-sm btn-danger">xóa</a>
+                                                    <a href="{{route('university.user.edit', ['slug' => $slug,'id' => $item->id])}}" type="button" class="btn btn-sm btn-warning">Sửa</a>
+                                                    <a href="{{route('university.user.delete', ['slug' => $slug,'id' => $item->id])}}" class="btn btn-sm btn-danger">xóa</a>
                                                 </div>
                                             </td>
                                         </tr>

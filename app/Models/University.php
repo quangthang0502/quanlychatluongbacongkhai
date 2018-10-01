@@ -4,8 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class University extends Model
-{
+class University extends Model {
 	protected $fillable = [
 		'id',
 		'vi_ten',
@@ -24,4 +23,8 @@ class University extends Model
 		'gioi_thieu_id',
 		'slug'
 	];
+
+	public static function findBySlug( $slug ) {
+		return self::where( 'slug', $slug )->first();
+	}
 }
