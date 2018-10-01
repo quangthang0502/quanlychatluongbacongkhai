@@ -23,12 +23,14 @@ Route::group(['middleware' => 'auth'], function (){
 	Route::get('/dashboard', 'MainController@dashboard')->name('dashboard');
 });
 
-Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'auth'], function (){
-	Route::get('quan-ly-tai-khoan', 'UserController@index')->name('admin.user.index');
+Route::group(['namespace' => 'Admin', 'prefix' => 'admin/user', 'middleware' => 'auth'], function (){
+	Route::get('/', 'UserController@index')->name('admin.user.index');
 
-	Route::get('tao-tai-khoan', 'UserController@create')->name('admin.user.create');
-	Route::post('tao-tai-khoan', 'UserController@postCreate');
+	Route::get('create', 'UserController@create')->name('admin.user.create');
+	Route::post('create', 'UserController@postCreate');
 
-	Route::get('chinh-sua-tai-khoan', 'UserController@edit')->name('admin.user.edit');
-	Route::post('chinh-sua-tai-khoan', 'UserController@postEdit');
+	Route::get('edit/{id}', 'UserController@edit')->name('admin.user.edit');
+	Route::post('edit/{id}', 'UserController@postEdit');
+
+	Route::get('remove', 'UserController@delete')->name('admin.user.delete');
 });

@@ -20,40 +20,15 @@
             <li class="nav-item {{isActiveRoute('admin.user.index')}}">
                 <a class="nav-link" href="{{route('admin.user.index')}}">
                     <i class="material-icons">person</i>
-                    <p>Thêm tài khoản mới</p>
+                    <p>Quản lý tài khoản</p>
                 </a>
             </li>
             <li class="nav-item ">
                 <a class="nav-link" href="">
                     <i class="material-icons">content_paste</i>
-                    <p>Table List</p>
+                    <p>Phân quyền</p>
                 </a>
             </li>
-            <li class="nav-item ">
-                <a class="nav-link" href="">
-                    <i class="material-icons">library_books</i>
-                    <p>Typography</p>
-                </a>
-            </li>
-            <li class="nav-item ">
-                <a class="nav-link" href="">
-                    <i class="material-icons">bubble_chart</i>
-                    <p>Icons</p>
-                </a>
-            </li>
-            <li class="nav-item ">
-                <a class="nav-link" href="">
-                    <i class="material-icons">location_ons</i>
-                    <p>Maps</p>
-                </a>
-            </li>
-            <li class="nav-item ">
-                <a class="nav-link" href="">
-                    <i class="material-icons">notifications</i>
-                    <p>Notifications</p>
-                </a>
-            </li>
-
         </ul>
     </div>
 </div>

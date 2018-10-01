@@ -1,11 +1,11 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Univercity extends Model {
-	//
+class University extends Model
+{
 	protected $fillable = [
 		'id',
 		'vi_ten',

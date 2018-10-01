@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\University;
 use App\Role;
 use App\User;
 use Illuminate\Database\Seeder;
@@ -29,12 +30,18 @@ class UserSeedder extends Seeder
 		    'type' => 2
 	    ]);
 
+	    University::create([
+	    	'vi_ten' => "Đại học công nghệ",
+		    'slug' => str_slug("Đại học công nghệ")
+	    ]);
+
 	    User::create([
 		    'name' => "Đại học công nghệ",
 		    'email' => 'uet@vnu.edu.vn',
 		    'password' => bcrypt('123456'),
 		    'role' => Role::getRole(0),
-		    'type' => 3
+		    'type' => 3,
+		    'university_id' => 1
 	    ]);
     }
 }

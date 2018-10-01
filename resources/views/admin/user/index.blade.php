@@ -33,9 +33,9 @@
                                             <td>{{$item->email}}</td>
                                             <td>{{($item->type == 2) ? 'Editor' : 'School Manager'}}</td>
                                             <td class="text-primary">
-                                                <div class="btn-group">
-                                                    <button type="button" class="btn btn-sm btn-warning">Sửa</button>
-                                                    <button type="button" class="btn btn-sm btn-danger">xóa</button>
+                                                <div class="btn-group" style="color: #fff !important;">
+                                                    <a href="{{route('admin.user.edit', $item->id)}}" type="button" class="btn btn-sm btn-warning">Sửa</a>
+                                                    <a type="{{route('admin.user.delete', $item->id)}}" class="btn btn-sm btn-danger">xóa</a>
                                                 </div>
                                             </td>
                                         </tr>

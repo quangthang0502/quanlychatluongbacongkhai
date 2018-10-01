@@ -1,0 +1,16 @@
+.content .card .card-header {
+  position: relative;
+}
+.content .card .card-header .t-create-btn {
+  position: absolute;
+  padding: 12px;
+  right: 10px;
+  top: 20%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+}
+.content .card .card-header .t-create-btn span {
+  font-size: 20px;
+}
+/*# sourceMappingURL=thang.css.map */
