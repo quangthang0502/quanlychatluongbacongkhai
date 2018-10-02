@@ -25,10 +25,13 @@ class CreateUniversitiesTable extends Migration
 	        $table->string('dien_thoai')->nullable();
 	        $table->string('fax')->nullable();
 	        $table->string('website')->nullable();
+	        $table->string('email')->nullable();
 	        $table->date('nam_thanh_lap')->nullable();
 	        $table->string('thoi_gian_bat_dau_dao_tao')->nullable();
 	        $table->date('thoi_gian_cap_bang_khoa_dau')->nullable();
+	        $table->string('loai_hinh_dao_tao')->nullable();
 	        $table->integer('gioi_thieu_id')->nullable();
+	        $table->string('image')->nullable();
 	        $table->string('slug');
 	        $table->timestamps();
         });

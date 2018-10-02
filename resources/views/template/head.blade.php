@@ -14,4 +14,8 @@
 <!-- CSS Just for demo purpose, don't include it in your project -->
 <link href="{{url('css/demo.css')}}" rel="stylesheet" />
 
+@if(getUser()->type == 3 || getUser()->type == 4)
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.css" rel="stylesheet">
+@endif
+
 <link rel="stylesheet" href="{{url('css/thang.css')}}">

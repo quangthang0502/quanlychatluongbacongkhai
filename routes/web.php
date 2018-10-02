@@ -39,6 +39,9 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin/user', 'middleware' => 
 
 Route::group(['namespace' => 'University', 'middleware' => ['auth', 'check.role'], 'prefix' => '{slug}'], function (){
 
+	Route::get('edit-profile', 'UniversityController@edit')->name('university.dashboard.edit');
+	Route::post('edit-profile', 'UniversityController@postEdit')->name('university.dashboard.postEdit');
+
 	Route::group(['prefix' => 'user'],function (){
 		Route::get('/', 'UserController@index')->name('university.user.index');
 

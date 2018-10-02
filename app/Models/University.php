@@ -17,10 +17,13 @@ class University extends Model {
 		'dien_thoai',
 		'fax',
 		'website',
+		'email',
 		'nam_thanh_lap',
 		'thoi_gian_bat_dau_dao_tao',
 		'thoi_gian_cap_bang_khoa_dau',
+		'loai_hinh_dao_tao',
 		'gioi_thieu_id',
+		'image',
 		'slug'
 	];
 

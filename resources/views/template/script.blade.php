@@ -14,6 +14,11 @@
 <!-- Material Dashboard DEMO methods, don't include it in your project! -->
 <script src="{{url('js/demo.js')}}"></script>
 
+@if(getUser()->type == 3 || getUser()->type == 4)
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.js"></script>
+@endif
+
+
 <script>
     $(document).ready(function () {
         {!! showNotification() !!}
