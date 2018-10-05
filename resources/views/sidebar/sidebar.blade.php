@@ -23,6 +23,12 @@
                     <p>Quản lý tài khoản</p>
                 </a>
             </li>
+            <li class="nav-item {{isActiveRoute('university.intro.index')}}">
+                <a class="nav-link" href="{{route('university.intro.index', $slug)}}">
+                    <i class="material-icons">description</i>
+                    <p>Giới thiệu</p>
+                </a>
+            </li>
             <li class="nav-item ">
                 <a class="nav-link" href="">
                     <i class="material-icons">content_paste</i>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\GioiThieu;
 use App\Models\University;
 use App\User;
 use Illuminate\Support\Facades\Auth;
@@ -26,8 +27,10 @@ class MainController extends Controller {
 	public function dashboardUniversity( $slug ) {
 		$university = University::findBySlug( $slug );
 
-		$title = $university->vi_ten;
+		$title     = $university->vi_ten;
 
-		return view( 'dashboard.dashboard', compact( 'title', 'university' ,'slug') );
+		$gioiThieu = GioiThieu::find( $university->gioi_thieu_id );
+
+		return view( 'dashboard.dashboard', compact( 'title', 'university', 'slug', 'gioiThieu' ) );
 	}
 }

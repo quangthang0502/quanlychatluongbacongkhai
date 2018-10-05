@@ -54,4 +54,13 @@ Route::group(['namespace' => 'University', 'middleware' => ['auth', 'check.role'
 		Route::get('remove/{id}', 'UserController@delete')->name('university.user.delete');
 	});
 
+	Route::group(['prefix' => 'introduction'], function (){
+		Route::get('/' , 'IntroductionController@index')->name('university.intro.index');
+
+		Route::get('/create' , 'IntroductionController@create')->name('university.intro.create');
+		Route::post('/create' , 'IntroductionController@postCreate')->name('university.intro.postCreate');
+
+		Route::get('edit/{gioiThieu}', 'IntroductionController@edit')->name('university.intro.edit');
+		Route::post('edit/{gioiThieu}', 'IntroductionController@postEdit')->name('university.intro.postEdit');
+	});
 });
