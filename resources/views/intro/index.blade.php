@@ -7,15 +7,16 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header card-header-primary">
-                    <h4 class="card-title">Thông tin cơ bản</h4>
-                    <p class="card-category">Đây là thông tin cơ bản của trường {{$university->vi_ten}}</p>
-                    <a href="{{route('university.dashboard.edit', $slug)}}" class="btn btn-info t-create-btn"><span
+                    <h4 class="card-title">{{$title}}</h4>
+                    <p class="card-category">Đây là thông tin cơ bản của trường</p>
+                    <a href="{{route('university.intro.edit', ['slug' => $slug, 'gioiThieu' => $gioiThieu->id])}}"
+                       class="btn btn-info t-create-btn"><span
                                 class="fa fa-edit"></span></a>
                 </div>
                 <div class="card-body">
                     <div class="t-box">
-                        <h3 class="title">Thông tin chung của nhà trường</h3>
-
+                        <h3 class="title"> Giới thiệu khái quát về nhà trường</h3>
+                        <div>{!! $gioiThieu->noi_dung !!}</div>
                     </div>
                 </div>
             </div>

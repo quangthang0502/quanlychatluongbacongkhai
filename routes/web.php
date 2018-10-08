@@ -28,13 +28,13 @@ Route::group(['middleware' => 'auth'], function (){
 Route::group(['namespace' => 'Admin', 'prefix' => 'admin/user', 'middleware' => ['auth','check.role']], function (){
 	Route::get('/', 'UserController@index')->name('admin.user.index');
 
-	Route::get('create', 'UserController@create')->name('admin.user.create');
-	Route::post('create', 'UserController@postCreate')->name('admin.user.postCreate');
+	Route::get('tao-moi', 'UserController@create')->name('admin.user.create');
+	Route::post('tao-moi', 'UserController@postCreate')->name('admin.user.postCreate');
 
-	Route::get('edit/{id}', 'UserController@edit')->name('admin.user.edit');
-	Route::post('edit/{id}', 'UserController@postEdit')->name('admin.user.postEdit');
+	Route::get('chinh-sua/{id}', 'UserController@edit')->name('admin.user.edit');
+	Route::post('chinh-sua/{id}', 'UserController@postEdit')->name('admin.user.postEdit');
 
-	Route::get('remove/{id}', 'UserController@delete')->name('admin.user.delete');
+	Route::get('xoa/{id}', 'UserController@delete')->name('admin.user.delete');
 });
 
 Route::group(['namespace' => 'University', 'middleware' => ['auth', 'check.role'], 'prefix' => '{slug}'], function (){
@@ -42,25 +42,25 @@ Route::group(['namespace' => 'University', 'middleware' => ['auth', 'check.role'
 	Route::get('edit-profile', 'UniversityController@edit')->name('university.dashboard.edit');
 	Route::post('edit-profile', 'UniversityController@postEdit')->name('university.dashboard.postEdit');
 
-	Route::group(['prefix' => 'user'],function (){
+	Route::group(['prefix' => 'tai-khoan'],function (){
 		Route::get('/', 'UserController@index')->name('university.user.index');
 
-		Route::get('create', 'UserController@create')->name('university.user.create');
-		Route::post('create', 'UserController@postCreate')->name('university.user.postCreate');
+		Route::get('tao-moi', 'UserController@create')->name('university.user.create');
+		Route::post('tao-moi', 'UserController@postCreate')->name('university.user.postCreate');
 
-		Route::get('edit/{id}', 'UserController@edit')->name('university.user.edit');
-		Route::post('edit/{id}', 'UserController@postEdit')->name('university.user.postEdit');
+		Route::get('chinh-sua/{id}', 'UserController@edit')->name('university.user.edit');
+		Route::post('chinh-sua/{id}', 'UserController@postEdit')->name('university.user.postEdit');
 
-		Route::get('remove/{id}', 'UserController@delete')->name('university.user.delete');
+		Route::get('xoa/{id}', 'UserController@delete')->name('university.user.delete');
 	});
 
-	Route::group(['prefix' => 'introduction'], function (){
+	Route::group(['prefix' => 'gioi-thieu'], function (){
 		Route::get('/' , 'IntroductionController@index')->name('university.intro.index');
 
-		Route::get('/create' , 'IntroductionController@create')->name('university.intro.create');
-		Route::post('/create' , 'IntroductionController@postCreate')->name('university.intro.postCreate');
+		Route::get('tao-moi' , 'IntroductionController@create')->name('university.intro.create');
+		Route::post('tao-moi' , 'IntroductionController@postCreate')->name('university.intro.postCreate');
 
-		Route::get('edit/{gioiThieu}', 'IntroductionController@edit')->name('university.intro.edit');
-		Route::post('edit/{gioiThieu}', 'IntroductionController@postEdit')->name('university.intro.postEdit');
+		Route::get('chinh-sua/{gioiThieu}', 'IntroductionController@edit')->name('university.intro.edit');
+		Route::post('chinh-sua/{gioiThieu}', 'IntroductionController@postEdit')->name('university.intro.postEdit');
 	});
 });
