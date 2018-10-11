@@ -9,6 +9,9 @@
                 <div class="card-header card-header-primary">
                     <h4 class="card-title">{{$title}}</h4>
                     <p class="card-category">Đây là thông tin cơ bản của trường</p>
+                    <a href="{{route('university.leaders.create', $slug)}}"
+                       class="btn btn-info t-create-btn"><span
+                                class="fa fa-edit"></span></a>
                 </div>
                 <div class="card-body">
                     <div class="t-box">

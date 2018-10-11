@@ -11,6 +11,9 @@ class MainController extends Controller {
 
 	public function dashboard() {
 
+		if ( is_null( session()->get( 'userData' ) ) ) {
+			return redirect()->route( 'logout' );
+		}
 		/** @var User $user */
 		$user = Auth::user();
 
@@ -25,9 +28,12 @@ class MainController extends Controller {
 	}
 
 	public function dashboardUniversity( $slug ) {
+		if ( is_null( session()->get( 'userData' ) ) ) {
+			return redirect()->route( 'logout' );
+		}
 		$university = University::findBySlug( $slug );
 
-		$title     = $university->vi_ten;
+		$title = $university->vi_ten;
 
 		$gioiThieu = GioiThieu::find( $university->gioi_thieu_id );
 

@@ -18,4 +18,10 @@ class UniversityLeaders extends Controller {
 
 		return view( self::VIEW_PATH . __FUNCTION__, compact( 'slug', 'title' ) );
 	}
+
+	public function create( $slug ) {
+		$title = 'Thêm danh sách cán bộ';
+
+		return view( self::VIEW_PATH . __FUNCTION__, compact( 'slug', 'title' ) );
+	}
 }

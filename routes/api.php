@@ -18,6 +18,6 @@ Route::middleware( 'auth:api' )->get( '/user', function ( Request $request ) {
 } );
 
 Route::group( [ 'namespace' => 'Api' ], function () {
-	Route::get( 'bo-phan', 'ApController@getBoPhan' )->name( 'api.bo-phan' );
+	Route::get( 'bo-phan', 'ApiController@getBoPhan' )->name( 'api.bo-phan' );
 } );
 
