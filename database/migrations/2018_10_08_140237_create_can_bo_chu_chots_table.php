@@ -20,7 +20,7 @@ class CreateCanBoChuChotsTable extends Migration
             $table->string('hoc_vi');
             $table->string('chuc_vu');
             $table->string('ho_va_ten');
-            $table->year('nam_sinh');
+            $table->integer('nam_sinh');
             $table->integer('thong_ke_nam');
             $table->timestamps();
         });

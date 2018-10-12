@@ -19,5 +19,8 @@ Route::middleware( 'auth:api' )->get( '/user', function ( Request $request ) {
 
 Route::group( [ 'namespace' => 'Api' ], function () {
 	Route::get( 'bo-phan', 'ApiController@getBoPhan' )->name( 'api.bo-phan' );
+
+	Route::post( 'bo-phan', 'ApiController@postBoPhan' );
+
 } );
 

@@ -17,4 +17,20 @@ class ApiController extends Controller {
 
 		return response()->json( $boPhan, 200 );
 	}
+
+	public function postBoPhan( Request $request ) {
+		$this->validate( $request, [
+			'name'  => 'required|unique:bo_phans',
+			'group' => 'required'
+		] );
+		$data = $request->only( [
+			'name',
+			'group'
+		] );
+
+		BoPhan::create( $data );
+
+		return response()->json( 'Tạo mới thành công', 200 );
+
+	}
 }

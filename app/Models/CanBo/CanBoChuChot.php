@@ -13,7 +13,18 @@ class CanBoChuChot extends Model {
 		'hoc_vi',
 		'chuc_vu',
 		'ho_va_ten',
-		'nam_sinhh',
+		'nam_sinh',
 		'thong_ke_nam',
 	];
+
+	public function boPhan() {
+		return BoPhan::find( $this->universities_id );
+	}
+
+	public static function findByUniversityAndYear( $universityId, $year ) {
+		return self::where( [
+			'universities_id' => $universityId,
+			'thong_ke_nam'    => $year
+		] )->get();
+	}
 }
