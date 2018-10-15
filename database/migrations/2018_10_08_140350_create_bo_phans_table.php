@@ -17,6 +17,7 @@ class CreateBoPhansTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('group');
+            $table->integer('uu_tien')->default(1);
             $table->timestamps();
         });
     }

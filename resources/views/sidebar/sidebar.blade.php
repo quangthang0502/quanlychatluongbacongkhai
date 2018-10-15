@@ -25,6 +25,13 @@
                 </a>
             </li>
 
+            <li class="nav-item {{isActiveRoute('university.training.index')}}">
+                <a class="nav-link" href="{{route('university.training.index', ['slug'=>$slug, 'year'=> date('Y')])}}">
+                    <i class="material-icons">chrome_reader_mode</i>
+                    <p>Cán bộ chủ chốt</p>
+                </a>
+            </li>
+
             <li class="nav-item {{isActiveRoute('university.intro.index')}}">
                 <a class="nav-link" href="{{route('university.intro.index', $slug)}}">
                     <i class="material-icons">description</i>

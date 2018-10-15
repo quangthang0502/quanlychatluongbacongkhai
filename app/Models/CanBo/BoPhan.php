@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class BoPhan extends Model {
 	//
-	protected $fillable = [ 'id', 'name', 'group' ];
+	protected $fillable = [ 'id', 'name', 'group', 'uu_tien' ];
 }
