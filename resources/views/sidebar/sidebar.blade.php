@@ -5,7 +5,7 @@
       Tip 2: you can also add an image using data-image tag
   -->
     <div class="logo">
-        <a href="" class="simple-text logo-normal">
+        <a href="{{route('dashboard.university', $slug)}}" class="simple-text logo-normal">
             Quản lý trường
         </a>
     </div>
@@ -19,7 +19,7 @@
             </li>
 
             <li class="nav-item {{isActiveRoute('university.leaders.index')}}">
-                <a class="nav-link" href="{{route('university.leaders.index', $slug)}}">
+                <a class="nav-link" href="{{route('university.leaders.index', ['slug'=>$slug, 'year'=> date('Y')])}}">
                     <i class="material-icons">person</i>
                     <p>Cán bộ chủ chốt</p>
                 </a>

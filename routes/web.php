@@ -78,8 +78,10 @@ Route::group( [
 	'middleware' => [ 'auth', 'check.role' ],
 	'prefix'     => '{slug}/can-bo-chu-chot'
 ], function () {
-	Route::get( '/', 'UniversityLeaders@index' )->name( 'university.leaders.index' );
+	Route::get( '/{year}', 'UniversityLeaders@index' )->name( 'university.leaders.index' );
 
-	Route::get( 'tao-moi', 'UniversityLeaders@create' )->name( 'university.leaders.create' );
-	Route::post( 'tao-moi', 'UniversityLeaders@postCreate' )->name( 'university.leaders.postCreate' );
+	Route::get( 'chinh-sua/{year}', 'UniversityLeaders@create' )->name( 'university.leaders.create' );
+	Route::post( 'chinh-sua', 'UniversityLeaders@postCreate' )->name( 'university.leaders.postCreate' );
+
+	Route::post( 'xoa/{id}', 'UniversityLeaders@delete' )->name( 'university.leaders.delete' );
 } );

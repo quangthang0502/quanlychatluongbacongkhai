@@ -29,7 +29,7 @@
                                             <th>Hành động</th>
                                         </tr>
                                         </thead>
-                                        <tbody>
+                                        <tbody id="list-staffs">
                                         @foreach($data as $item)
                                             <tr>
                                                 <td>
@@ -60,7 +60,7 @@
                                                 kê</label>
                                             <input type="number" name="thong_ke_nam" id="thong_ke_nam"
                                                    class="form-control"
-                                                   value="{{date('Y')}}">
+                                                   value="{{$year}}">
                                         </div>
                                     </div>
                                 </div>
@@ -225,6 +225,19 @@
                 _token: '{{csrf_token()}}'
             }, function (result) {
                 console.log(result);
+                let content = '<tr>' +
+                    '<td>' +
+                    '<span style="display: block">' + result.bo_phan + '</span>' +
+                    '<span style="display: block">' + result.nhom_bo_phan + '</span>' +
+                    '</td>' +
+                    '<td>' + result.ho_va_ten + '</td>' +
+                    '<td>' + result.nam_sinh + '</td>' +
+                    '<td>' + result.hoc_vi + ', ' + result.chuc_vu + '</td>' +
+                    '<td><button>aa</button></td>'
+                    + '</tr>';
+                $('#list-staffs').append(content);
+                $('input:not(#thong_ke_nam)').val('');
+                demo.showNotification('top', 'right', 'success', 'Thêm thành công');
             }).fail(function (error) {
                 demo.showNotification('top', 'right', 'danger', 'Có lỗi xảy ra. Xin mời tạo lại');
             });

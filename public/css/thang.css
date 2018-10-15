@@ -21,6 +21,18 @@
   padding-bottom: 10px;
   border-bottom: 1px solid #495057;
 }
+.content .card .card-body .t-box h3.title .staff {
+  font-size: 14px;
+  width: calc(100%/3);
+  display: inline-block;
+  text-align: center;
+}
+.content .card .card-body .t-box h3.title .t-right {
+  text-align: right;
+}
+.content .card .card-body .t-box h3.title .t-left {
+  text-align: left;
+}
 .content .card .card-body .t-box ul li {
   list-style-type: decimal;
 }

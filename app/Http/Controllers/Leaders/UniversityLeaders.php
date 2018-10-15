@@ -17,17 +17,12 @@ class UniversityLeaders extends Controller {
 		$this->_canBo = $canBo;
 	}
 
-	public function index( $slug ) {
+	public function index( $slug, $year ) {
 		$title = 'Danh sách cán bộ chủ chốt';
 
-		return view( self::VIEW_PATH . __FUNCTION__, compact( 'slug', 'title' ) );
-	}
-
-	public function create( $slug ) {
-		$title      = 'Thêm danh sách cán bộ';
 		$university = University::findBySlug( $slug );
 
-		$canBo = $this->_canBo->findByUniversityAndYear( $university->id, date( 'Y' ) );
+		$canBo = $this->_canBo->findByUniversityAndYear( $university->id, $year );
 
 		$data = [];
 
@@ -46,7 +41,34 @@ class UniversityLeaders extends Controller {
 
 		$data = json_decode( json_encode( $data, true ) );
 
-		return view( self::VIEW_PATH . __FUNCTION__, compact( 'slug', 'title', 'data' ) );
+		return view( self::VIEW_PATH . __FUNCTION__, compact( 'slug', 'title', 'data', 'year' ) );
+	}
+
+	public function create( $slug, $year ) {
+		$title      = 'Thêm danh sách cán bộ';
+		$university = University::findBySlug( $slug );
+
+		$canBo = $this->_canBo->findByUniversityAndYear( $university->id, $year );
+
+		$data = [];
+
+		foreach ( $canBo as $item ) {
+			/** @var CanBoChuChot $item */
+			$boPhan = $item->boPhan();
+			$data[] = [
+				'id'           => $item->id,
+				'hoc_vi'       => $item->hoc_vi,
+				'chuc_vu'      => $item->chuc_vu,
+				'ho_va_ten'    => $item->ho_va_ten,
+				'nam_sinh'     => $item->nam_sinh,
+				'bo_phan'      => $boPhan->name,
+				'nhom_bo_phan' => $boPhan->group
+			];
+		}
+
+		$data = json_decode( json_encode( $data, true ) );
+
+		return view( self::VIEW_PATH . __FUNCTION__, compact( 'slug', 'title', 'data', 'year' ) );
 	}
 
 	public function postCreate( $slug, Request $request ) {
@@ -87,5 +109,11 @@ class UniversityLeaders extends Controller {
 		];
 
 		return response()->json( $result, 200 );
+	}
+
+	public function delete( $slug, $id ) {
+		$this->_canBo->destroy( $id );
+
+		return back()->with( 'success', 'Xóa thành công!' );
 	}
 }
