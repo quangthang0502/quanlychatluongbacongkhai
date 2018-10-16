@@ -224,6 +224,7 @@
                 nam_sinh: $('#nam_sinh').val(),
                 _token: '{{csrf_token()}}'
             }, function (result) {
+                console.log(result);
                 let content = '<tr>' +
                     '<td>' +
                     '<span style="display: block">' + result.bo_phan + '</span>' +

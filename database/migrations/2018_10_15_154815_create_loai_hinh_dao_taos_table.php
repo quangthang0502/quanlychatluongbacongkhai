@@ -13,12 +13,13 @@ class CreateLoaiHinhDaoTaosTable extends Migration {
 	public function up() {
 		Schema::create( 'loai_hinh_dao_taos', function ( Blueprint $table ) {
 			$table->increments( 'id' );
-			$table->integer( 'chinh_quy' );
-			$table->integer( 'khong_chinh_quy' );
-			$table->integer( 'tu_xa' );
-			$table->integer( 'lien_ket_nuoc_ngoai' );
-			$table->integer( 'lien_ket_trong_nuoc' );
-			$table->text( 'khac' );
+			$table->integer('dao_tao_id');
+			$table->integer( 'chinh_quy' )->default(0);
+			$table->integer( 'khong_chinh_quy' )->default(0);
+			$table->integer( 'tu_xa' )->default(0);
+			$table->integer( 'lien_ket_nuoc_ngoai' )->default(0);
+			$table->integer( 'lien_ket_trong_nuoc' )->default(0);
+			$table->text( 'khac' )->nullable();
 			$table->timestamps();
 		} );
 	}

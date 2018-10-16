@@ -55,6 +55,37 @@
             }
           }
         }
+        .thong-tin-dao-tao {
+          .mini-box {
+            h4.title {
+              font-weight: bold;
+              border-bottom: 1px solid rgba(185, 168, 168, 0.45);
+              padding-bottom: 5px;
+            }
+            ul {
+              li {
+                font-size: 14px;
+                div {
+                  display: inline-block;
+                  &.content {
+                    width: 60%;
+                  }
+                  &.yes, &.no {
+                    width: calc(~'( 30% - 10px )/2');
+                    text-align: center;
+                    font-weight: bold;
+                  }
+                }
+              }
+            }
+            input {
+              border: none;
+              border-bottom: 1px solid #5a545447;
+              text-align: center;
+              width: 40px;
+            }
+          }
+        }
       }
     }
   }

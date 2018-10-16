@@ -49,4 +49,30 @@
 .content .card .card-body .t-box ul li.univer-name {
   font-size: 17px !important;
 }
+.content .card .card-body .t-box .thong-tin-dao-tao .mini-box h4.title {
+  font-weight: bold;
+  border-bottom: 1px solid rgba(185, 168, 168, 0.45);
+  padding-bottom: 5px;
+}
+.content .card .card-body .t-box .thong-tin-dao-tao .mini-box ul li {
+  font-size: 14px;
+}
+.content .card .card-body .t-box .thong-tin-dao-tao .mini-box ul li div {
+  display: inline-block;
+}
+.content .card .card-body .t-box .thong-tin-dao-tao .mini-box ul li div.content {
+  width: 60%;
+}
+.content .card .card-body .t-box .thong-tin-dao-tao .mini-box ul li div.yes,
+.content .card .card-body .t-box .thong-tin-dao-tao .mini-box ul li div.no {
+  width: calc(( 30% - 10px )/2);
+  text-align: center;
+  font-weight: bold;
+}
+.content .card .card-body .t-box .thong-tin-dao-tao .mini-box input {
+  border: none;
+  border-bottom: 1px solid #5a545447;
+  text-align: center;
+  width: 40px;
+}
 /*# sourceMappingURL=thang.css.map */

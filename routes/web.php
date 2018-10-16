@@ -94,7 +94,5 @@ Route::group( [
 	Route::get( '/{year}', 'Training@index' )->name( 'university.training.index' );
 
 	Route::get( 'chinh-sua/{year}', 'Training@create' )->name( 'university.training.create' );
-	Route::post( 'chinh-sua', 'Training@postCreate' )->name( 'university.training.postCreate' );
-
-	Route::post( 'xoa/{id}', 'Training@delete' )->name( 'university.training.delete' );
+	Route::post( 'chinh-sua/{daoTao}', 'Training@postCreate' )->name( 'university.training.postCreate' );
 } );

@@ -12,8 +12,8 @@ class DaoTao extends Model {
 		'thong_ke_nam',
 	];
 
-	public function findByYear( $university, $year ) {
-		return DaoTao::where( [
+	public static function findByYear( $university, $year ) {
+		return self::where( [
 			'universities_id' => $university,
 			'thong_ke_nam'    => $year,
 		] )->first();
