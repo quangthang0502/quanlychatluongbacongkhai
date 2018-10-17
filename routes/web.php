@@ -83,7 +83,7 @@ Route::group( [
 	Route::get( 'chinh-sua/{year}', 'UniversityLeaders@create' )->name( 'university.leaders.create' );
 	Route::post( 'chinh-sua', 'UniversityLeaders@postCreate' )->name( 'university.leaders.postCreate' );
 
-	Route::post( 'xoa/{id}', 'UniversityLeaders@delete' )->name( 'university.leaders.delete' );
+	Route::get( 'xoa/{id}', 'UniversityLeaders@delete' )->name( 'university.leaders.delete' );
 } );
 
 Route::group( [
@@ -106,5 +106,5 @@ Route::group( [
 	Route::get( 'chinh-sua/{year}', 'Teacher@create' )->name( 'university.teacher.create' );
 	Route::post( 'chinh-sua/{year}', 'Teacher@postCreate' )->name( 'university.teacher.postCreate' );
 
-	Route::post( 'xoa/{id}', 'Teacher@delete' )->name( 'university.teacher.delete' );
+	Route::get( 'xoa/{id}', 'Teacher@delete' )->name( 'university.teacher.delete' );
 } );

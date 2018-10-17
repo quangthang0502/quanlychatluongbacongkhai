@@ -23,12 +23,12 @@
                                class="staff t-right" href="">Xem năm {{$year+1}}</a>
                         </h3>
                         <div class="thong-tin-dao-tao">
-                            @if(isset($phanLoaiCanBo))
-                                <div class="mini-box">
-                                    <h4 class="title">
-                                        Thống kê số lượng cán bộ, giảng viên và nhân viên (gọi chung là cán bộ) của
-                                        nhà trường
-                                    </h4>
+                            <div class="mini-box">
+                                <h4 class="title">
+                                    Thống kê số lượng cán bộ, giảng viên và nhân viên (gọi chung là cán bộ) của
+                                    nhà trường
+                                </h4>
+                                @if(isset($phanLoaiCanBo))
                                     <div class="box-content">
                                         <div class="table-responsive">
                                             <table class="table">
@@ -102,13 +102,46 @@
                                             </table>
                                         </div>
                                     </div>
-                                </div>
-                            @else
-                                <div style="text-align: center">
-                                    <a href="{{route('university.teacher.create',['slug'=>$slug, 'year'=>$year])}}"
-                                       class="btn btn-info t-create-btn">Cập nhập ngay</a>
-                                </div>
-                            @endif
+                                @else
+                                    <div style="text-align: center">
+                                        <a href="{{route('university.teacher.create',['slug'=>$slug, 'year'=>$year])}}"
+                                           class="btn btn-info t-create-btn">Cập nhập ngay</a>
+                                    </div>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="thong-tin-dao-tao">
+                            <div class="mini-box">
+                                <h4 class="title">
+                                    Thống kê, phân loại giảng viên (chỉ tính những giảng viên trực tiếp giảng
+                                    dạy trong 5 năm gần đây):
+                                </h4>
+                                @if(empty($giangVien))
+                                    <div class="box-content">
+                                        <div class="table-responsive">
+                                            <table class="table">
+                                                <thead class="text-primary">
+                                                <tr>
+                                                    <th>STT</th>
+                                                    <th>Phân loại</th>
+                                                    <th>Nam</th>
+                                                    <th>Nữ</th>
+                                                    <th>Tổng số</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                @else
+                                    <div style="text-align: center">
+                                        <a href="{{route('university.teacher.create',['slug'=>$slug, 'year'=>$year])}}"
+                                           class="btn btn-info t-create-btn">Cập nhập ngay</a>
+                                    </div>
+                                @endif
+                            </div>
+
                         </div>
                     </div>
                 </div>

@@ -18,9 +18,10 @@ class Teacher extends Controller {
 		$university = University::findBySlug( $slug );
 
 		$phanLoaiCanBo = PhanLoaiCanBo::findByYear( $university->id, $year );
+		$giangVien     = GiangVien::findByYear( $university->id, $year );
 
 		return view( self::VIEW_PATH . __FUNCTION__,
-			compact( 'title', 'slug', 'year', 'phanLoaiCanBo' ) );
+			compact( 'title', 'slug', 'year', 'phanLoaiCanBo', 'giangVien' ) );
 	}
 
 	public function create( $slug, $year ) {

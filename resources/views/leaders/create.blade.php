@@ -44,7 +44,8 @@
                                                     {{$item->hoc_vi.', '. $item->chuc_vu}}
                                                 </td>
                                                 <td>
-                                                    <button>aa</button>
+                                                    <a class="btn btn-sm btn-danger"
+                                                       href="{{route('university.leaders.delete', ['slug'=>$slug, 'id'=> $item->id])}}">Xóa</a>
                                                 </td>
                                             </tr>
                                         @endforeach
