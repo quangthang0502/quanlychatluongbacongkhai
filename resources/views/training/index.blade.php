@@ -9,17 +9,14 @@
                 <div class="card-header card-header-primary">
                     <h4 class="card-title">{{$title}}</h4>
                     <p class="card-category">Đây là thông tin cơ bản của trường</p>
-                    <a href="{{route('university.leaders.create',['slug'=>$slug, 'year'=>$year])}}"
-                       class="btn btn-info t-create-btn"><span
-                                class="fa fa-edit"></span></a>
                 </div>
                 <div class="card-body">
                     <div class="t-box">
                         <h3 class="title">
-                            <a href="{{route('university.leaders.index', ['slug'=>$slug, 'year'=>($year-1)])}}"
+                            <a href="{{route('university.training.index', ['slug'=>$slug, 'year'=>($year-1)])}}"
                                class="staff t-left" href="">Xem năm {{$year-1}}</a>
                             <span class="span-staff">Thông tin đào tạo năm {{$year}}</span>
-                            <a href="{{route('university.leaders.index', ['slug'=>$slug, 'year'=>($year+1)])}}"
+                            <a href="{{route('university.training.index', ['slug'=>$slug, 'year'=>($year+1)])}}"
                                class="staff t-right" href="">Xem năm {{$year+1}}</a>
                         </h3>
                         <div class="thong-tin-dao-tao">

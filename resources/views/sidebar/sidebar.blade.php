@@ -32,6 +32,13 @@
                 </a>
             </li>
 
+            <li class="nav-item {{isActiveRoute('university.teacher.index')}}">
+                <a class="nav-link" href="{{route('university.teacher.index', ['slug'=>$slug, 'year'=> date('Y')])}}">
+                    <i class="material-icons">local_library</i>
+                    <p>Giảng viên</p>
+                </a>
+            </li>
+
             <li class="nav-item {{isActiveRoute('university.intro.index')}}">
                 <a class="nav-link" href="{{route('university.intro.index', $slug)}}">
                     <i class="material-icons">description</i>

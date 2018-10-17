@@ -93,6 +93,18 @@ Route::group( [
 ], function () {
 	Route::get( '/{year}', 'Training@index' )->name( 'university.training.index' );
 
-	Route::get( 'chinh-sua/{year}', 'Training@create' )->name( 'university.training.create' );
 	Route::post( 'chinh-sua/{daoTao}', 'Training@postCreate' )->name( 'university.training.postCreate' );
+} );
+
+Route::group( [
+	'namespace'  => 'University',
+	'middleware' => [ 'auth', 'check.role' ],
+	'prefix'     => '{slug}/can-bo-nhan-vien'
+], function () {
+	Route::get( '/{year}', 'Teacher@index' )->name( 'university.teacher.index' );
+
+	Route::get( 'chinh-sua/{year}', 'Teacher@create' )->name( 'university.teacher.create' );
+	Route::post( 'chinh-sua/{year}', 'Teacher@postCreate' )->name( 'university.teacher.postCreate' );
+
+	Route::post( 'xoa/{id}', 'Teacher@delete' )->name( 'university.teacher.delete' );
 } );
