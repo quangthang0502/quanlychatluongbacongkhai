@@ -53,3 +53,18 @@ function areActiveRoutes(Array $routes, $output = "active")
 	}
 
 }
+
+function getNameTeacher($id){
+	$data = [
+		1 => 'Giáo sư, Viện sĩ',
+		2 => 'Phó Giáo sư',
+		3 => 'Tiến sĩ khoa học ',
+		4 => 'Tiến sĩ',
+		5 => 'Thạc sĩ',
+		6 => 'Đại học',
+		7 => 'Cao đẳng',
+		8 => 'Trung cấp',
+		9 => 'Trình độ khác',
+	];
+	return $data[$id];
+}

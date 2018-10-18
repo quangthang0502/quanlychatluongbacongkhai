@@ -100,6 +100,7 @@ class UniversityLeaders extends Controller {
 		$boPhan = BoPhan::find( $canBo->bo_phan_id );
 
 		$result = [
+			'url'          => route( 'university.leaders.delete', [ 'slug' => $slug, 'id' => $canBo->id ] ),
 			'hoc_vi'       => $canBo->hoc_vi,
 			'chuc_vu'      => $canBo->chuc_vu,
 			'ho_va_ten'    => $canBo->ho_va_ten,

@@ -106,5 +106,8 @@ Route::group( [
 	Route::get( 'chinh-sua/{year}', 'Teacher@create' )->name( 'university.teacher.create' );
 	Route::post( 'chinh-sua/{year}', 'Teacher@postCreate' )->name( 'university.teacher.postCreate' );
 
+	Route::post( 'chinh-sua-giang-vien/{year}', 'Teacher@updateTeacher' )->name( 'university.teacher.updateTeacher' );
+	Route::post( 'chinh-sua-trinh-do/{year}', 'Teacher@updateLevel' )->name( 'university.teacher.updateLevel' );
+
 	Route::get( 'xoa/{id}', 'Teacher@delete' )->name( 'university.teacher.delete' );
 } );

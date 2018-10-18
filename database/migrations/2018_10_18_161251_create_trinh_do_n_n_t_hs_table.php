@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateGiangViensTable extends Migration
+class CreateTrinhDoNNTHsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,12 @@ class CreateGiangViensTable extends Migration
      */
     public function up()
     {
-        Schema::create('giang_viens', function (Blueprint $table) {
+        Schema::create('trinh_do_n_n_t_hs', function (Blueprint $table) {
             $table->increments('id');
 	        $table->integer( 'universities_id' );
 	        $table->integer( 'thong_ke_nam' );
-	        $table->integer( 'trinh_do' );
-	        $table->integer( 'giao_vien_nam' )->default(0);
-	        $table->integer( 'so_luong' )->default(0);
-	        $table->integer( 'gv_bien_che' )->default(0);
-	        $table->integer( 'gv_hop_dong' )->default(0);
-	        $table->integer( 'gv_quan_ly' )->default(0);
-	        $table->string( 'do_tuoi' )->nullable();
+	        $table->string( 'trinh_do_ngoai_ngu' )->nullable();
+	        $table->string( 'tin_hoc' )->nullable();
             $table->timestamps();
         });
     }
@@ -35,6 +30,6 @@ class CreateGiangViensTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('giang_viens');
+        Schema::dropIfExists('trinh_do_n_n_t_hs');
     }
 }

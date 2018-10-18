@@ -78,4 +78,8 @@
 .content .card .card-body .t-box .thong-tin-dao-tao .box-content p {
   margin: 0;
 }
+.content .card .card-body .giang-vien {
+  padding-bottom: 30px;
+  border-bottom: 2px solid #333333;
+}
 /*# sourceMappingURL=thang.css.map */

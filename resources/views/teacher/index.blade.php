@@ -116,7 +116,7 @@
                                     Thống kê, phân loại giảng viên (chỉ tính những giảng viên trực tiếp giảng
                                     dạy trong 5 năm gần đây):
                                 </h4>
-                                @if(empty($giangVien))
+                                @if(count( $giangVien ) != 0)
                                     <div class="box-content">
                                         <div class="table-responsive">
                                             <table class="table">
@@ -130,6 +130,83 @@
                                                 </tr>
                                                 </thead>
                                                 <tbody>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                @else
+                                    <div style="text-align: center">
+                                        <a href="{{route('university.teacher.create',['slug'=>$slug, 'year'=>$year])}}"
+                                           class="btn btn-info t-create-btn">Cập nhập ngay</a>
+                                    </div>
+                                @endif
+                            </div>
+
+                        </div>
+                        <div class="thong-tin-dao-tao">
+                            <div class="mini-box">
+                                <h4 class="title">
+                                    Thống kê, phân loại giảng viên cơ hữu theo mức độ thường xuyên sử dụng
+                                    ngoại ngữ và tin học cho công tác giảng dạy và nghiên cứu:
+                                </h4>
+                                @if(!is_null($trinhDo))
+									<?php
+									$tiengAnh = json_decode( $trinhDo->trinh_do_ngoai_ngu );
+									$tinHoc = json_decode( $trinhDo->tin_hoc );
+									?>
+                                    <div class="box-content">
+                                        <div class="table-responsive">
+                                            <table class="table table-bordered" style="text-align: center">
+                                                <thead class="text-primary">
+                                                <tr>
+                                                    <th rowspan="2">STT</th>
+                                                    <th rowspan="2">Tần suất sử dụng</th>
+                                                    <th rowspan="1" colspan="2">Tỷ lệ (%) giảng viên cơ hữu sử dụng
+                                                        ngoại ngữ và tin học
+                                                    </th>
+                                                </tr>
+                                                <tr>
+                                                    <th rowspan="1">Ngoại ngữ</th>
+                                                    <th rowspan="1">Tin học</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr>
+                                                    <td>1</td>
+                                                    <td>Luôn sử dụng (trên 80% thời gian của công việc)</td>
+                                                    <td>{{$tiengAnh->lv_5}}</td>
+                                                    <td>{{$tinHoc->lv_5}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2</td>
+                                                    <td>Thường sử dụng (trên 60-80% thời gian của công việc) </td>
+                                                    <td>{{$tiengAnh->lv_4}}</td>
+                                                    <td>{{$tinHoc->lv_4}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>3</td>
+                                                    <td>Đôi khi sử dụng (trên 40-60% thời gian của công việc) </td>
+                                                    <td>{{$tiengAnh->lv_3}}</td>
+                                                    <td>{{$tinHoc->lv_3}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>4</td>
+                                                    <td>Ít khi sử dụng (trên 20-40% thời gian của công việc) </td>
+                                                    <td>{{$tiengAnh->lv_2}}</td>
+                                                    <td>{{$tinHoc->lv_2}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>5</td>
+                                                    <td>Hiếm khi sử dụng hoặc không sử dụng (0-20% thời gian của công việc) </td>
+                                                    <td>{{$tiengAnh->lv_1}}</td>
+                                                    <td>{{$tinHoc->lv_1}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td></td>
+                                                    <td style="font-weight: bold">Tổng</td>
+                                                    <td>{{$tiengAnh->lv_5+$tiengAnh->lv_4+$tiengAnh->lv_3+$tiengAnh->lv_2+$tiengAnh->lv_1}}</td>
+                                                    <td>{{$tinHoc->lv_5+$tinHoc->lv_4+$tinHoc->lv_3+$tinHoc->lv_2+$tinHoc->lv_1}}</td>
+                                                </tr>
                                                 </tbody>
                                             </table>
                                         </div>

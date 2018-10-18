@@ -233,7 +233,8 @@
                     '<td>' + result.ho_va_ten + '</td>' +
                     '<td>' + result.nam_sinh + '</td>' +
                     '<td>' + result.hoc_vi + ', ' + result.chuc_vu + '</td>' +
-                    '<td><button>aa</button></td>'
+                    '<td><a class="btn btn-sm btn-danger" ' +
+                    'href="' + result.url + '">Xóa</a></td>'
                     + '</tr>';
                 $('#list-staffs').append(content);
                 $('input:not(#thong_ke_nam)').val('');
