@@ -39,8 +39,8 @@
                                     <div class="col-md-3">
                                         <div class="form-group">
                                             <div class="form-group">
-                                                <label for="bien_che_nư" class="bmd-label-floating">Nữ</label>
-                                                <input type="number" name="bien_che_nư" id="bien_che_nư"
+                                                <label for="bien_che_nu" class="bmd-label-floating">Nữ</label>
+                                                <input type="number" name="bien_che_nu" id="bien_che_nu"
                                                        class="form-control" value="{{$phanLoaiCanBo->bien_che_nu}}">
                                             </div>
                                         </div>
@@ -165,6 +165,24 @@
                                                 <input type="number" name="gv_quan_ly_{{$item->trinh_do}}"
                                                        id="gv_quan_ly_{{$item->trinh_do}}"
                                                        class="form-control" value="{{$item->gv_quan_ly}}">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                <label for="gv_thinh_giang_{{$item->trinh_do}}" class="bmd-label-floating">Giảng
+                                                    viên thỉnh giảng</label>
+                                                <input type="number" name="gv_thinh_giang_{{$item->trinh_do}}"
+                                                       id="gv_thinh_giang_{{$item->trinh_do}}"
+                                                       class="form-control" value="{{$item->gv_thinh_giang}}">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                <label for="gv_quoc_te_{{$item->trinh_do}}" class="bmd-label-floating">Giảng
+                                                    viên quốc tế</label>
+                                                <input type="number" name="gv_quoc_te_{{$item->trinh_do}}"
+                                                       id="gv_quoc_te_{{$item->trinh_do}}"
+                                                       class="form-control" value="{{$item->gv_quoc_te}}">
                                             </div>
                                         </div>
                                     </div>
@@ -377,6 +395,8 @@
                 gv_bien_che: $('#gv_bien_che_' + canBo).val(),
                 gv_hop_dong: $('#gv_hop_dong_' + canBo).val(),
                 gv_quan_ly: $('#gv_quan_ly_' + canBo).val(),
+                gv_thinh_giang: $('#gv_thinh_giang_' + canBo).val(),
+                gv_quoc_te: $('#gv_quoc_te_' + canBo).val(),
                 do_tuoi: JSON.stringify(doTuoi),
                 _token: '{{csrf_token()}}'
             };

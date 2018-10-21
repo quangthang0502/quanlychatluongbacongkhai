@@ -119,17 +119,144 @@
                                 @if(count( $giangVien ) != 0)
                                     <div class="box-content">
                                         <div class="table-responsive">
-                                            <table class="table">
+                                            <table class="table table-bordered" style="text-align: center">
                                                 <thead class="text-primary">
                                                 <tr>
-                                                    <th>STT</th>
-                                                    <th>Phân loại</th>
-                                                    <th>Nam</th>
-                                                    <th>Nữ</th>
-                                                    <th>Tổng số</th>
+                                                    <th rowspan="2">STT</th>
+                                                    <th rowspan="2">Trình độ, học vị, chức danh</th>
+                                                    <th rowspan="2">Số lượng GV</th>
+                                                    <th rowspan="1" colspan="3">Giảng viên cơ hữu</th>
+                                                    <th rowspan="2">GV thỉnh giảng</th>
+                                                    <th rowspan="2">GV quốc tế</th>
+                                                </tr>
+                                                <tr>
+                                                    <th rowspan="1">GV trong biên chế trực tiếp giảng dạy</th>
+                                                    <th rowspan="1">GV hợp đồng dài hạn trực tiếp giảng dạy</th>
+                                                    <th rowspan="1">GV kiêm nhiệm là cán bộ quản lý</th>
                                                 </tr>
                                                 </thead>
                                                 <tbody>
+                                                <tr>
+                                                    @for($i = 1; $i < 9; $i++)
+                                                        <td>({{$i}})</td>
+                                                    @endfor
+                                                </tr>
+                                                @foreach($giangVien as $item)
+                                                    <tr>
+                                                        <td>{{$loop->iteration}}</td>
+                                                        <td>{{getNameTeacher($item->trinh_do)}}</td>
+                                                        <td>{{$item->so_luong}}</td>
+                                                        <td>{{$item->gv_bien_che}}</td>
+                                                        <td>{{$item->gv_hop_dong}}</td>
+                                                        <td>{{$item->gv_quan_ly}}</td>
+                                                        <td>{{$item->gv_thinh_giang}}</td>
+                                                        <td>{{$item->gv_quoc_te}}</td>
+                                                    </tr>
+                                                @endforeach
+                                                <tr>
+                                                    <td></td>
+                                                    <td>Tổng số</td>
+                                                    <td>{{$thongKeBang18->so_luong}}</td>
+                                                    <td>{{$thongKeBang18->gv_bien_che}}</td>
+                                                    <td>{{$thongKeBang18->gv_hop_dong}}</td>
+                                                    <td>{{$thongKeBang18->gv_quan_ly}}</td>
+                                                    <td>{{$thongKeBang18->gv_thinh_giang}}</td>
+                                                    <td>{{$thongKeBang18->gv_quoc_te}}</td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                            <div style="margin-bottom: 30px">
+                                                <p style="font-weight: bold">
+                                                    Tổng số giảng viên cơ hữu= Cột (3) - cột (7)
+                                                    = {{$thongKeBang18->so_luong - $thongKeBang18->gv_thinh_giang }}
+                                                </p>
+                                                <p style="font-weight: bold">
+                                                    Tỷ lệ giảng viên cơ hữu trên tổng số cán bộ cơ
+                                                    hữu: {{round($tiLeGiangVienCoHuu,2)}}%
+                                                </p>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                @else
+                                    <div style="text-align: center">
+                                        <a href="{{route('university.teacher.create',['slug'=>$slug, 'year'=>$year])}}"
+                                           class="btn btn-info t-create-btn">Cập nhập ngay</a>
+                                    </div>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="thong-tin-dao-tao">
+                            <div class="mini-box">
+                                <h4 class="title">
+                                    Quy đổi số lượng giảng viên của nhà trường: -
+                                    Số liệu bảng 19 được lấy từ bảng 18 nhân với hệ số quy đổi.
+                                </h4>
+                                @if(count( $giangVien ) != 0)
+                                    <div class="box-content">
+                                        <div class="table-responsive">
+                                            <table class="table table-bordered" style="text-align: center">
+                                                <thead class="text-primary">
+                                                <tr>
+                                                    <th rowspan="2">STT</th>
+                                                    <th rowspan="2">Trình độ, học vị, chức danh</th>
+                                                    <th rowspan="2">Hệ số quy đổi </th>
+                                                    <th rowspan="2">Số lượng GV</th>
+                                                    <th rowspan="1" colspan="3">Giảng viên cơ hữu</th>
+                                                    <th rowspan="2">GV thỉnh giảng</th>
+                                                    <th rowspan="2">GV quốc tế</th>
+                                                    <th rowspan="2">GV quy đổi</th>
+                                                </tr>
+                                                <tr>
+                                                    <th rowspan="1">GV trong biên chế trực tiếp giảng dạy</th>
+                                                    <th rowspan="1">GV hợp đồng dài hạn trực tiếp giảng dạy</th>
+                                                    <th rowspan="1">GV kiêm nhiệm là cán bộ quản lý</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr>
+                                                    @for($i = 1; $i < 11; $i++)
+                                                        <td>({{$i}})</td>
+                                                    @endfor
+                                                </tr>
+                                                <tr>
+                                                    <td></td>
+                                                    <td>Hệ số quy đổi</td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td>1.0</td>
+                                                    <td>1.0</td>
+                                                    <td>0.3</td>
+                                                    <td>0.2</td>
+                                                    <td>0.2</td>
+                                                    <td></td>
+                                                </tr>
+                                                @foreach($giangVien as $item)
+                                                    <tr>
+                                                        <td>{{$loop->iteration}}</td>
+                                                        <td>{{getNameTeacher($item->trinh_do)}}</td>
+                                                        <td>{{heSoQuyDoi($item->trinh_do, $universityType)}}</td>
+                                                        <td>{{$item->so_luong}}</td>
+                                                        <td>{{$item->gv_bien_che}}</td>
+                                                        <td>{{$item->gv_hop_dong}}</td>
+                                                        <td>{{$item->gv_quan_ly}}</td>
+                                                        <td>{{$item->gv_thinh_giang}}</td>
+                                                        <td>{{$item->gv_quoc_te}}</td>
+                                                        <td>{{$gvQuyDoi[$item->trinh_do]}}</td>
+                                                    </tr>
+                                                @endforeach
+                                                <tr>
+                                                    <td></td>
+                                                    <td>Tổng số</td>
+                                                    <td></td>
+                                                    <td>{{$thongKeBang18->so_luong}}</td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td>{{$tongQuyDoi}}</td>
+                                                </tr>
                                                 </tbody>
                                             </table>
                                         </div>
@@ -141,7 +268,6 @@
                                     </div>
                                 @endif
                             </div>
-
                         </div>
                         <div class="thong-tin-dao-tao">
                             <div class="mini-box">
@@ -179,25 +305,27 @@
                                                 </tr>
                                                 <tr>
                                                     <td>2</td>
-                                                    <td>Thường sử dụng (trên 60-80% thời gian của công việc) </td>
+                                                    <td>Thường sử dụng (trên 60-80% thời gian của công việc)</td>
                                                     <td>{{$tiengAnh->lv_4}}</td>
                                                     <td>{{$tinHoc->lv_4}}</td>
                                                 </tr>
                                                 <tr>
                                                     <td>3</td>
-                                                    <td>Đôi khi sử dụng (trên 40-60% thời gian của công việc) </td>
+                                                    <td>Đôi khi sử dụng (trên 40-60% thời gian của công việc)</td>
                                                     <td>{{$tiengAnh->lv_3}}</td>
                                                     <td>{{$tinHoc->lv_3}}</td>
                                                 </tr>
                                                 <tr>
                                                     <td>4</td>
-                                                    <td>Ít khi sử dụng (trên 20-40% thời gian của công việc) </td>
+                                                    <td>Ít khi sử dụng (trên 20-40% thời gian của công việc)</td>
                                                     <td>{{$tiengAnh->lv_2}}</td>
                                                     <td>{{$tinHoc->lv_2}}</td>
                                                 </tr>
                                                 <tr>
                                                     <td>5</td>
-                                                    <td>Hiếm khi sử dụng hoặc không sử dụng (0-20% thời gian của công việc) </td>
+                                                    <td>Hiếm khi sử dụng hoặc không sử dụng (0-20% thời gian của công
+                                                        việc)
+                                                    </td>
                                                     <td>{{$tiengAnh->lv_1}}</td>
                                                     <td>{{$tinHoc->lv_1}}</td>
                                                 </tr>

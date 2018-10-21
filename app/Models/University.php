@@ -24,7 +24,8 @@ class University extends Model {
 		'loai_hinh_dao_tao',
 		'gioi_thieu_id',
 		'image',
-		'slug'
+		'slug',
+		'type',
 	];
 
 	public static function findBySlug( $slug ) {

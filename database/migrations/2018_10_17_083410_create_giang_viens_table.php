@@ -23,6 +23,8 @@ class CreateGiangViensTable extends Migration
 	        $table->integer( 'gv_bien_che' )->default(0);
 	        $table->integer( 'gv_hop_dong' )->default(0);
 	        $table->integer( 'gv_quan_ly' )->default(0);
+	        $table->integer( 'gv_thinh_giang' )->default(0);
+	        $table->integer( 'gv_quoc_te' )->default(0);
 	        $table->string( 'do_tuoi' )->nullable();
             $table->timestamps();
         });

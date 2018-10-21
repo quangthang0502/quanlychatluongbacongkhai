@@ -32,6 +32,7 @@ class CreateUniversitiesTable extends Migration
 	        $table->string('loai_hinh_dao_tao')->nullable();
 	        $table->integer('gioi_thieu_id')->nullable();
 	        $table->string('image')->nullable();
+	        $table->string('type')->default('dai_hoc');
 	        $table->string('slug');
 	        $table->timestamps();
         });

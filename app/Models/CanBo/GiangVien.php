@@ -15,6 +15,8 @@ class GiangVien extends Model {
 		'gv_bien_che',
 		'gv_hop_dong',
 		'gv_quan_ly',
+		'gv_thinh_giang',
+		'gv_quoc_te',
 		'do_tuoi',
 	];
 
