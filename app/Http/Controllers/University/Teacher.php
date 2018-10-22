@@ -32,6 +32,15 @@ class Teacher extends Controller {
 		];
 		$gvQuyDoi      = [];
 		$tongQuyDoi    = 0;
+		$thongKeDoTuoi = [
+			'giao_vien_nam' => 0,
+			'giao_vien_nu'  => 0,
+			'lv_1'          => 0,
+			'lv_2'          => 0,
+			'lv_3'          => 0,
+			'lv_4'          => 0,
+			'lv_5'          => 0,
+		];
 		foreach ( $giangVien as $item ) {
 			$thongKeBang18['so_luong']       += $item->so_luong;
 			$thongKeBang18['gv_bien_che']    += $item->gv_bien_che;
@@ -47,6 +56,16 @@ class Teacher extends Controller {
 			                                   + $item->gv_quoc_te * 0.2 );
 
 			$tongQuyDoi += $gvQuyDoi[ $item->trinh_do ];
+
+			$doTuoi = json_decode( $item->do_tuoi );
+
+			$thongKeDoTuoi['giao_vien_nam'] += $item->giao_vien_nam;
+			$thongKeDoTuoi['giao_vien_nu']  += ( $item->so_luong - $item->giao_vien_nam );
+			$thongKeDoTuoi['lv_1']          += $doTuoi->lv_1;
+			$thongKeDoTuoi['lv_2']          += $doTuoi->lv_2;
+			$thongKeDoTuoi['lv_3']          += $doTuoi->lv_3;
+			$thongKeDoTuoi['lv_4']          += $doTuoi->lv_4;
+			$thongKeDoTuoi['lv_5']          += $doTuoi->lv_5;
 		}
 		$thongKeBang18 = json_decode( json_encode( $thongKeBang18, true ) );
 
@@ -61,7 +80,7 @@ class Teacher extends Controller {
 
 		return view( self::VIEW_PATH . __FUNCTION__,
 			compact( 'title', 'slug', 'year', 'phanLoaiCanBo', 'giangVien',
-				'trinhDo', 'thongKeBang18', 'tiLeGiangVienCoHuu', 'universityType', 'gvQuyDoi', 'tongQuyDoi' ) );
+				'trinhDo', 'thongKeBang18', 'tiLeGiangVienCoHuu', 'universityType', 'gvQuyDoi', 'tongQuyDoi', 'thongKeDoTuoi' ) );
 	}
 
 	public function create( $slug, $year ) {

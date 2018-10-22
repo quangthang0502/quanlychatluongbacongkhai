@@ -200,7 +200,7 @@
                                                 <tr>
                                                     <th rowspan="2">STT</th>
                                                     <th rowspan="2">Trình độ, học vị, chức danh</th>
-                                                    <th rowspan="2">Hệ số quy đổi </th>
+                                                    <th rowspan="2">Hệ số quy đổi</th>
                                                     <th rowspan="2">Số lượng GV</th>
                                                     <th rowspan="1" colspan="3">Giảng viên cơ hữu</th>
                                                     <th rowspan="2">GV thỉnh giảng</th>
@@ -256,6 +256,77 @@
                                                     <td></td>
                                                     <td></td>
                                                     <td>{{$tongQuyDoi}}</td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                @else
+                                    <div style="text-align: center">
+                                        <a href="{{route('university.teacher.create',['slug'=>$slug, 'year'=>$year])}}"
+                                           class="btn btn-info t-create-btn">Cập nhập ngay</a>
+                                    </div>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="thong-tin-dao-tao">
+                            <div class="mini-box">
+                                <h4 class="title">
+                                    Thống kê, phân loại giảng viên cơ hữu theo trình độ, giới tính và độ tuổi (số
+                                    người):
+                                </h4>
+                                @if(count( $giangVien ) != 0)
+                                    <div class="box-content">
+                                        <div class="table-responsive">
+                                            <table class="table table-bordered" style="text-align: center">
+                                                <thead class="text-primary">
+                                                <tr>
+                                                    <th rowspan="2">STT</th>
+                                                    <th rowspan="2">Trình độ, học vị</th>
+                                                    <th rowspan="2">Số lượng</th>
+                                                    <th rowspan="2">Tỷ lệ (%)</th>
+                                                    <th rowspan="1" colspan="2">Phân loại theo giới tính</th>
+                                                    <th rowspan="1" colspan="5">Phân loại theo tuổi (người)</th>
+                                                </tr>
+                                                <tr>
+                                                    <th rowspan="1">Nam</th>
+                                                    <th rowspan="1">Nữ</th>
+                                                    <th rowspan="1">< 30</th>
+                                                    <th rowspan="1">30-40</th>
+                                                    <th rowspan="1">41-50</th>
+                                                    <th rowspan="1">51-60</th>
+                                                    <th rowspan="1">> 60</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                @foreach($giangVien as $item)
+													<?php $doTuoi = json_decode( $item->do_tuoi ); ?>
+                                                    <tr>
+                                                        <td>{{$loop->iteration}}</td>
+                                                        <td>{{getNameTeacher($item->trinh_do)}}</td>
+                                                        <td>{{$item->so_luong}}</td>
+                                                        <td>{{round(($item->so_luong*100)/$thongKeBang18->so_luong,2)}}</td>
+                                                        <td>{{$item->giao_vien_nam}}</td>
+                                                        <td>{{$item->so_luong - $item->giao_vien_nam}}</td>
+                                                        <td>{{$doTuoi->lv_1}}</td>
+                                                        <td>{{$doTuoi->lv_2}}</td>
+                                                        <td>{{$doTuoi->lv_3}}</td>
+                                                        <td>{{$doTuoi->lv_4}}</td>
+                                                        <td>{{$doTuoi->lv_5}}</td>
+                                                    </tr>
+                                                @endforeach
+                                                <tr>
+                                                    <td></td>
+                                                    <td>Tổng số</td>
+                                                    <td>{{$thongKeBang18->so_luong}}</td>
+                                                    <td>100</td>
+                                                    <td>{{$thongKeDoTuoi['giao_vien_nam']}}</td>
+                                                    <td>{{$thongKeDoTuoi['giao_vien_nu']}}</td>
+                                                    <td>{{$thongKeDoTuoi['lv_1']}}</td>
+                                                    <td>{{$thongKeDoTuoi['lv_2']}}</td>
+                                                    <td>{{$thongKeDoTuoi['lv_3']}}</td>
+                                                    <td>{{$thongKeDoTuoi['lv_4']}}</td>
+                                                    <td>{{$thongKeDoTuoi['lv_5']}}</td>
                                                 </tr>
                                                 </tbody>
                                             </table>
