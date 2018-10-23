@@ -5,9 +5,15 @@
       Tip 2: you can also add an image using data-image tag
   -->
     <div class="logo">
-        <a href="{{route('dashboard.university', $slug)}}" class="simple-text logo-normal">
-            Quản lý trường
-        </a>
+        @if(getUser()->type == 0)
+            <a href="{{route('dashboard')}}" class="simple-text logo-normal">
+                Quản lý trường
+            </a>
+        @else
+            <a href="{{route('dashboard.university', $slug)}}" class="simple-text logo-normal">
+                Quản lý trường
+            </a>
+        @endif
     </div>
     <div class="sidebar-wrapper">
         <ul class="nav">
@@ -36,6 +42,13 @@
                 <a class="nav-link" href="{{route('university.teacher.index', ['slug'=>$slug, 'year'=> date('Y')])}}">
                     <i class="material-icons">local_library</i>
                     <p>Giảng viên</p>
+                </a>
+            </li>
+
+            <li class="nav-item {{isActiveRoute('university.student.index')}}">
+                <a class="nav-link" href="{{route('university.student.index', ['slug'=>$slug, 'year'=> date('Y')])}}">
+                    <i class="material-icons">assignment_ind</i>
+                    <p>Học viên</p>
                 </a>
             </li>
 

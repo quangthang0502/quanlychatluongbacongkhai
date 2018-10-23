@@ -24,7 +24,9 @@ class MainController extends Controller {
 		}
 		$title = 'Dashboard';
 
-		return view( 'admin.' . __FUNCTION__, compact( 'title' ) );
+		$universities = University::all();
+
+		return view( 'admin.' . __FUNCTION__, compact( 'title' , 'universities') );
 	}
 
 	public function dashboardUniversity( $slug ) {

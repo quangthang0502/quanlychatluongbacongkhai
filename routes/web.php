@@ -111,3 +111,19 @@ Route::group( [
 
 	Route::get( 'xoa/{id}', 'Teacher@delete' )->name( 'university.teacher.delete' );
 } );
+
+Route::group( [
+	'namespace'  => 'University',
+	'middleware' => [ 'auth', 'check.role' ],
+	'prefix'     => '{slug}/nguoi-hoc'
+], function () {
+	Route::get( '/{year}', 'Students@index' )->name( 'university.student.index' );
+
+	Route::get( 'chinh-sua/{year}', 'Students@create' )->name( 'university.student.create' );
+	Route::post( 'chinh-sua/{year}', 'Students@postCreate' )->name( 'university.student.postCreate' );
+
+	Route::post( 'chinh-sua-giang-vien/{year}', 'Students@updateStudents' )->name( 'university.student.updateStudents' );
+	Route::post( 'chinh-sua-trinh-do/{year}', 'Students@updateLevel' )->name( 'university.student.updateLevel' );
+
+	Route::get( 'xoa/{id}', 'Students@delete' )->name( 'university.student.delete' );
+} );
