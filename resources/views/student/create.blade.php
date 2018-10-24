@@ -27,18 +27,6 @@
                                     <div class="col-md-2">
                                         <div class="form-group">
                                             <div class="form-group">
-                                                <label for="thong_ke_nam" class="bmd-label-floating">Thống kê
-                                                    năm</label>
-                                                <input type="text" name="thong_ke_nam" id="thong_ke_nam"
-                                                       class="form-control" value="{{$year}}">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-2">
-                                        <div class="form-group">
-                                            <div class="form-group">
                                                 <label style="font-weight: bold" for="trinh_do_dai_hoc"
                                                        class="bmd-label-floating">Trình độ : Đại học</label>
                                                 <input type="hidden" name="trinh_do_dai_hoc" id="trinh_do_dai_hoc"
@@ -274,6 +262,117 @@
                                                             style="font-weight: bold">Đạt</span></label>
                                                 <input type="hidden" name="diem_tb_sau_dai_hoc" id="diem_tb_sau_dai_hoc"
                                                        class="form-control" value="1">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div style="width: 100%;text-align: right">
+                                        <button type="submit" class="btn btn-success">Cập nhập</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header card-header-primary">
+                            <h4 class="card-title">  Thống kê, phân loại số lượng người học nhập học trong 5 năm gần đây các
+                                hệ chính quy và không chính quy: </h4>
+                            <p class="card-category">Vui lòng điền đủ thông tin
+                        </div>
+                        <div class="card-body">
+                            @foreach($errors->all() as $message)
+                                <div class="alert alert-danger">
+                                    <span><b> Cảnh báo - </b> {{$message}}</span>
+                                </div>
+                            @endforeach
+                            <form action="{{route('university.student.updateStudents', ['slug'=>$slug,'year'=> $year])}}"
+                                  method="post">
+                                {{csrf_field()}}
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <div class="form-group">
+                                                <label for="nghien_cuu_sinh" class="bmd-label-floating">Nghiên cứu sinh</label>
+                                                <input type="text" name="nghien_cuu_sinh" id="nghien_cuu_sinh"
+                                                       class="form-control" value="{{$phanLoaiSinhVien->nghien_cuu_sinh}}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <div class="form-group">
+                                                <label for="hoc_vien_cao_hoc" class="bmd-label-floating">Học viên cao học </label>
+                                                <input type="text" name="hoc_vien_cao_hoc" id="hoc_vien_cao_hoc"
+                                                       class="form-control" value="{{$phanLoaiSinhVien->hoc_vien_cao_hoc}}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <div class="form-group">
+                                                <label for="dh_he_chinh_quy" class="bmd-label-floating">Học viên đại học chính quy </label>
+                                                <input type="text" name="dh_he_chinh_quy" id="dh_he_chinh_quy"
+                                                       class="form-control" value="{{$phanLoaiSinhVien->dh_he_chinh_quy}}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <div class="form-group">
+                                                <label for="dh_he_khong_chinh_quy" class="bmd-label-floating">Học viên đại học không chính quy </label>
+                                                <input type="text" name="dh_he_khong_chinh_quy" id="dh_he_khong_chinh_quy"
+                                                       class="form-control" value="{{$phanLoaiSinhVien->dh_he_khong_chinh_quy}}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <div class="form-group">
+                                                <label for="cd_he_chinh_quy" class="bmd-label-floating">Học viên cao đẳng chính quy </label>
+                                                <input type="text" name="cd_he_chinh_quy" id="cd_he_chinh_quy"
+                                                       class="form-control" value="{{$phanLoaiSinhVien->cd_he_chinh_quy}}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <div class="form-group">
+                                                <label for="cd_he_khong_chinh_quy" class="bmd-label-floating">Học viên cao đẳng không chính quy </label>
+                                                <input type="text" name="cd_he_khong_chinh_quy" id="cd_he_khong_chinh_quy"
+                                                       class="form-control" value="{{$phanLoaiSinhVien->cd_he_khong_chinh_quy}}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <div class="form-group">
+                                                <label for="tccn_he_chinh_quy" class="bmd-label-floating">Học viên TCCN chính quy </label>
+                                                <input type="text" name="tccn_he_chinh_quy" id="tccn_he_chinh_quy"
+                                                       class="form-control" value="{{$phanLoaiSinhVien->tccn_he_chinh_quy}}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <div class="form-group">
+                                                <label for="tccn_he_khong_chinh_quy" class="bmd-label-floating">Học viên TCCN không chính quy </label>
+                                                <input type="text" name="tccn_he_khong_chinh_quy" id="tccn_he_khong_chinh_quy"
+                                                       class="form-control" value="{{$phanLoaiSinhVien->tccn_he_khong_chinh_quy}}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <div class="form-group">
+                                                <label for="khac" class="bmd-label-floating">Khác </label>
+                                                <input type="text" name="khac" id="khac"
+                                                       class="form-control" value="{{$phanLoaiSinhVien->khac}}">
                                             </div>
                                         </div>
                                     </div>

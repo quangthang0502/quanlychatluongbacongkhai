@@ -20,4 +20,17 @@ class PhanLoaiSinhVien extends Model {
 		'tccn_he_khong_chinh_quy',
 		'khac',
 	];
+
+	public static function findByYear( $university, $year ) {
+		return self::where( [
+			'universities_id' => $university,
+			'thong_ke_nam'    => $year
+		] )->first();
+	}
+
+	public static function findByManyYear( $university, $year ) {
+		return self::where( [
+			'universities_id' => $university,
+		] )->whereBetween( 'thong_ke_nam', [ ( $year - 4 ), $year ] )->orderBy('thong_ke_nam', 'desc')->get();
+	}
 }

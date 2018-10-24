@@ -28,76 +28,145 @@
                                     Thống kê số lượng cán bộ, giảng viên và nhân viên (gọi chung là cán bộ) của
                                     nhà trường
                                 </h4>
-                                @if(isset($phanLoaiCanBo))
+                                @if(isset($sinhVienDaiHoc) && isset($sinhVienLienThong) && isset($sinhVienSauDaiHoc))
                                     <div class="box-content">
                                         <div class="table-responsive">
-                                            <table class="table">
+                                            <table class="table table-bordered" style="text-align: center">
                                                 <thead class="text-primary">
                                                 <tr>
-                                                    <th>STT</th>
-                                                    <th>Phân loại</th>
-                                                    <th>Nam</th>
-                                                    <th>Nữ</th>
-                                                    <th>Tổng số</th>
+                                                    <th>Năm học</th>
+                                                    <th>Số thí sinh dự thi (người)</th>
+                                                    <th>Số trúng tuyển (người)</th>
+                                                    <th>Tỷ lệ cạnh tranh</th>
+                                                    <th>Số nhập học thực tế (người)</th>
+                                                    <th>Điểm tuyển đầu vào (thang điểm 30)</th>
+                                                    <th>Điểm trung bình của sinh viên được tuyển</th>
+                                                    <th>Số lượng sinh viên quốc tế nhập học (người)</th>
                                                 </tr>
                                                 </thead>
                                                 <tbody>
                                                 <tr>
-                                                    <td>I</td>
-                                                    <td>
-                                                        <p style="font-weight: bold">Cán bộ cơ hữu 1</p>
-                                                        <p>Trong đó:</p>
-                                                    </td>
-                                                    <td>{{$phanLoaiCanBo->bien_che_nam + $phanLoaiCanBo->hop_dong_nam}}</td>
-                                                    <td>{{$phanLoaiCanBo->bien_che_nu + $phanLoaiCanBo->hop_dong_nu}}</td>
-                                                    <td>
-                                                        {{$phanLoaiCanBo->bien_che_nam + $phanLoaiCanBo->bien_che_nu +
-                                                         $phanLoaiCanBo->hop_dong_nam + $phanLoaiCanBo->hop_dong_nu}}
-                                                    </td>
+                                                    <td>Đại học</td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                </tr>
+                                                @foreach($sinhVienDaiHoc as $item)
+                                                    <tr>
+                                                        <td>{{($item->thong_ke_nam - 1).'-'.$item->thong_ke_nam}}</td>
+                                                        <td>{{($item->sl_du_thi != null)?$item->sl_du_thi:'-'}}</td>
+                                                        <td>{{($item->sl_trung_tuyen != null)?$item->sl_trung_tuyen:'-'}}</td>
+                                                        <td>-</td>
+                                                        <td>{{($item->sl_nhap_hoc != null)?$item->sl_nhap_hoc:'-'}}</td>
+                                                        <td>{{($item->diem_dau_vao != null)?round($item->diem_dau_vao,2):'-'}}</td>
+                                                        <td>{{($item->diem_tb != null)?round($item->diem_tb,2):'-'}}</td>
+                                                        <td>{{($item->sl_sv_quoc_te != null)?$item->sl_sv_quoc_te:'-'}}</td>
+                                                    </tr>
+                                                @endforeach
+                                                <tr>
+                                                    <td>Liên thông</td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                </tr>
+                                                @foreach($sinhVienLienThong as $item)
+                                                    <tr>
+                                                        <td>{{($item->thong_ke_nam - 1).'-'.$item->thong_ke_nam}}</td>
+                                                        <td>{{($item->sl_du_thi != null)?$item->sl_du_thi:'-'}}</td>
+                                                        <td>{{($item->sl_trung_tuyen != null)?$item->sl_trung_tuyen:'-'}}</td>
+                                                        <td>-</td>
+                                                        <td>{{($item->sl_nhap_hoc != null)?$item->sl_nhap_hoc:'-'}}</td>
+                                                        <td>{{($item->diem_dau_vao != null)?round($item->diem_dau_vao,2):'-'}}</td>
+                                                        <td>{{($item->diem_tb != null)?round($item->diem_tb,2):'-'}}</td>
+                                                        <td>{{($item->sl_sv_quoc_te != null)?$item->sl_sv_quoc_te:'-'}}</td>
+                                                    </tr>
+                                                @endforeach
+                                                <tr>
+                                                    <td>Sau đại học</td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                </tr>
+                                                @foreach($sinhVienSauDaiHoc as $item)
+                                                    <tr>
+                                                        <td>{{($item->thong_ke_nam - 1).'-'.$item->thong_ke_nam}}</td>
+                                                        <td>{{($item->sl_du_thi != null)?$item->sl_du_thi:'-'}}</td>
+                                                        <td>{{($item->sl_trung_tuyen != null)?$item->sl_trung_tuyen:'-'}}</td>
+                                                        <td>-</td>
+                                                        <td>{{($item->sl_nhap_hoc != null)?$item->sl_nhap_hoc:'-'}}</td>
+                                                        <td>{{($item->diem_dau_vao != null)?round($item->diem_dau_vao,2):'-'}}</td>
+                                                        <td>{{($item->diem_tb == 1)?'Đạt':'Không đạt'}}</td>
+                                                        <td>{{($item->sl_sv_quoc_te != null)?$item->sl_sv_quoc_te:'-'}}</td>
+                                                    </tr>
+                                                @endforeach
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                @else
+                                    <div style="text-align: center">
+                                        <a href="{{route('university.teacher.create',['slug'=>$slug, 'year'=>$year])}}"
+                                           class="btn btn-info t-create-btn">Cập nhập ngay</a>
+                                    </div>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="thong-tin-dao-tao">
+                            <div class="mini-box">
+                                <h4 class="title">
+                                    21. Thống kê, phân loại số lượng người học nhập học trong 5 năm gần đây các
+                                    hệ chính quy và không chính quy:
+                                </h4>
+                                @if(isset($phanLoaiSinhVien))
+                                    <div class="box-content">
+                                        <div class="table-responsive">
+                                            <table class="table table-bordered" style="text-align: center">
+                                                <thead class="text-primary">
+                                                <tr>
+                                                    <th rowspan="2">Các tiêu chí</th>
+                                                    <th rowspan="2">1. Nghiên cứu sinh</th>
+                                                    <th rowspan="2">2. Học viên cao học</th>
+                                                    <th rowspan="1" colspan="2">3. Sinh viên đại học</th>
+                                                    <th rowspan="1" colspan="2">4. Sinh viên cao đẳng</th>
+                                                    <th rowspan="1" colspan="2">5. Học sinh TCCN</th>
+                                                    <th rowspan="2">Khác</th>
                                                 </tr>
                                                 <tr>
-                                                    <td>I.1</td>
-                                                    <td>
-                                                        <p>Cán bộ trong biên chế </p>
-                                                    </td>
-                                                    <td>{{$phanLoaiCanBo->bien_che_nam}}</td>
-                                                    <td>{{$phanLoaiCanBo->bien_che_nu}}</td>
-                                                    <td>{{$phanLoaiCanBo->bien_che_nam + $phanLoaiCanBo->bien_che_nu}}</td>
+                                                    <th rowspan="1">Hệ chính quy</th>
+                                                    <th rowspan="1">Hệ không chính quy</th>
+                                                    <th rowspan="1">Hệ chính quy</th>
+                                                    <th rowspan="1">Hệ không chính quy</th>
+                                                    <th rowspan="1">Hệ chính quy</th>
+                                                    <th rowspan="1">Hệ không chính quy</th>
                                                 </tr>
-                                                <tr>
-                                                    <td>I.2</td>
-                                                    <td>
-                                                        <p>Cán bộ hợp đồng dài hạn (từ 1 năm trở lên) và
-                                                            hợp đồng không xác định thời hạn </p>
-                                                    </td>
-                                                    <td>{{$phanLoaiCanBo->hop_dong_nam}}</td>
-                                                    <td>{{$phanLoaiCanBo->hop_dong_nu}}</td>
-                                                    <td>{{$phanLoaiCanBo->hop_dong_nam + $phanLoaiCanBo->hop_dong_nu}}</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>II</td>
-                                                    <td>
-                                                        <p style="font-weight: bold">Các cán bộ khác</p>
-                                                        <p>Hợp đồng ngắn hạn (dưới 1 năm, bao gồm cả
-                                                            giảng viên thỉnh giảng)</p>
-                                                    </td>
-                                                    <td>{{$phanLoaiCanBo->cb_khac_nam}}</td>
-                                                    <td>{{$phanLoaiCanBo->cb_khac_nu}}</td>
-                                                    <td>{{$phanLoaiCanBo->cb_khac_nam + $phanLoaiCanBo->cb_khac_nu}}</td>
-                                                </tr>
-                                                <tr>
-                                                    <td style="font-weight: bold">Tổng</td>
-                                                    <td>
-
-                                                    </td>
-                                                    <td>{{$phanLoaiCanBo->cb_khac_nam + $phanLoaiCanBo->bien_che_nam
-                                                    + $phanLoaiCanBo->hop_dong_nam}}</td>
-                                                    <td>{{$phanLoaiCanBo->cb_khac_nu+$phanLoaiCanBo->bien_che_nu
-                                                    + $phanLoaiCanBo->hop_dong_nu}}</td>
-                                                    <td>{{$phanLoaiCanBo->cb_khac_nam + $phanLoaiCanBo->cb_khac_nu
-                                                    +$phanLoaiCanBo->bien_che_nam + $phanLoaiCanBo->bien_che_nu +
-                                                         $phanLoaiCanBo->hop_dong_nam + $phanLoaiCanBo->hop_dong_nu}}</td>
-                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                @foreach($phanLoaiSinhVien as $item)
+                                                    <tr>
+                                                        <td>{{($item->thong_ke_nam - 1).'-'.$item->thong_ke_nam}}</td>
+                                                        <td>{{($item->nghien_cuu_sinh != 0)?$item->nghien_cuu_sinh :''}}</td>
+                                                        <td>{{($item->hoc_vien_cao_hoc != 0)?$item->hoc_vien_cao_hoc :''}}</td>
+                                                        <td>{{($item->dh_he_chinh_quy != 0)?$item->dh_he_chinh_quy :''}}</td>
+                                                        <td>{{($item->dh_he_khong_chinh_quy != 0)?$item->dh_he_khong_chinh_quy :''}}</td>
+                                                        <td>{{($item->cd_he_chinh_quy != 0)?$item->cd_he_chinh_quy :''}}</td>
+                                                        <td>{{($item->cd_he_khong_chinh_quy != 0)?$item->cd_he_khong_chinh_quy :''}}</td>
+                                                        <td>{{($item->tccn_he_chinh_quy != 0)?$item->tccn_he_chinh_quy :''}}</td>
+                                                        <td>{{($item->tccn_he_khong_chinh_quy != 0)?$item->tccn_he_khong_chinh_quy :''}}</td>
+                                                        <td>{{($item->khac != 0)?$item->khac :''}}</td>
+                                                    </tr>
+                                                @endforeach
                                                 </tbody>
                                             </table>
                                         </div>

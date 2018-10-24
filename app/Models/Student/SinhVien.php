@@ -23,14 +23,14 @@ class SinhVien extends Model {
 		return self::where( [
 			'universities_id' => $university,
 			'thong_ke_nam'    => $year,
-			'trinh_do' => $trinhDo
+			'trinh_do'        => $trinhDo
 		] )->first();
 	}
 
-	public static function findByManyYear( $university, $year ) {
+	public static function findByManyYear( $university, $year, $trinhDo ) {
 		return self::where( [
 			'universities_id' => $university,
-			'thong_ke_nam'    => $year,
-		] )->first();
+			'trinh_do'        => $trinhDo
+		] )->whereBetween( 'thong_ke_nam', [ ( $year - 4 ), $year ] )->orderBy('thong_ke_nam', 'desc')->get();
 	}
 }

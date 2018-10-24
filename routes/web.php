@@ -122,8 +122,7 @@ Route::group( [
 	Route::get( 'chinh-sua/{year}', 'Students@create' )->name( 'university.student.create' );
 	Route::post( 'chinh-sua/{year}', 'Students@postCreate' )->name( 'university.student.postCreate' );
 
-	Route::post( 'chinh-sua-giang-vien/{year}', 'Students@updateStudents' )->name( 'university.student.updateStudents' );
-	Route::post( 'chinh-sua-trinh-do/{year}', 'Students@updateLevel' )->name( 'university.student.updateLevel' );
+	Route::post( 'chinh-sua-chinh-quy/{year}', 'Students@updateStudents' )->name( 'university.student.updateStudents' );
 
 	Route::get( 'xoa/{id}', 'Students@delete' )->name( 'university.student.delete' );
 } );
