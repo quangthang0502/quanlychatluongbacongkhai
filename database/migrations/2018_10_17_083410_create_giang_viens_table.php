@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
-
+$table->integer( 'universities_id' );
 class CreateGiangViensTable extends Migration
 {
     /**

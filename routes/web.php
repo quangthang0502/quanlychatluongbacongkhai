@@ -126,3 +126,18 @@ Route::group( [
 
 	Route::get( 'xoa/{id}', 'Students@delete' )->name( 'university.student.delete' );
 } );
+
+Route::group( [
+    'namespace'  => 'University',
+    'middleware' => [ 'auth', 'check.role' ],
+    'prefix'     => '{slug}/nckh'
+], function () {
+    Route::get( '/{year}', 'Research@index' )->name( 'university.research.index' );
+
+//    Route::get( 'chinh-sua/{year}', 'Research@create' )->name( 'university.student.create' );
+//    Route::post( 'chinh-sua/{year}', 'Research@postCreate' )->name( 'university.student.postCreate' );
+//
+//    Route::post( 'chinh-sua-chinh-quy/{year}', 'Research@updateStudents' )->name( 'university.student.updateStudents' );
+//
+//    Route::get( 'xoa/{id}', 'Research@delete' )->name( 'university.student.delete' );
+} );

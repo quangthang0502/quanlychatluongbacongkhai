@@ -52,6 +52,13 @@
                 </a>
             </li>
 
+            <li class="nav-item {{isActiveRoute('university.research.index')}}">
+                <a class="nav-link" href="{{route('university.research.index', ['slug'=>$slug, 'year'=> date('Y')])}}">
+                    <i class="material-icons">assignment_ind</i>
+                    <p>Nghiên cứu khoa học</p>
+                </a>
+            </li>
+
             <li class="nav-item {{isActiveRoute('university.intro.index')}}">
                 <a class="nav-link" href="{{route('university.intro.index', $slug)}}">
                     <i class="material-icons">description</i>
