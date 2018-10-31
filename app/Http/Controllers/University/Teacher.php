@@ -70,7 +70,7 @@ class Teacher extends Controller {
 		$thongKeBang18 = json_decode( json_encode( $thongKeBang18, true ) );
 
 		$tiLeGiangVienCoHuu = 0;
-		if ( $phanLoaiCanBo != null ) {
+		if ( $phanLoaiCanBo != null && $thongKeBang18->so_luong != 0) {
 			$tiLeGiangVienCoHuu = ( $thongKeBang18->so_luong - $thongKeBang18->gv_thinh_giang )
 			                      * 100 / ( $phanLoaiCanBo->cb_khac_nam + $phanLoaiCanBo->cb_khac_nu
 			                                + $phanLoaiCanBo->bien_che_nam + $phanLoaiCanBo->bien_che_nu +

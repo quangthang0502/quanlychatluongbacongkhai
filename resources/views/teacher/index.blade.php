@@ -305,7 +305,13 @@
                                                         <td>{{$loop->iteration}}</td>
                                                         <td>{{getNameTeacher($item->trinh_do)}}</td>
                                                         <td>{{$item->so_luong}}</td>
-                                                        <td>{{round(($item->so_luong*100)/$thongKeBang18->so_luong,2)}}</td>
+                                                        <td>
+                                                            @if($item->so_luong != 0)
+                                                                {{round(($item->so_luong*100)/$thongKeBang18->so_luong,2)}}
+                                                            @else
+                                                                0
+                                                            @endif
+                                                        </td>
                                                         <td>{{$item->giao_vien_nam}}</td>
                                                         <td>{{$item->so_luong - $item->giao_vien_nam}}</td>
                                                         <td>{{$doTuoi->lv_1}}</td>
