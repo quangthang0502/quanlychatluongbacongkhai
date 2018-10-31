@@ -164,7 +164,7 @@
                                                         <td>{{($item->cd_he_khong_chinh_quy != 0)?$item->cd_he_khong_chinh_quy :''}}</td>
                                                         <td>{{($item->tccn_he_chinh_quy != 0)?$item->tccn_he_chinh_quy :''}}</td>
                                                         <td>{{($item->tccn_he_khong_chinh_quy != 0)?$item->tccn_he_khong_chinh_quy :''}}</td>
-                                                        <td>{{($item->khac != 0)?$item->khac :''}}</td>
+                                                        <td>{{($item->khac != 0)?$item->khac com:''}}</td>
                                                     </tr>
                                                 @endforeach
                                                 </tbody>
