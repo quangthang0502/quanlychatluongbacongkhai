@@ -5,6 +5,8 @@ namespace App\Http\Controllers\University;
 
 use App\Http\Controllers\Controller;
 use App\Models\Canbo\GiangVien;
+use App\Models\NghienCuuKhoaHoc\BangSangChe;
+use App\Models\NghienCuuKhoaHoc\HoiThao;
 use App\Models\NghienCuuKhoaHoc\NckhNghiemThu;
 use App\Models\NghienCuuKhoaHoc\TapChi;
 use App\Models\NghienCuuKhoaHoc\VietSach;
@@ -24,11 +26,81 @@ class Research extends Controller
         $dataSach = $this->duLieuVietSach($university, $year);
         $soLuongSach = $dataSach['so_luong_sach'];
 
-        $dataTapChi = $this->duLieuTapChi($university,$year);
+        $dataTapChi = $this->duLieuTapChi($university, $year);
         $soLuongTapChi = $dataTapChi['so_luong_tap_chi'];
 
-        return view('research.' . __FUNCTION__, compact('slug', 'title', 'year', 'soLuongNckh', 'doanhThu', 'soLuongSach','soLuongTapChi'));
+        $dataHoiThao = $this->duLieuHoiThao($university, $year);
+        $soLuongHoiThao = $dataHoiThao['so_luong_hoi_thao'];
 
+        $sangChe = $this->duLieuBangSangChe($university,$year);
+
+        return view('research.' . __FUNCTION__, compact('slug', 'title', 'year', 'soLuongNckh', 'doanhThu', 'soLuongSach', 'soLuongTapChi', 'soLuongHoiThao','sangChe'));
+
+    }
+
+    private function duLieuBangSangChe($university, $year)
+    {
+        $bangSangChe = [];
+
+        for ($i = 0; $i < 5; $i++) {
+            $sangChe = BangSangChe::getBangSangCheByYear($university->id, $year - $i);
+            if (is_null($sangChe)) {
+                continue;
+            }
+            $bangSangChe[$year-$i]['noi_dung'] = $sangChe['noi_dung'];
+        }
+
+        return $bangSangChe;
+    }
+
+    private function duLieuHoiThao($university, $year)
+    {
+        $soLuongHoiThao = [
+            'quoc_te' => [
+                'name' => 'Hội thảo quốc tế',
+                'he_so' => 1,
+                'tong' => 0
+            ],
+            'trong_nuoc' => [
+                'name' => 'Hội thảo trong nước',
+                'he_so' => 0.5,
+                'tong' => 0
+            ],
+            'cap_truong' => [
+                'name' => 'Hội thảo cấp trường',
+                'he_so' => 0.25,
+                'tong' => 0
+            ],
+            'tong_quy_doi' => 0,
+            'ty_so_bai_bao' => 0
+        ];
+
+        for ($i = 0; $i < 5; $i++) {
+            $hoiThao = HoiThao::getSoLuongHoiThaoByYear($university->id, $year - $i);
+            if (is_null($hoiThao)) {
+                continue;
+            }
+//            $giangVien = GiangVien::findByYear($university->id,$year-$i);
+//            $soGiangVienCoHuu = $giangVien[0]->so_luong - $giangVien[0]->gv_thinh_giang;
+//            $soGiangVienCoHuu = $soGiangVienCoHuu == 0 ? 1 : $soGiangVienCoHuu;
+
+            $soLuongHoiThao['quoc_te'][$year - $i] = $hoiThao['quoc_te'];
+            $soLuongHoiThao['quoc_te']['tong'] += $hoiThao['quoc_te'] * $soLuongHoiThao['quoc_te']['he_so'];
+            $soLuongHoiThao['tong_quy_doi'] += $hoiThao['quoc_te'] * $soLuongHoiThao['quoc_te']['he_so'];
+
+            $soLuongHoiThao['trong_nuoc'][$year - $i] = $hoiThao['trong_nuoc'];
+            $soLuongHoiThao['trong_nuoc']['tong'] += $hoiThao['trong_nuoc'] * $soLuongHoiThao['trong_nuoc']['he_so'];
+            $soLuongHoiThao['tong_quy_doi'] += $hoiThao['trong_nuoc'] * $soLuongHoiThao['trong_nuoc']['he_so'];
+
+            $soLuongHoiThao['cap_truong'][$year - $i] = $hoiThao['cap_truong'];
+            $soLuongHoiThao['cap_truong']['tong'] += $hoiThao['cap_truong'] * $soLuongHoiThao['cap_truong']['he_so'];
+            $soLuongHoiThao['tong_quy_doi'] += $hoiThao['cap_truong'] * $soLuongHoiThao['cap_truong']['he_so'];
+
+            $soLuongHoiThao['ty_so_bai_bao'] = round($soLuongHoiThao['tong_quy_doi'] / 173, 1);
+        }
+        return [
+            'so_luong_hoi_thao' => $soLuongHoiThao
+        ];
     }
 
     private function duLieuTapChi($university, $year)
@@ -50,11 +122,11 @@ class Research extends Controller
                 'tong' => 0
             ],
             'tong_quy_doi' => 0,
-            'ty_so_sach' => 0
+            'ty_so_tap_chi' => 0
         ];
 
         for ($i = 0; $i < 5; $i++) {
-            $tapChi = TapChi::getSoLuongTapChiByYear($university->id,$year);
+            $tapChi = TapChi::getSoLuongTapChiByYear($university->id, $year - $i);
             if (is_null($tapChi)) {
                 continue;
             }

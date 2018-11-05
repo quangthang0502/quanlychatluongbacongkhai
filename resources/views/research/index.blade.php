@@ -256,8 +256,115 @@
                                                 <br>
                                                 <strong> Tỷ số đề tài nghiên cứu khoa học và chuyển giao khoa học công
                                                     nghệ (quy đổi)
-                                                    trên cán bộ cơ hữu: {{$soLuongTapChi['ty_so_sach']}} </strong>
+                                                    trên cán bộ cơ hữu: {{$soLuongTapChi['ty_so_tap_chi']}} </strong>
                                             </p>
+                                        </div>
+                                    </div>
+                                @else
+                                    <div style="text-align: center">
+                                        <a href="{{route('university.teacher.create',['slug'=>$slug, 'year'=>$year])}}"
+                                           class="btn btn-info t-create-btn">Cập nhập ngay</a>
+                                    </div>
+                                @endif
+
+                            </div>
+                        </div>
+
+                        <div class="thong-tin-dao-tao" style="margin-top: 40px">
+                            <div class="mini-box">
+                                <h4 class="title">
+                                    Số lượng báo cáo khoa học do cán bộ cơ hữu của nhà trường báo cáo tại các
+                                    hội nghị, hội thảo, được đăng toàn văn trong tuyển tập công trình hay kỷ yếu
+                                    trong 5 năm gần đây
+                                </h4>
+                                @if(isset($soLuongHoiThao))
+                                    <div class="box-content">
+                                        <div class="table-responsive">
+                                            <table class="table table-bordered" style="text-align: center">
+                                                <thead class="text-primary">
+                                                <tr>
+                                                    <th rowspan="2">STT</th>
+                                                    <th rowspan="2">Phân loại sách</th>
+                                                    <th rowspan="2">Hệ số</th>
+                                                    <th rowspan="1" colspan="6">Số lượng</th>
+
+                                                </tr>
+                                                <tr>
+                                                    <th rowspan="1">{{$year-4}}</th>
+                                                    <th rowspan="1">{{$year-3}}</th>
+                                                    <th rowspan="1">{{$year-2}}</th>
+                                                    <th rowspan="1">{{$year-1}}</th>
+                                                    <th rowspan="1">{{$year}}</th>
+                                                    <th rowspan="1">Tổng(đã quy đổi)</th>
+
+                                                </tr>
+
+                                                </thead>
+                                                <tbody>
+                                                <?php $key = ['quoc_te', 'trong_nuoc', 'cap_truong'] ?>
+                                                @for($i = 0; $i < 3; $i++)
+                                                    <tr>
+                                                        <td>{{$i+1}}</td>
+                                                        <td>{{$soLuongHoiThao[$key[$i]]['name']}}</td>
+                                                        <td>{{$soLuongHoiThao[$key[$i]]['he_so']}}</td>
+                                                        <td>{{isset($soLuongHoiThao[$key[$i]][$year-4]) ? $soLuongHoiThao[$key[$i]][$year-4] : 0 }}</td>
+                                                        <td>{{isset($soLuongHoiThao[$key[$i]][$year-3]) ? $soLuongHoiThao[$key[$i]][$year-3] : 0 }}</td>
+                                                        <td>{{isset($soLuongHoiThao[$key[$i]][$year-2]) ? $soLuongHoiThao[$key[$i]][$year-2] : 0 }}</td>
+                                                        <td>{{isset($soLuongHoiThao[$key[$i]][$year-1]) ? $soLuongHoiThao[$key[$i]][$year-1] : 0 }}</td>
+                                                        <td>{{isset($soLuongHoiThao[$key[$i]][$year]) ? $soLuongHoiThao[$key[$i]][$year] : 0 }}</td>
+                                                        <td>{{$soLuongHoiThao[$key[$i]]['tong']}}</td>
+                                                    </tr>
+                                                @endfor
+                                                </tbody>
+                                            </table>
+                                            <p style="font-weight: bold">
+                                                <strong> Tổng số đề tài quy
+                                                    đổi: {{$soLuongHoiThao['tong_quy_doi']}} </strong>
+                                                <br>
+                                                <strong> Tỷ số đề tài nghiên cứu khoa học và chuyển giao khoa học công
+                                                    nghệ (quy đổi)
+                                                    trên cán bộ cơ hữu: {{$soLuongHoiThao['ty_so_bai_bao']}} </strong>
+                                            </p>
+                                        </div>
+                                    </div>
+                                @else
+                                    <div style="text-align: center">
+                                        <a href="{{route('university.teacher.create',['slug'=>$slug, 'year'=>$year])}}"
+                                           class="btn btn-info t-create-btn">Cập nhập ngay</a>
+                                    </div>
+                                @endif
+
+                            </div>
+                        </div>
+
+                        <div class="thong-tin-dao-tao" style="margin-top: 40px">
+                            <div class="mini-box">
+                                <h4 class="title">
+                                    Số bằng phát minh, sáng chế được cấp trong 5 năm gần đây
+                                </h4>
+                                @if(isset($sangChe))
+                                    <div class="box-content">
+                                        <div class="table-responsive">
+                                            <table class="table table-bordered" style="text-align: center">
+                                                <thead class="text-primary">
+                                                <tr>
+                                                    <th rowspan="2">Năm học</th>
+                                                    <th rowspan="2">Số bằng phát minh, sáng chế được cấp
+                                                        (ghi rõ nơi cấp, thời gian cấp, người được cấp)</th>
+
+                                                </tr>
+
+                                                </thead>
+                                                <tbody>
+                                                @for($i = 4; $i >= 0; $i--)
+                                                    <tr>
+                                                        <td>{{$year - $i - 1}}-{{$year - $i}}</td>
+                                                        <td>{{isset($sangChe[$year-$i]) ? $sangChe[$year - $i]['noi_dung'] : "-" }}</td>
+                                                    </tr>
+                                                @endfor
+                                                </tbody>
+                                            </table>
+
                                         </div>
                                     </div>
                                 @else
