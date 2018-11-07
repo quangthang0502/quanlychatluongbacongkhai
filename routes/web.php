@@ -160,7 +160,7 @@ Route::group( [
 	Route::get( 'chinh-sua/{year}', 'Infrastructure@create' )->name( 'university.infrastructure.create' );
 	Route::post( 'chinh-sua/{year}', 'Infrastructure@postCreate' )->name( 'university.infrastructure.postCreate' );
 //
-//	Route::post( 'chinh-sua-chinh-quy/{year}', 'Infrastructure@updateInfrastructure' )->name( 'university.infrastructure.updateInfrastructure' );
+	Route::post( 'chinh-sua-ktx/{year}', 'Infrastructure@updateKTX' )->name( 'university.infrastructure.updateKTX' );
 //
 //	Route::get( 'xoa/{id}', 'Infrastructure@delete' )->name( 'university.infrastructure.delete' );
 } );

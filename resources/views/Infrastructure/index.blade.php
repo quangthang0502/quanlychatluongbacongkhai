@@ -97,6 +97,51 @@
                                 </ul>
                             </li>
                         </ul>
+
+                        <div class="thong-tin-dao-tao">
+                            <div class="mini-box">
+                                <h4 class="title">
+                                    Nhu cầu kí túc xá
+                                </h4>
+
+                                <div class="box-content">
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered text-center">
+                                            <thead class="text-primary">
+                                            <tr>
+                                                <th rowspan="2">Năm</th>
+                                                <th rowspan="1" colspan="4">Các tiêu chí</th>
+                                            </tr>
+                                            <tr>
+                                                <th>Tổng diện tích phòng ở (m2)</th>
+                                                <th> Số lượng sinh viên có nhu cầu về
+                                                    phòng ở (trong và ngoài ký túc xá)
+                                                </th>
+                                                <th>Số lượng sinh viên được ở trong
+                                                    ký túc xá
+                                                </th>
+                                                <th>Tỷ số diện tích trên đầu sinh viên
+                                                    ở trong ký túc xá, m2/người
+                                                </th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            @foreach($kiTucXa as $item)
+                                                <tr>
+                                                    <td>{{($item->nam_thong_ke - 1).'-'.$item->nam_thong_ke}}</td>
+                                                    <td>{{$item->tong_dien_tich}}</td>
+                                                    <td>{{$item->nhu_cau}}</td>
+                                                    <td>{{$item->duoc_o}}</td>
+                                                    <td>{{($item->duoc_o == 0)? '-' : (round($item->tong_dien_tich/$item->duoc_o,2))}}</td>
+                                                </tr>
+                                            @endforeach
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -29,7 +29,7 @@
                                         <th colspan="1" rowspan="2">STT</th>
                                         <th colspan="1" rowspan="2">Tên trường</th>
                                         <th colspan="7" rowspan="1">Chuyên ngành đào tạo</th>
-                                        <th colspan="6" rowspan="1">Cơ sở vật chất</th>
+                                        <th colspan="8" rowspan="1">Cơ sở vật chất</th>
                                         <th colspan="4" rowspan="1">Giảng viên</th>
                                         <th colspan="4" rowspan="1">Sinh viên</th>
                                     </tr>
@@ -47,8 +47,8 @@
                                         <th rowspan="1">Tổng</th>
                                         <th rowspan="1">Phòng học</th>
                                         <th rowspan="1">Phòng học / sinh viên</th>
-                                        {{--<th rowspan="1">Ký túc xá</th>--}}
-                                        {{--<th rowspan="1">Ký túc xá / sinh viên</th>--}}
+                                        <th rowspan="1">Ký túc xá</th>
+                                        <th rowspan="1">Ký túc xá / sinh viên</th>
                                         <th rowspan="1">Sách trong thư viên</th>
                                         <th rowspan="1">Số lượng máy tính</th>
                                         <th rowspan="1">Máy tính / sinh viên</th>
@@ -84,8 +84,8 @@
                                             <td>{{$item->co_so_vat_chat->tong_dien_tich}}</td>
                                             <td>{{$item->co_so_vat_chat->dien_tich_phong_hoc}}</td>
                                             <td>{{$item->co_so_vat_chat->ty_so_dien_tich_tren_sv}}</td>
-                                            {{--<th >Ký túc xá</th>--}}
-                                            {{--<th >Ký túc xá / sinh viên</th>--}}
+                                            <td>{{$item->co_so_vat_chat->dien_tich_ktx}}</td>
+                                            <td>{{$item->co_so_vat_chat->sinh_vien_ktx}}</td>
                                             <td>{{$item->co_so_vat_chat->so_sach_tv}}</td>
                                             <td>{{$item->co_so_vat_chat->so_may_tinh}}</td>
                                             <td>{{$item->co_so_vat_chat->ty_so_mt_tren_sv}}</td>

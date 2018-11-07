@@ -160,12 +160,72 @@
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <div class="form-group">
-                                                <label for="tong_thu_hoc_phi" class="bmd-label-floating"> Tổng thu học phí
+                                                <label for="tong_thu_hoc_phi" class="bmd-label-floating"> Tổng thu học
+                                                    phí
                                                     (chỉ tính hệ chính quy)</label>
                                                 <input type="text" name="tong_thu_hoc_phi"
                                                        id="tong_thu_hoc_phi"
                                                        class="form-control"
                                                        value="{{$taiChinh->tong_thu_hoc_phi}}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div style="width: 100%;text-align: right">
+                                        <button type="submit" class="btn btn-success">Cập nhật</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header card-header-primary">
+                            <h4 class="card-title">Kí túc xá:</h4>
+                            <p class="card-category">Vui lòng điền đủ thông tin
+                        </div>
+                        <div class="card-body">
+                            @foreach($errors->all() as $message)
+                                <div class="alert alert-danger">
+                                    <span><b> Cảnh báo - </b> {{$message}}</span>
+                                </div>
+                            @endforeach
+                            <form action="{{route('university.infrastructure.updateKTX', ['slug'=>$slug,'year'=> $year])}}"
+                                  method="post">
+                                {{csrf_field()}}
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <div class="form-group">
+                                                <label for="tong_dien_tich" class="bmd-label-floating">Tổng diện tích
+                                                    phòng ở (m2)</label>
+                                                <input type="text" name="tong_dien_tich" id="tong_dien_tich"
+                                                       class="form-control" value="{{$kiTucXa->tong_dien_tich}}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <div class="form-group">
+                                                <label for="nhu_cau" class="bmd-label-floating">Số lượng sinh viên có
+                                                    nhu cầu về
+                                                    phòng ở (trong và ngoài ký túc xá) </label>
+                                                <input type="text" name="nhu_cau" id="nhu_cau"
+                                                       class="form-control" value="{{$kiTucXa->nhu_cau}}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <div class="form-group">
+                                                <label for="duoc_o" class="bmd-label-floating"> Số lượng sinh viên được
+                                                    ở trong ký túc xá </label>
+                                                <input type="text" name="duoc_o" id="duoc_o"
+                                                       class="form-control" value="{{$kiTucXa->duoc_o}}">
                                             </div>
                                         </div>
                                     </div>

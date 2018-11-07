@@ -7,6 +7,7 @@ use App\Models\Canbo\PhanLoaiCanBo;
 use App\Models\CoSoVatChat;
 use App\Models\DaoTao\ChuyenNganhDaoTao;
 use App\Models\DaoTao\DaoTao;
+use App\Models\Student\KiTucXa;
 use App\Models\Student\PhanLoaiSinhVien;
 use App\Models\Student\SinhVien;
 use App\Models\University;
@@ -68,6 +69,8 @@ class ThongKe extends Controller {
 
 		$coSoVatChat = CoSoVatChat::getCoSoVatChatByYear( $id, $year );
 
+		$ktx = KiTucXa::findByYear( $id, $year );
+
 		return [
 			'tong_dien_tich'          => $coSoVatChat->tong_dien_tich,
 			'dien_tich_phong_hoc'     => $coSoVatChat->dien_tich_phong_hoc,
@@ -75,6 +78,8 @@ class ThongKe extends Controller {
 			'so_sach_tv'              => $coSoVatChat->so_sach_tv,
 			'so_may_tinh'             => $coSoVatChat->so_may_tinh_vp + $coSoVatChat->so_may_tinh_sv,
 			'ty_so_mt_tren_sv'        => $coSoVatChat->ty_so_mt_tren_sv,
+			'dien_tich_ktx'           => $ktx->tong_dien_tich,
+			'sinh_vien_ktx'           => ( $ktx->duoc_o == 0 ) ? '-' : ( round( $ktx->tong_dien_tich / $ktx->duoc_o, 2 ) )
 		];
 	}
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\University;
 
 use App\Models\CoSoVatChat;
+use App\Models\Student\KiTucXa;
 use App\Models\TaiChinh;
 use App\Models\University;
 use Illuminate\Http\Request;
@@ -16,25 +17,35 @@ class Infrastructure extends Controller {
 
 		$taiChinh    = TaiChinh::getTaiChinhByYear( $university->id, $year );
 		$coSoVatChat = CoSoVatChat::getCoSoVatChatByYear( $university->id, $year );
+		$kiTucXa     = KiTucXa::findByYear( $university->id, $year );
 
 		if ( is_null( $taiChinh ) ) {
 			TaiChinh::create( [
 				'nam_thong_ke'    => $year,
 				'universities_id' => $university->id
 			] );
+
 		}
 
 		if ( is_null( $coSoVatChat ) ) {
-			CoSoVatChat::create( [
+			$coSoVatChat = CoSoVatChat::create( [
+				'nam_thong_ke'    => $year,
+				'universities_id' => $university->id
+			] )->refresh();
+		}
+
+		if ( is_null( $kiTucXa ) ) {
+			KiTucXa::create( [
 				'nam_thong_ke'    => $year,
 				'universities_id' => $university->id
 			] );
-			$coSoVatChat = TaiChinh::getTaiChinhByYear( $university->id, $year );
 		}
 
 		$taiChinh = TaiChinh::getTaiChinhByManyYear( $university->id, $year );
+		$kiTucXa  = KiTucXa::findByManyYear( $university->id, $year );
 
-		return view( 'Infrastructure.' . __FUNCTION__, compact( 'title', 'slug', 'year', 'coSoVatChat', 'taiChinh' ) );
+		return view( 'Infrastructure.' . __FUNCTION__,
+			compact( 'title', 'slug', 'year', 'coSoVatChat', 'taiChinh', 'kiTucXa' ) );
 	}
 
 	public function create( $slug, $year ) {
@@ -43,8 +54,10 @@ class Infrastructure extends Controller {
 
 		$taiChinh    = TaiChinh::getTaiChinhByYear( $university->id, $year );
 		$coSoVatChat = CoSoVatChat::getCoSoVatChatByYear( $university->id, $year );
+		$kiTucXa     = KiTucXa::findByYear( $university->id, $year );
 
-		return view( 'Infrastructure.' . __FUNCTION__, compact( 'title', 'slug', 'year', 'coSoVatChat', 'taiChinh' ) );
+		return view( 'Infrastructure.' . __FUNCTION__,
+			compact( 'title', 'slug', 'year', 'coSoVatChat', 'taiChinh', 'kiTucXa' ) );
 	}
 
 	public function postCreate( $slug, $year, Request $request ) {
@@ -53,7 +66,7 @@ class Infrastructure extends Controller {
 		$taiChinh    = TaiChinh::getTaiChinhByYear( $university->id, $year );
 		$coSoVatChat = CoSoVatChat::getCoSoVatChatByYear( $university->id, $year );
 
-		$request     = $this->validate( $request, [
+		$request = $this->validate( $request, [
 			'tong_dien_tich'          => 'numeric',
 			'noi_lam_viec'            => '',
 			'noi_hoc'                 => '',
@@ -83,12 +96,26 @@ class Infrastructure extends Controller {
 			'ty_so_mt_tren_sv'        => $request['ty_so_mt_tren_sv'],
 		];
 
-		$coSoVatChat->update($dataCoSoVatChat);
-		$taiChinh->update([
-			'tong_kinh_phi'           => $request['tong_kinh_phi'],
-			'tong_thu_hoc_phi'        => $request['tong_thu_hoc_phi'],
-		]);
+		$coSoVatChat->update( $dataCoSoVatChat );
+		$taiChinh->update( [
+			'tong_kinh_phi'    => $request['tong_kinh_phi'],
+			'tong_thu_hoc_phi' => $request['tong_thu_hoc_phi'],
+		] );
 
-		return back()->with('success', 'Cập nhật thành công');
+		return back()->with( 'success', 'Cập nhật thành công' );
+	}
+
+	public function updateKTX( $slug, $year, Request $request ) {
+		$university = University::findBySlug( $slug );
+		$request    = $this->validate( $request, [
+			'tong_dien_tich' => '',
+			'nhu_cau'        => 'numeric',
+			'duoc_o'         => 'numeric',
+		] );
+
+		$ktx = KiTucXa::findByYear( $university->id, $year );
+		$ktx->update( $request );
+
+		return back()->with( 'success', 'Cập nhật thành công' );
 	}
 }
