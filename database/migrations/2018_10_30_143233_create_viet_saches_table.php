@@ -15,7 +15,7 @@ class CreateVietSachesTable extends Migration
     {
         Schema::create('viet_saches', function (Blueprint $table) {
             $table->increments( 'id' );
-            $table->year( 'nam_thong_ke' );
+            $table->integer( 'nam_thong_ke' );
             $table->integer( 'universities_id' )->nullable();
             $table->integer('sach_chuyen_khao')->default(0);
             $table->integer( 'sach_giao_trinh' )->default(0);

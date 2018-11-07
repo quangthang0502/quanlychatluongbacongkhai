@@ -22,7 +22,7 @@ class NckhNghiemThu extends Migration
             $table->float( 'doanh_thu' )->default(0);
             $table->float( 'ti_so_doanh_thu' )->default(0);
             $table->float( 'ti_le_doanh_thu' )->default(0);
-            $table->year( 'nam_thong_ke' );
+            $table->integer( 'nam_thong_ke' );
             $table->text('sl_theo_can_bo');
             $table->integer( 'universities_id' )->nullable();
             $table->timestamps();

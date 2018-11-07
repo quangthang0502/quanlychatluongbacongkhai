@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateBangSangChesTable extends Migration
+class CreateTaiChinhsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,12 @@ class CreateBangSangChesTable extends Migration
      */
     public function up()
     {
-        Schema::create('bang_sang_ches', function (Blueprint $table) {
+        Schema::create('tai_chinhs', function (Blueprint $table) {
             $table->increments('id');
-            $table->mediumText('noi_dung');
-            $table->integer( 'nam_thong_ke' );
-            $table->integer( 'universities_id' )->nullable();
+	        $table->integer( 'universities_id' );
+	        $table->integer( 'nam_thong_ke' );
+	        $table->integer('tong_kinh_phi')->default(0);
+	        $table->integer('tong_thu_hoc_phi')->default(0);
             $table->timestamps();
         });
     }
@@ -29,6 +30,6 @@ class CreateBangSangChesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('bang_sang_ches');
+        Schema::dropIfExists('tai_chinhs');
     }
 }

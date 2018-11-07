@@ -141,3 +141,18 @@ Route::group( [
 //
 //    Route::get( 'xoa/{id}', 'Research@delete' )->name( 'university.student.delete' );
 } );
+
+Route::group( [
+	'namespace'  => 'University',
+	'middleware' => [ 'auth', 'check.role' ],
+	'prefix'     => '{slug}/co-so-vat-chat-va-tai-chinh'
+], function () {
+	Route::get( '/{year}', 'Infrastructure@index' )->name( 'university.infrastructure.index' );
+
+	Route::get( 'chinh-sua/{year}', 'Infrastructure@create' )->name( 'university.infrastructure.create' );
+	Route::post( 'chinh-sua/{year}', 'Infrastructure@postCreate' )->name( 'university.infrastructure.postCreate' );
+//
+//	Route::post( 'chinh-sua-chinh-quy/{year}', 'Infrastructure@updateInfrastructure' )->name( 'university.infrastructure.updateInfrastructure' );
+//
+//	Route::get( 'xoa/{id}', 'Infrastructure@delete' )->name( 'university.infrastructure.delete' );
+} );

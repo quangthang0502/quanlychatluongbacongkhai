@@ -18,7 +18,7 @@ class CreateTapChisTable extends Migration
             $table->integer('quoc_te')->default(0);
             $table->integer( 'trong_nuoc' )->default(0);
             $table->integer( 'cap_truong' )->default(0);
-            $table->year( 'nam_thong_ke' );
+            $table->integer( 'nam_thong_ke' );
             $table->text('sl_theo_can_bo');
             $table->integer( 'universities_id' )->nullable();
             $table->timestamps();

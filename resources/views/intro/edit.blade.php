@@ -30,7 +30,7 @@
                                     </div>
                                 </div>
 
-                                <button type="submit" class="btn btn-primary pull-right">Thêm lịc sử trường học</button>
+                                <button type="submit" class="btn btn-primary pull-right">Thêm lịch sử trường học</button>
                                 <a href="{{route('university.intro.index', $slug)}}" class="btn btn-warning pull-right">Quay
                                     lại</a>
                                 <div class="clearfix"></div>
