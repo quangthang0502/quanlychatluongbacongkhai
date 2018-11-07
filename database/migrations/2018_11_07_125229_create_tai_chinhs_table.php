@@ -17,8 +17,8 @@ class CreateTaiChinhsTable extends Migration
             $table->increments('id');
 	        $table->integer( 'universities_id' );
 	        $table->integer( 'nam_thong_ke' );
-	        $table->integer('tong_kinh_phi')->default(0);
-	        $table->integer('tong_thu_hoc_phi')->default(0);
+	        $table->float('tong_kinh_phi')->default(0);
+	        $table->float('tong_thu_hoc_phi')->default(0);
             $table->timestamps();
         });
     }
