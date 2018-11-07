@@ -42,6 +42,14 @@ Route::group( [
 } );
 
 Route::group( [
+	'namespace'  => 'Admin',
+	'prefix'     => 'admin/thong-ke',
+	'middleware' => [ 'auth', 'check.role' ]
+], function () {
+	Route::get( '/{year}', 'ThongKe@index' )->name( 'admin.thongke.index' );
+} );
+
+Route::group( [
 	'namespace'  => 'University',
 	'middleware' => [ 'auth', 'check.role' ],
 	'prefix'     => '{slug}'

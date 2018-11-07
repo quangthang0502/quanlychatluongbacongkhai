@@ -17,6 +17,12 @@
                     <p>Dashboard</p>
                 </a>
             </li>
+            <li class="nav-item {{isActiveRoute('admin.thongke.index')}}">
+                <a class="nav-link" href="{{route('admin.thongke.index', ['year' => date('Y')])}}">
+                    <i class="material-icons">person</i>
+                    <p>Thống kê dữ liệu các trường</p>
+                </a>
+            </li>
             <li class="nav-item {{isActiveRoute('admin.user.index')}}">
                 <a class="nav-link" href="{{route('admin.user.index')}}">
                     <i class="material-icons">person</i>
