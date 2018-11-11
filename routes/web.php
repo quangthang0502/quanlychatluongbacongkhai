@@ -136,11 +136,25 @@ Route::group( [
 } );
 
 Route::group( [
-    'namespace'  => 'University',
-    'middleware' => [ 'auth', 'check.role' ],
-    'prefix'     => '{slug}/nckh'
+	'namespace'  => 'University',
+	'middleware' => [ 'auth', 'check.role' ],
+	'prefix'     => '{slug}/sinh-vien-tot-nghiep'
 ], function () {
-    Route::get( '/{year}', 'Research@index' )->name( 'university.research.index' );
+	Route::get( '/{year}', 'SinhVienTotNghiep@index' )->name( 'university.sv.index' );
+
+	Route::get( 'chinh-sua/{year}', 'SinhVienTotNghiep@create' )->name( 'university.sv.create' );
+	Route::post( 'chinh-sua/{year}', 'SinhVienTotNghiep@postCreate' )->name( 'university.sv.postCreate' );
+	Route::post( 'chinh-sua-sv-dh/{year}', 'SinhVienTotNghiep@svDaiHoc' )->name( 'university.sv.svDaiHoc' );
+	Route::post( 'chinh-sua-sv-cd/{year}', 'SinhVienTotNghiep@svCaoDang' )->name( 'university.sv.svCaoDang' );
+
+} );
+
+Route::group( [
+	'namespace'  => 'University',
+	'middleware' => [ 'auth', 'check.role' ],
+	'prefix'     => '{slug}/nckh'
+], function () {
+	Route::get( '/{year}', 'Research@index' )->name( 'university.research.index' );
 
 //    Route::get( 'chinh-sua/{year}', 'Research@create' )->name( 'university.student.create' );
 //    Route::post( 'chinh-sua/{year}', 'Research@postCreate' )->name( 'university.student.postCreate' );

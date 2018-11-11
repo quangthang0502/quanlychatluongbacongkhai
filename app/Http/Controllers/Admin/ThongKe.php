@@ -10,6 +10,8 @@ use App\Models\DaoTao\DaoTao;
 use App\Models\Student\KiTucXa;
 use App\Models\Student\PhanLoaiSinhVien;
 use App\Models\Student\SinhVien;
+use App\Models\TotNghiep\TinhTrangTotNghiep;
+use App\Models\TotNghiep\TotNghiep;
 use App\Models\University;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -42,7 +44,7 @@ class ThongKe extends Controller {
 
 		$result['giang_vien'] = $this->checkGiangVien( $university->id, $year );
 
-		$result['sinh_vien'] = $this->checkSinhVien( $university->id, $year );
+		$result['sinh_vien'] = $this->checkSinhVien( $university->id, $year, $university->type );
 
 		return $result;
 	}
@@ -112,7 +114,7 @@ class ThongKe extends Controller {
 		return $result;
 	}
 
-	public function checkSinhVien( $id, $year ) {
+	public function checkSinhVien( $id, $year, $loaiTruong ) {
 		$sinhVien = PhanLoaiSinhVien::findByYear( $id, $year );
 
 		$sinhVienChinhQuy = $sinhVien->nghien_cuu_sinh
@@ -121,8 +123,28 @@ class ThongKe extends Controller {
 		                    + $sinhVien->cd_he_chinh_quy
 		                    + $sinhVien->tccn_he_chinh_quy;
 
+
+		if ( $loaiTruong == 'dai_hoc' ) {
+			$tinhTrangTN = TinhTrangTotNghiep::findByYearAndType( $id, $year, 'chinh_quy' );
+		} else {
+			$tinhTrangTN = TinhTrangTotNghiep::findByYearAndType( $id, $year, 'cao_dang' );
+		}
+
+		$totNghiep     = TotNghiep::findByYear( $id, $year );
+		$sinhTotNghiep = $totNghiep->dh_he_chinh_quy
+		                 + $totNghiep->cd_he_chinh_quy
+		                 + $totNghiep->tccn_he_chinh_quy;
+
 		return [
-			'sinh_vien_chinh_quy' => $sinhVienChinhQuy
+			'sinh_vien_chinh_quy'      => $sinhVienChinhQuy,
+			'sinh_vien_tot_nghiep'     => $sinhTotNghiep,
+			'hoc_100_kien_thuc'        => ( $tinhTrangTN->cau_3_1 == 0 ) ? '-' : $tinhTrangTN->cau_3_1,
+			'hoc_50_kien_thuc'         => ( $tinhTrangTN->cau_3_2 == 0 ) ? '-' : $tinhTrangTN->cau_3_2,
+			'dung_nganh'               => ( $tinhTrangTN->cau_4_1 == 0 ) ? '-' : $tinhTrangTN->cau_4_1,
+			'trai_nganh'               => ( $tinhTrangTN->cau_4_2 == 0 ) ? '-' : $tinhTrangTN->cau_4_2,
+			'thu_nhap'                 => ( $tinhTrangTN->cau_4_3 == 0 ) ? '-' : $tinhTrangTN->cau_4_3,
+			'dap_ung_nha_truong'       => ( $tinhTrangTN->cau_5_1 == 0 ) ? '-' : $tinhTrangTN->cau_5_1,
+			'khong_dap_ung_nha_truong' => ( $tinhTrangTN->cau_5_2 == 0 ) ? '-' : $tinhTrangTN->cau_5_2,
 		];
 
 	}

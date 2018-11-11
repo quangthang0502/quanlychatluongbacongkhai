@@ -31,7 +31,7 @@
                                         <th colspan="7" rowspan="1">Chuyên ngành đào tạo</th>
                                         <th colspan="8" rowspan="1">Cơ sở vật chất</th>
                                         <th colspan="4" rowspan="1">Giảng viên</th>
-                                        <th colspan="4" rowspan="1">Sinh viên</th>
+                                        <th colspan="11" rowspan="1">Sinh viên</th>
                                     </tr>
                                     <tr>
                                         {{--Chuyên ngành đào tạo--}}
@@ -64,6 +64,22 @@
                                         <th>Sinh viên quy đổi</th>
                                         <th>Sinh viên / Giảng viên</th>
                                         <th>Sinh viên tốt nghiệp</th>
+                                        <th>Tỷ lệ sinh viên trả lời đã học được những kiến thức và kỹ năng cần thiết cho
+                                            công việc theo ngành tốt nghiệp (%)
+                                        </th>
+                                        <th>Tỷ lệ sinh viên trả lời chỉ học được một phần kiến thức và kỹ năng cần thiết
+                                            cho
+                                            công việc theo ngành tốt nghiệp (%)
+                                        </th>
+                                        <th>Tỷ lệ sinh viên có việc làm đúng ngành đào tạo (%)</th>
+                                        <th>Tỷ lệ sinh viên có việc làm trái ngành đào tạo (%)</th>
+                                        <th>Thu nhập bình quân/tháng của sinh viên có việc làm (triệu VNĐ)</th>
+                                        <th>Tỷ lệ sinh viên đáp ứng yêu cầu của công việc, có thể sử dụng được ngay
+                                            (%)
+                                        </th>
+                                        <th>Tỷ lệ sinh viên cơ bản đáp ứng yêu cầu của công việc, nhưng phải đào tạo
+                                            thêm (%)
+                                        </th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -102,7 +118,14 @@
                                             <td>Sinh viên quy đổi</td>
                                             <td>{{($item->giang_vien->giang_vien_co_huu == 0)?
                                             '-': round(($item->sinh_vien->sinh_vien_chinh_quy*100)/$item->giang_vien->giang_vien_co_huu, 2)}}</td>
-                                            <td>Sinh viên tốt nghiệp</td>
+                                            <td>{{$item->sinh_vien->sinh_vien_tot_nghiep}}</td>
+                                            <td>{{$item->sinh_vien->hoc_100_kien_thuc}}</td>
+                                            <td>{{$item->sinh_vien->hoc_50_kien_thuc}}</td>
+                                            <td>{{$item->sinh_vien->dung_nganh}}</td>
+                                            <td>{{$item->sinh_vien->trai_nganh}}</td>
+                                            <td>{{$item->sinh_vien->thu_nhap}}</td>
+                                            <td>{{$item->sinh_vien->dap_ung_nha_truong}}</td>
+                                            <td>{{$item->sinh_vien->khong_dap_ung_nha_truong}}</td>
                                         </tr>
                                     @endforeach
                                     </tbody>

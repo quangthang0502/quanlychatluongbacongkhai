@@ -51,6 +51,12 @@
                     <p>Học viên</p>
                 </a>
             </li>
+            <li class="nav-item {{isActiveRoute('university.sv.index')}}">
+                <a class="nav-link" href="{{route('university.sv.index', ['slug'=>$slug, 'year'=> date('Y')])}}">
+                    <i class="material-icons">assignment_ind</i>
+                    <p>Sinh viên tốt nghiệp</p>
+                </a>
+            </li>
 
             <li class="nav-item {{isActiveRoute('university.research.index')}}">
                 <a class="nav-link" href="{{route('university.research.index', ['slug'=>$slug, 'year'=> date('Y')])}}">
