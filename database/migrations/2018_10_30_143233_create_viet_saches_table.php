@@ -19,10 +19,9 @@ class CreateVietSachesTable extends Migration
             $table->integer( 'universities_id' )->nullable();
             $table->integer('sach_chuyen_khao')->default(0);
             $table->integer( 'sach_giao_trinh' )->default(0);
-            $table->integer( 'cap_truong' )->default(0);
             $table->float( 'sach_tham_khao' )->default(0);
             $table->float( 'sach_huong_dan' )->default(0);
-            $table->float( 'sl_theo_can_bo' )->default(0);
+            $table->text( 'sl_theo_can_bo' )->nullable();
             $table->timestamps();
         });
     }

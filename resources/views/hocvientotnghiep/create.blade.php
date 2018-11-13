@@ -163,7 +163,7 @@
                                                 <td>1. Số lượng sinh viên tốt nghiệp (người)</td>
                                                 <td>
                                                     <input title="so_luong_sv_tot_nghiep" class="form-control"
-                                                           type="number" name="so_luong_sv_tot_nghiep"
+                                                           type="text" name="so_luong_sv_tot_nghiep"
                                                            value="{{$sinhVienChinhQuy->so_luong_sv_tot_nghiep}}">
                                                 </td>
                                             </tr>
@@ -171,7 +171,7 @@
                                                 <td>2. Tỷ lệ sinh viên tốt nghiệp so với số tuyển vào (%)</td>
                                                 <td>
                                                     <input title="ty_le_tot_nghiep" class="form-control"
-                                                           type="number" name="ty_le_tot_nghiep"
+                                                           type="text" name="ty_le_tot_nghiep"
                                                            value="{{$sinhVienChinhQuy->ty_le_tot_nghiep}}">
                                                 </td>
                                             </tr>
@@ -198,7 +198,7 @@
                                                 </td>
                                                 <td>
                                                     <input title="cau_3_1" class="form-control"
-                                                           type="number" name="cau_3_1"
+                                                           type="text" name="cau_3_1"
                                                            value="{{$sinhVienChinhQuy->cau_3_1}}">
                                                 </td>
                                             </tr>
@@ -209,7 +209,7 @@
                                                 </td>
                                                 <td>
                                                     <input title="cau_3_2" class="form-control"
-                                                           type="number" name="cau_3_2"
+                                                           type="text" name="cau_3_2"
                                                            value="{{$sinhVienChinhQuy->cau_3_2}}">
                                                 </td>
                                             </tr>
@@ -221,7 +221,7 @@
                                                 </td>
                                                 <td>
                                                     <input title="cau_3_3" class="form-control"
-                                                           type="number" name="cau_3_3"
+                                                           type="text" name="cau_3_3"
                                                            value="{{$sinhVienChinhQuy->cau_3_3}}">
                                                 </td>
                                             </tr>
@@ -242,7 +242,7 @@
                                                 </td>
                                                 <td>
                                                     <input title="cau_4_1" class="form-control"
-                                                           type="number" name="cau_4_1"
+                                                           type="text" name="cau_4_1"
                                                            value="{{$sinhVienChinhQuy->cau_4_1}}">
                                                 </td>
                                             </tr>
@@ -252,7 +252,7 @@
                                                 </td>
                                                 <td>
                                                     <input title="cau_4_2" class="form-control"
-                                                           type="number" name="cau_4_2"
+                                                           type="text" name="cau_4_2"
                                                            value="{{$sinhVienChinhQuy->cau_4_2}}">
                                                 </td>
                                             </tr>
@@ -262,7 +262,7 @@
                                                 </td>
                                                 <td>
                                                     <input title="cau_4_3" class="form-control"
-                                                           type="number" name="cau_4_3"
+                                                           type="text" name="cau_4_3"
                                                            value="{{$sinhVienChinhQuy->cau_4_3}}">
                                                 </td>
                                             </tr>
@@ -285,7 +285,7 @@
                                                 </td>
                                                 <td>
                                                     <input title="cau_5_1" class="form-control"
-                                                           type="number" name="cau_5_1"
+                                                           type="text" name="cau_5_1"
                                                            value="{{$sinhVienChinhQuy->cau_5_1}}">
                                                 </td>
                                             </tr>
@@ -296,7 +296,7 @@
                                                 </td>
                                                 <td>
                                                     <input title="cau_5_2" class="form-control"
-                                                           type="number" name="cau_5_2"
+                                                           type="text" name="cau_5_2"
                                                            value="{{$sinhVienChinhQuy->cau_5_2}}">
                                                 </td>
                                             </tr>
@@ -307,7 +307,7 @@
                                                 </td>
                                                 <td>
                                                     <input title="cau_5_3" class="form-control"
-                                                           type="number" name="cau_5_3"
+                                                           type="text" name="cau_5_3"
                                                            value="{{$sinhVienChinhQuy->cau_5_3}}">
                                                 </td>
                                             </tr>
@@ -358,7 +358,7 @@
                                                 <td>1. Số lượng sinh viên tốt nghiệp (người)</td>
                                                 <td>
                                                     <input title="so_luong_sv_tot_nghiep" class="form-control"
-                                                           type="number" name="so_luong_sv_tot_nghiep"
+                                                           type="text" name="so_luong_sv_tot_nghiep"
                                                            value="{{$sinhVienCaoDang->so_luong_sv_tot_nghiep}}">
                                                 </td>
                                             </tr>
@@ -366,7 +366,7 @@
                                                 <td>2. Tỷ lệ sinh viên tốt nghiệp so với số tuyển vào (%)</td>
                                                 <td>
                                                     <input title="ty_le_tot_nghiep" class="form-control"
-                                                           type="number" name="ty_le_tot_nghiep"
+                                                           type="text" name="ty_le_tot_nghiep"
                                                            value="{{$sinhVienCaoDang->ty_le_tot_nghiep}}">
                                                 </td>
                                             </tr>
@@ -393,7 +393,7 @@
                                                 </td>
                                                 <td>
                                                     <input title="cau_3_1" class="form-control"
-                                                           type="number" name="cau_3_1"
+                                                           type="text" name="cau_3_1"
                                                            value="{{$sinhVienCaoDang->cau_3_1}}">
                                                 </td>
                                             </tr>
@@ -404,7 +404,7 @@
                                                 </td>
                                                 <td>
                                                     <input title="cau_3_2" class="form-control"
-                                                           type="number" name="cau_3_2"
+                                                           type="text" name="cau_3_2"
                                                            value="{{$sinhVienCaoDang->cau_3_2}}">
                                                 </td>
                                             </tr>
@@ -416,7 +416,7 @@
                                                 </td>
                                                 <td>
                                                     <input title="cau_3_3" class="form-control"
-                                                           type="number" name="cau_3_3"
+                                                           type="text" name="cau_3_3"
                                                            value="{{$sinhVienCaoDang->cau_3_3}}">
                                                 </td>
                                             </tr>
@@ -437,7 +437,7 @@
                                                 </td>
                                                 <td>
                                                     <input title="cau_4_1" class="form-control"
-                                                           type="number" name="cau_4_1"
+                                                           type="text" name="cau_4_1"
                                                            value="{{$sinhVienCaoDang->cau_4_1}}">
                                                 </td>
                                             </tr>
@@ -447,7 +447,7 @@
                                                 </td>
                                                 <td>
                                                     <input title="cau_4_2" class="form-control"
-                                                           type="number" name="cau_4_2"
+                                                           type="text" name="cau_4_2"
                                                            value="{{$sinhVienCaoDang->cau_4_2}}">
                                                 </td>
                                             </tr>
@@ -457,7 +457,7 @@
                                                 </td>
                                                 <td>
                                                     <input title="cau_4_3" class="form-control"
-                                                           type="number" name="cau_4_3"
+                                                           type="text" name="cau_4_3"
                                                            value="{{$sinhVienCaoDang->cau_4_3}}">
                                                 </td>
                                             </tr>
@@ -480,7 +480,7 @@
                                                 </td>
                                                 <td>
                                                     <input title="cau_5_1" class="form-control"
-                                                           type="number" name="cau_5_1"
+                                                           type="text" name="cau_5_1"
                                                            value="{{$sinhVienCaoDang->cau_5_1}}">
                                                 </td>
                                             </tr>
@@ -491,7 +491,7 @@
                                                 </td>
                                                 <td>
                                                     <input title="cau_5_2" class="form-control"
-                                                           type="number" name="cau_5_2"
+                                                           type="text" name="cau_5_2"
                                                            value="{{$sinhVienCaoDang->cau_5_2}}">
                                                 </td>
                                             </tr>
@@ -502,7 +502,7 @@
                                                 </td>
                                                 <td>
                                                     <input title="cau_5_3" class="form-control"
-                                                           type="number" name="cau_5_3"
+                                                           type="text" name="cau_5_3"
                                                            value="{{$sinhVienCaoDang->cau_5_3}}">
                                                 </td>
                                             </tr>

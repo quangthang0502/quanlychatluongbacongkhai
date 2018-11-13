@@ -19,7 +19,7 @@ class CreateHoiThaosTable extends Migration
             $table->integer( 'trong_nuoc' )->default(0);
             $table->integer( 'cap_truong' )->default(0);
             $table->integer( 'nam_thong_ke' );
-            $table->text('sl_theo_can_bo');
+            $table->text('sl_theo_can_bo')->nullable();
             $table->integer( 'universities_id' )->nullable();
             $table->timestamps();
         });

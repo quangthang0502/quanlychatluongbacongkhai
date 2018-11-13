@@ -9,9 +9,7 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header card-header-primary">
-                            <h4 class="card-title">Thống kê số lượng cán bộ, giảng viên và nhân viên (gọi chung là cán
-                                bộ) của
-                                nhà trường:</h4>
+                            <h4 class="card-title">Nghiên cứu khoa học và chuyển giao khoa học công nghệ</h4>
                             <p class="card-category">Vui lòng điền đủ thông tin
                         </div>
                         <div class="card-body">
@@ -20,354 +18,309 @@
                                     <span><b> Cảnh báo - </b> {{$message}}</span>
                                 </div>
                             @endforeach
-                            <form action="{{route('university.teacher.postCreate', ['slug'=>$slug,'year'=> $year])}}"
+                            <form action="{{route('university.research.postCreate', ['slug'=>$slug,'year'=> $year])}}"
                                   method="post">
                                 {{csrf_field()}}
                                 <div class="row">
-                                    <div class="col-md-6" style="font-weight: bold">
-                                        Cán bộ trong biên chế
-                                    </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             <div class="form-group">
-                                                <label for="bien_che_nam" class="bmd-label-floating">Nam</label>
-                                                <input type="number" name="bien_che_nam" id="bien_che_nam"
-                                                       class="form-control" value="{{$phanLoaiCanBo->bien_che_nam}}">
+                                                <label for="cap_nn" class="bmd-label-floating">Đề tài cấp nhà
+                                                    nước</label>
+                                                <input type="text" name="cap_nn" id="cap_nn"
+                                                       class="form-control" value="{{$nckh->cap_nn}}">
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             <div class="form-group">
-                                                <label for="bien_che_nu" class="bmd-label-floating">Nữ</label>
-                                                <input type="number" name="bien_che_nu" id="bien_che_nu"
-                                                       class="form-control" value="{{$phanLoaiCanBo->bien_che_nu}}">
+                                                <label for="cap_bo" class="bmd-label-floating">Đề tài cấp bộ</label>
+                                                <input type="text" name="cap_bo" id="cap_bo"
+                                                       class="form-control" value="{{$nckh->cap_bo}}">
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-6" style="font-weight: bold">
-                                        Cán bộ hợp đồng dài hạn (từ 1 năm trở lên) và
-                                        hợp đồng không xác định thời hạn
-                                    </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             <div class="form-group">
-                                                <label for="hop_dong_nam" class="bmd-label-floating">Nam</label>
-                                                <input type="number" name="hop_dong_nam" id="hop_dong_nam"
-                                                       class="form-control" value="{{$phanLoaiCanBo->hop_dong_nam}}">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <div class="form-group">
-                                            <div class="form-group">
-                                                <label for="hop_dong_nu" class="bmd-label-floating">Nữ</label>
-                                                <input type="number" name="hop_dong_nu" id="hop_dong_nu"
-                                                       class="form-control" value="{{$phanLoaiCanBo->hop_dong_nu}}">
+                                                <label for="cap_truong" class="bmd-label-floating">Đề tài cấp
+                                                    trường</label>
+                                                <input type="text" name="cap_truong" id="cap_truong"
+                                                       class="form-control" value="{{$nckh->cap_truong}}">
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+
                                 <div class="row">
-                                    <div class="col-md-6" style="font-weight: bold">
-                                        Hợp đồng ngắn hạn (dưới 1 năm, bao gồm cả
-                                        giảng viên thỉnh giảng)
-                                    </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             <div class="form-group">
-                                                <label for="cb_khac_nam" class="bmd-label-floating">Nam</label>
-                                                <input type="number" name="cb_khac_nam" id="cb_khac_nam"
-                                                       class="form-control" value="{{$phanLoaiCanBo->cb_khac_nam}}">
+                                                <label for="doanh_thu" class="bmd-label-floating">Doanh thu từ
+                                                    NCKH và chuyển giao công nghệ (triệu VNĐ)</label>
+                                                <input type="text" name="doanh_thu" id="doanh_thu"
+                                                       class="form-control" value="{{$nckh->doanh_thu}}">
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             <div class="form-group">
-                                                <label for="cb_khac_nu" class="bmd-label-floating">Nữ</label>
-                                                <input type="number" name="cb_khac_nu" id="cb_khac_nu"
-                                                       class="form-control" value="{{$phanLoaiCanBo->cb_khac_nu}}">
+                                                <label for="ti_so_doanh_thu" class="bmd-label-floating">Tỷ lệ doanh thu
+                                                    từ NCKH và chuyển giao công nghệ so với tổng kinh phí đầu vào của
+                                                    nhà trường (%) </label>
+                                                <input type="text" name="ti_so_doanh_thu" id="ti_so_doanh_thu"
+                                                       class="form-control" value="{{$nckh->ti_so_doanh_thu}}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <div class="form-group">
+                                                <label for="ti_le_doanh_thu" class="bmd-label-floating">Tỷ số doanh thu
+                                                    từ
+                                                    NCKH và chuyển
+                                                    giao công nghệ trên
+                                                    cán bộ cơ hữu (triệu
+                                                    VNĐ/ người)</label>
+                                                <input type="text" name="ti_le_doanh_thu" id="ti_le_doanh_thu"
+                                                       class="form-control" value="{{$nckh->ti_le_doanh_thu}}">
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div style="width: 100%;text-align: right">
-                                        <button type="submit" class="btn btn-success">Cập nhập</button>
-                                    </div>
+
+                                <div style="width: 100%;text-align: right">
+                                    <button type="submit" class="btn btn-success">Cập nhật</button>
                                 </div>
                             </form>
                         </div>
                     </div>
                 </div>
             </div>
-
             <div class="row">
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header card-header-primary">
-                            <h4 class="card-title">Thống kê giảng viên:</h4>
+                            <h4 class="card-title">Số lượng sách của nhà trường được xuất bản</h4>
                             <p class="card-category">Vui lòng điền đủ thông tin
                         </div>
                         <div class="card-body">
-                            @foreach($giangVien as $item)
-                                <div class="giang-vien">
-                                    <div class="row">
-                                        <div class="col-md-2">
+                            @foreach($errors->all() as $message)
+                                <div class="alert alert-danger">
+                                    <span><b> Cảnh báo - </b> {{$message}}</span>
+                                </div>
+                            @endforeach
+                            <form action="{{route('university.research.suaSach', ['slug'=>$slug,'year'=> $year])}}"
+                                  method="post">
+                                {{csrf_field()}}
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <div class="form-group">
                                             <div class="form-group">
-                                                <label for="" class="bmd-label-floating"
-                                                       style="font-weight: bold">{{getNameTeacher($item->trinh_do)}}</label>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-2">
-                                            <div class="form-group">
-                                                <label for="so_luong_{{$item->trinh_do}}" class="bmd-label-floating">Số
-                                                    lượng</label>
-                                                <input type="number" name="so_luong_{{$item->trinh_do}}"
-                                                       id="so_luong_{{$item->trinh_do}}"
-                                                       class="form-control" value="{{$item->so_luong}}">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-2">
-                                            <div class="form-group">
-                                                <label for="giao_vien_nam_{{$item->trinh_do}}"
-                                                       class="bmd-label-floating">Giáo viên nam</label>
-                                                <input type="number" name="giao_vien_nam_{{$item->trinh_do}}"
-                                                       id="giao_vien_nam_{{$item->trinh_do}}"
-                                                       class="form-control" value="{{$item->giao_vien_nam}}">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-2">
-                                            <div class="form-group">
-                                                <label for="gv_bien_che_{{$item->trinh_do}}" class="bmd-label-floating">Giáo
-                                                    viên biên chế</label>
-                                                <input type="number" name="gv_bien_che_{{$item->trinh_do}}"
-                                                       id="gv_bien_che_{{$item->trinh_do}}"
-                                                       class="form-control" value="{{$item->gv_bien_che}}">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-2">
-                                            <div class="form-group">
-                                                <label for="gv_hop_dong_{{$item->trinh_do}}" class="bmd-label-floating">Giáo
-                                                    viên hợp đồng</label>
-                                                <input type="number" name="gv_hop_dong_{{$item->trinh_do}}"
-                                                       id="gv_hop_dong_{{$item->trinh_do}}"
-                                                       class="form-control" value="{{$item->gv_hop_dong}}">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-2">
-                                            <div class="form-group">
-                                                <label for="gv_quan_ly_{{$item->trinh_do}}" class="bmd-label-floating">Giảng
-                                                    viên tham gia quản lý</label>
-                                                <input type="number" name="gv_quan_ly_{{$item->trinh_do}}"
-                                                       id="gv_quan_ly_{{$item->trinh_do}}"
-                                                       class="form-control" value="{{$item->gv_quan_ly}}">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-2">
-                                            <div class="form-group">
-                                                <label for="gv_thinh_giang_{{$item->trinh_do}}" class="bmd-label-floating">Giảng
-                                                    viên thỉnh giảng</label>
-                                                <input type="number" name="gv_thinh_giang_{{$item->trinh_do}}"
-                                                       id="gv_thinh_giang_{{$item->trinh_do}}"
-                                                       class="form-control" value="{{$item->gv_thinh_giang}}">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-2">
-                                            <div class="form-group">
-                                                <label for="gv_quoc_te_{{$item->trinh_do}}" class="bmd-label-floating">Giảng
-                                                    viên quốc tế</label>
-                                                <input type="number" name="gv_quoc_te_{{$item->trinh_do}}"
-                                                       id="gv_quoc_te_{{$item->trinh_do}}"
-                                                       class="form-control" value="{{$item->gv_quoc_te}}">
+                                                <label for="sach_chuyen_khao" class="bmd-label-floating">Sách chuyên
+                                                    khảo</label>
+                                                <input type="text" name="sach_chuyen_khao" id="sach_chuyen_khao"
+                                                       class="form-control" value="{{$sach->sach_chuyen_khao}}">
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row">
-                                        <?php
-                                        $tuoi = json_decode( $item->do_tuoi );
-                                        ?>
-                                        <div class="col-md-2">
+                                    <div class="col-md-3">
+                                        <div class="form-group">
                                             <div class="form-group">
-                                                <label for="tuoi_{{$item->trinh_do}}_lv_1" class="bmd-label-floating">
-                                                    <30 tuổi</label>
-                                                <input type="number" name="tuoi_{{$item->trinh_do}}_lv_1"
-                                                       id="tuoi_{{$item->trinh_do}}_lv_1"
-                                                       class="form-control" value="{{$tuoi->lv_1}}">
+                                                <label for="sach_giao_trinh" class="bmd-label-floating">Sách giáo
+                                                    trình </label>
+                                                <input type="text" name="sach_giao_trinh" id="sach_giao_trinh"
+                                                       class="form-control" value="{{$sach->sach_giao_trinh}}">
                                             </div>
                                         </div>
-                                        <div class="col-md-2">
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
                                             <div class="form-group">
-                                                <label for="tuoi_{{$item->trinh_do}}_lv_2" class="bmd-label-floating">Từ
-                                                    30 - 40</label>
-                                                <input type="number" name="tuoi_{{$item->trinh_do}}_lv_2"
-                                                       id="tuoi_{{$item->trinh_do}}_lv_2"
-                                                       class="form-control" value="{{$tuoi->lv_2}}">
+                                                <label for="sach_tham_khao" class="bmd-label-floating">Sách tham
+                                                    khảo</label>
+                                                <input type="text" name="sach_tham_khao" id="sach_tham_khao"
+                                                       class="form-control" value="{{$sach->sach_tham_khao}}">
                                             </div>
                                         </div>
-                                        <div class="col-md-2">
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
                                             <div class="form-group">
-                                                <label for="tuoi_{{$item->trinh_do}}_lv_3" class="bmd-label-floating">Từ
-                                                    41 - 50</label>
-                                                <input type="number" name="tuoi_{{$item->trinh_do}}_lv_3"
-                                                       id="tuoi_{{$item->trinh_do}}_lv_3"
-                                                       class="form-control" value="{{$tuoi->lv_3}}">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-2">
-                                            <div class="form-group">
-                                                <label for="tuoi_{{$item->trinh_do}}_lv_4" class="bmd-label-floating">Từ
-                                                    51 - 60</label>
-                                                <input type="number" name="tuoi_{{$item->trinh_do}}_lv_4"
-                                                       id="tuoi_{{$item->trinh_do}}_lv_4"
-                                                       class="form-control" value="{{$tuoi->lv_4}}">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-2">
-                                            <div class="form-group">
-                                                <label for="tuoi_{{$item->trinh_do}}_lv_5" class="bmd-label-floating">Lớn
-                                                    hơn 60 tuổi</label>
-                                                <input type="number" name="tuoi_{{$item->trinh_do}}_lv_5"
-                                                       id="tuoi_{{$item->trinh_do}}_lv_5"
-                                                       class="form-control" value="{{$tuoi->lv_5}}">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-2">
-                                            <div class="form-group">
-                                                <button class="btn btn-success"
-                                                        onclick="updateTeacher({{$item->trinh_do.','.$item->id}} )">
-                                                    Cập nhập
-                                                </button>
+                                                <label for="sach_huong_dan" class="bmd-label-floating">Sách hướng
+                                                    dẫn </label>
+                                                <input type="text" name="sach_huong_dan" id="sach_huong_dan"
+                                                       class="form-control" value="{{$sach->sach_tham_khao}}">
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            @endforeach
+
+
+                                <div style="width: 100%;text-align: right">
+                                    <button type="submit" class="btn btn-success">Cập nhật</button>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
             </div>
-
             <div class="row">
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header card-header-primary">
-                            <h4 class="card-title">Trình độ ngoại ngữ, tin học:</h4>
+                            <h4 class="card-title"> Số lượng bài của các cán bộ cơ hữu của nhà trường được đăng tạp chí</h4>
                             <p class="card-category">Vui lòng điền đủ thông tin
                         </div>
                         <div class="card-body">
-                            <div class="giang-vien">
+                            @foreach($errors->all() as $message)
+                                <div class="alert alert-danger">
+                                    <span><b> Cảnh báo - </b> {{$message}}</span>
+                                </div>
+                            @endforeach
+                            <form action="{{route('university.research.tapChi', ['slug'=>$slug,'year'=> $year])}}"
+                                  method="post">
+                                {{csrf_field()}}
                                 <div class="row">
-                                    <?php
-                                    $tiengAnh = json_decode( $trinhDo->trinh_do_ngoai_ngu );
-                                    $tinHoc = json_decode( $trinhDo->tin_hoc );
-                                    ?>
-                                    <div class="col-md-2">
+                                    <div class="col-md-4">
                                         <div class="form-group">
-                                            <label for="tieng_anh_lv_1"
-                                                   class="bmd-label-floating">0-20% tiếng anh</label>
-                                            <input type="number" name="tieng_anh_lv_1"
-                                                   id="tieng_anh_lv_1"
-                                                   class="form-control" value="{{$tiengAnh->lv_1}}">
+                                            <div class="form-group">
+                                                <label for="quoc_te" class="bmd-label-floating">Tạp chí KH quốc
+                                                    tế
+                                                </label>
+                                                <input type="text" name="quoc_te" id="quoc_te"
+                                                       class="form-control" value="{{$tapChi->quoc_te}}">
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-2">
+                                    <div class="col-md-4">
                                         <div class="form-group">
-                                            <label for="tieng_anh_lv_2"
-                                                   class="bmd-label-floating">20-40% tiếng anh</label>
-                                            <input type="number" name="tieng_anh_lv_2"
-                                                   id="tieng_anh_lv_2"
-                                                   class="form-control" value="{{$tiengAnh->lv_2}}">
+                                            <div class="form-group">
+                                                <label for="trong_nuoc" class="bmd-label-floating">Tạp chí KH cấp
+                                                    Ngành trong
+                                                    nước  </label>
+                                                <input type="text" name="trong_nuoc" id="trong_nuoc"
+                                                       class="form-control" value="{{$tapChi->trong_nuoc}}">
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-2">
+                                    <div class="col-md-4">
                                         <div class="form-group">
-                                            <label for="tieng_anh_lv_3"
-                                                   class="bmd-label-floating">40-60% tiếng anh</label>
-                                            <input type="number" name="tieng_anh_lv_3"
-                                                   id="tieng_anh_lv_3"
-                                                   class="form-control" value="{{$tiengAnh->lv_3}}">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <div class="form-group">
-                                            <label for="tieng_anh_lv_4"
-                                                   class="bmd-label-floating">60-80% tiếng anh</label>
-                                            <input type="number" name="tieng_anh_lv_4"
-                                                   id="tieng_anh_lv_4"
-                                                   class="form-control" value="{{$tiengAnh->lv_4}}">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <div class="form-group">
-                                            <label for="tieng_anh_lv_5"
-                                                   class="bmd-label-floating">>80% tiếng anh</label>
-                                            <input type="number" name="tieng_anh_lv_5"
-                                                   id="tieng_anh_lv_5"
-                                                   class="form-control" value="{{$tiengAnh->lv_5}}">
+                                            <div class="form-group">
+                                                <label for="cap_truong" class="bmd-label-floating">Tạp chí/tập san
+                                                    của cấp trường</label>
+                                                <input type="text" name="cap_truong" id="cap_truong"
+                                                       class="form-control" value="{{$tapChi->cap_truong}}">
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
 
+
+                                <div style="width: 100%;text-align: right">
+                                    <button type="submit" class="btn btn-success">Cập nhật</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header card-header-primary">
+                            <h4 class="card-title"> Số lượng báo cáo khoa học do cán bộ cơ hữu của nhà trường báo cáo tại các
+                                hội nghị, hội thảo, được đăng toàn văn trong tuyển tập công trình hay kỷ yếu</h4>
+                            <p class="card-category">Vui lòng điền đủ thông tin
+                        </div>
+                        <div class="card-body">
+                            @foreach($errors->all() as $message)
+                                <div class="alert alert-danger">
+                                    <span><b> Cảnh báo - </b> {{$message}}</span>
+                                </div>
+                            @endforeach
+                            <form action="{{route('university.research.hoiThao', ['slug'=>$slug,'year'=> $year])}}"
+                                  method="post">
+                                {{csrf_field()}}
                                 <div class="row">
-                                    <div class="col-md-2">
+                                    <div class="col-md-4">
                                         <div class="form-group">
-                                            <label for="tin_hoc_lv_1"
-                                                   class="bmd-label-floating">0-20% tin học</label>
-                                            <input type="number" name="tin_hoc_lv_1"
-                                                   id="tin_hoc_lv_1"
-                                                   class="form-control" value="{{$tinHoc->lv_1}}">
+                                            <div class="form-group">
+                                                <label for="quoc_te" class="bmd-label-floating">Hội thảo quốc tế
+                                                </label>
+                                                <input type="text" name="quoc_te" id="quoc_te"
+                                                       class="form-control" value="{{$hoiThao->quoc_te}}">
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-2">
+                                    <div class="col-md-4">
                                         <div class="form-group">
-                                            <label for="tin_hoc_lv_2"
-                                                   class="bmd-label-floating">20-40% tin học</label>
-                                            <input type="number" name="tin_hoc_lv_2"
-                                                   id="tin_hoc_lv_2"
-                                                   class="form-control" value="{{$tinHoc->lv_2}}">
+                                            <div class="form-group">
+                                                <label for="trong_nuoc" class="bmd-label-floating">Hội thảo trong
+                                                    nước </label>
+                                                <input type="text" name="trong_nuoc" id="trong_nuoc"
+                                                       class="form-control" value="{{$hoiThao->trong_nuoc}}">
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-2">
+                                    <div class="col-md-4">
                                         <div class="form-group">
-                                            <label for="tin_hoc_lv_3"
-                                                   class="bmd-label-floating">40-60% tin học</label>
-                                            <input type="number" name="tin_hoc_lv_3"
-                                                   id="tin_hoc_lv_3"
-                                                   class="form-control" value="{{$tinHoc->lv_3}}">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <div class="form-group">
-                                            <label for="tin_hoc_lv_4"
-                                                   class="bmd-label-floating">60-80% tin học</label>
-                                            <input type="number" name="tin_hoc_lv_4"
-                                                   id="tin_hoc_lv_4"
-                                                   class="form-control" value="{{$tinHoc->lv_4}}">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <div class="form-group">
-                                            <label for="tin_hoc_lv_5"
-                                                   class="bmd-label-floating">>80% tin học</label>
-                                            <input type="number" name="tin_hoc_lv_5"
-                                                   id="tin_hoc_lv_5"
-                                                   class="form-control" value="{{$tinHoc->lv_5}}">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <div class="form-group">
-                                            <button class="btn btn-success"
-                                                    onclick="updateLevel({{$trinhDo->id}})">
-                                                Cập nhập
-                                            </button>
+                                            <div class="form-group">
+                                                <label for="cap_truong" class="bmd-label-floating">Hội thảo cấp
+                                                    trường</label>
+                                                <input type="text" name="cap_truong" id="cap_truong"
+                                                       class="form-control" value="{{$hoiThao->cap_truong}}">
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+
+
+                                <div style="width: 100%;text-align: right">
+                                    <button type="submit" class="btn btn-success">Cập nhật</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header card-header-primary">
+                            <h4 class="card-title"> Số bằng phát minh, sáng chế được</h4>
+                            <p class="card-category">Vui lòng điền đủ thông tin
+                        </div>
+                        <div class="card-body">
+                            @foreach($errors->all() as $message)
+                                <div class="alert alert-danger">
+                                    <span><b> Cảnh báo - </b> {{$message}}</span>
+                                </div>
+                            @endforeach
+                            <form action="{{route('university.research.bangSangche', ['slug'=>$slug,'year'=> $year])}}"
+                                  method="post">
+                                {{csrf_field()}}
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <div class="form-group">
+                                                <label for="noi_dung" class="bmd-label-floating">Số bằng phát minh, sáng chế được cấp
+                                                    (ghi rõ nơi cấp, thời gian cấp, người được cấp)
+                                                </label>
+                                                <textarea name="noi_dung" id="noi_dung" class="form-control" rows="10">{{$sangChe->noi_dung}}</textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+
+                                <div style="width: 100%;text-align: right">
+                                    <button type="submit" class="btn btn-success">Cập nhật</button>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -376,70 +329,4 @@
     </div>
 @endsection
 
-@section('script')
-    <script>
-        function updateTeacher(canBo, id) {
-            let doTuoi = {
-                'lv_1': $('#tuoi_' + canBo + '_lv_1').val(),
-                'lv_2': $('#tuoi_' + canBo + '_lv_2').val(),
-                'lv_3': $('#tuoi_' + canBo + '_lv_3').val(),
-                'lv_4': $('#tuoi_' + canBo + '_lv_4').val(),
-                'lv_5': $('#tuoi_' + canBo + '_lv_5').val(),
-            };
 
-            let data = {
-                id: id,
-                trinh_do: canBo,
-                so_luong: $('#so_luong_' + canBo).val(),
-                giao_vien_nam: $('#giao_vien_nam_' + canBo).val(),
-                gv_bien_che: $('#gv_bien_che_' + canBo).val(),
-                gv_hop_dong: $('#gv_hop_dong_' + canBo).val(),
-                gv_quan_ly: $('#gv_quan_ly_' + canBo).val(),
-                gv_thinh_giang: $('#gv_thinh_giang_' + canBo).val(),
-                gv_quoc_te: $('#gv_quoc_te_' + canBo).val(),
-                do_tuoi: JSON.stringify(doTuoi),
-                _token: '{{csrf_token()}}'
-            };
-
-            $.post('{{route('university.teacher.updateTeacher', ['slug'=>$slug, 'year' => $year])}}',
-                data, function (result) {
-                    demo.showNotification('top', 'right', 'success', 'Cập nhập thành công');
-                }).fail(function (errors) {
-                demo.showNotification('top', 'right', 'danger', 'Có lỗi xảy ra. Xin mời tạo lại');
-            })
-        }
-
-        function updateLevel(id) {
-            let tiengAnh = {
-                'lv_1': $('#tieng_anh_lv_1').val(),
-                'lv_2': $('#tieng_anh_lv_2').val(),
-                'lv_3': $('#tieng_anh_lv_3').val(),
-                'lv_4': $('#tieng_anh_lv_4').val(),
-                'lv_5': $('#tieng_anh_lv_5').val(),
-            };
-
-            let tinHoc = {
-                'lv_1': $('#tin_hoc_lv_1').val(),
-                'lv_2': $('#tin_hoc_lv_2').val(),
-                'lv_3': $('#tin_hoc_lv_3').val(),
-                'lv_4': $('#tin_hoc_lv_4').val(),
-                'lv_5': $('#tin_hoc_lv_5').val(),
-            };
-
-            let data = {
-                id: id,
-                _token: '{{csrf_token()}}',
-                trinh_do_ngoai_ngu: JSON.stringify(tiengAnh),
-                tin_hoc: JSON.stringify(tinHoc),
-            };
-
-            $.post('{{route('university.teacher.updateLevel', ['slug'=>$slug, 'year' => $year])}}',
-                data, function (result) {
-                    console.log(result);
-                    demo.showNotification('top', 'right', 'success', 'Cập nhập thành công');
-                }).fail(function (errors) {
-                demo.showNotification('top', 'right', 'danger', 'Có lỗi xảy ra. Xin mời tạo lại');
-            })
-        }
-    </script>
-@endsection

@@ -15,7 +15,7 @@ class CreateBangSangChesTable extends Migration
     {
         Schema::create('bang_sang_ches', function (Blueprint $table) {
             $table->increments('id');
-            $table->mediumText('noi_dung');
+            $table->mediumText('noi_dung')->nullable();
             $table->integer( 'nam_thong_ke' );
             $table->integer( 'universities_id' )->nullable();
             $table->timestamps();

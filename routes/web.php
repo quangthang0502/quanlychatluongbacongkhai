@@ -156,12 +156,14 @@ Route::group( [
 ], function () {
 	Route::get( '/{year}', 'Research@index' )->name( 'university.research.index' );
 
-//    Route::get( 'chinh-sua/{year}', 'Research@create' )->name( 'university.student.create' );
-//    Route::post( 'chinh-sua/{year}', 'Research@postCreate' )->name( 'university.student.postCreate' );
-//
-//    Route::post( 'chinh-sua-chinh-quy/{year}', 'Research@updateStudents' )->name( 'university.student.updateStudents' );
-//
-//    Route::get( 'xoa/{id}', 'Research@delete' )->name( 'university.student.delete' );
+    Route::get( 'chinh-sua/{year}', 'Research@create' )->name( 'university.research.create' );
+    Route::post( 'chinh-sua/{year}', 'Research@postCreate' )->name( 'university.research.postCreate' );
+
+    Route::post( 'chinh-sua-sach/{year}', 'Research@suaSach' )->name( 'university.research.suaSach' );
+    Route::post( 'chinh-tap-chi/{year}', 'Research@tapChi' )->name( 'university.research.tapChi' );
+    Route::post( 'chinh-sua-sach-2/{year}', 'Research@hoiThao' )->name( 'university.research.hoiThao' );
+    Route::post( 'bang-sang-che/{year}', 'Research@bangSangche' )->name( 'university.research.bangSangche' );
+
 } );
 
 Route::group( [

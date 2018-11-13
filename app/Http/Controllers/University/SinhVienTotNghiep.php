@@ -88,15 +88,15 @@ class SinhVienTotNghiep extends Controller {
 		$request    = $this->validate( $request, [
 			'so_luong_sv_tot_nghiep' => 'numeric',
 			'ty_le_tot_nghiep'       => '',
-			'cau_3_1'                => 'numeric',
-			'cau_3_2'                => 'numeric',
-			'cau_3_3'                => 'numeric',
-			'cau_4_1'                => 'numeric',
-			'cau_4_2'                => 'numeric',
-			'cau_4_3'                => 'numeric',
-			'cau_5_1'                => 'numeric',
-			'cau_5_2'                => 'numeric',
-			'cau_5_3'                => 'numeric',
+			'cau_3_1'                => '',
+			'cau_3_2'                => '',
+			'cau_3_3'                => '',
+			'cau_4_1'                => '',
+			'cau_4_2'                => '',
+			'cau_4_3'                => '',
+			'cau_5_1'                => '',
+			'cau_5_2'                => '',
+			'cau_5_3'                => '',
 		] );
 
 		$sv = TinhTrangTotNghiep::findByYearAndType( $university->id, $year, 'chinh_quy' );
@@ -110,15 +110,15 @@ class SinhVienTotNghiep extends Controller {
 		$request    = $this->validate( $request, [
 			'so_luong_sv_tot_nghiep' => 'numeric',
 			'ty_le_tot_nghiep'       => '',
-			'cau_3_1'                => 'numeric',
-			'cau_3_2'                => 'numeric',
-			'cau_3_3'                => 'numeric',
-			'cau_4_1'                => 'numeric',
-			'cau_4_2'                => 'numeric',
-			'cau_4_3'                => 'numeric',
-			'cau_5_1'                => 'numeric',
-			'cau_5_2'                => 'numeric',
-			'cau_5_3'                => 'numeric',
+			'cau_3_1'                => '',
+			'cau_3_2'                => '',
+			'cau_3_3'                => '',
+			'cau_4_1'                => '',
+			'cau_4_2'                => '',
+			'cau_4_3'                => '',
+			'cau_5_1'                => '',
+			'cau_5_2'                => '',
+			'cau_5_3'                => '',
 		] );
 
 		$sv = TinhTrangTotNghiep::findByYearAndType( $university->id, $year, 'cao_dang' );

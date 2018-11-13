@@ -9,7 +9,7 @@
                 <div class="card-header card-header-primary">
                     <h4 class="card-title">{{$title}}</h4>
                     <p class="card-category">Đây là thông tin cơ bản của trường</p>
-                    <a href="{{route('university.teacher.create',['slug'=>$slug, 'year'=>$year])}}"
+                    <a href="{{route('university.research.create',['slug'=>$slug, 'year'=>$year])}}"
                        class="btn btn-info t-create-btn"><span
                                 class="fa fa-edit"></span></a>
                 </div>
@@ -80,7 +80,7 @@
                                     </div>
                                 @else
                                     <div style="text-align: center">
-                                        <a href="{{route('university.teacher.create',['slug'=>$slug, 'year'=>$year])}}"
+                                        <a href="{{route('university.research.create',['slug'=>$slug, 'year'=>$year])}}"
                                            class="btn btn-info t-create-btn">Cập nhập ngay</a>
                                     </div>
                                 @endif
@@ -131,7 +131,7 @@
                                     </div>
                                 @else
                                     <div style="text-align: center">
-                                        <a href="{{route('university.teacher.create',['slug'=>$slug, 'year'=>$year])}}"
+                                        <a href="{{route('university.research.create',['slug'=>$slug, 'year'=>$year])}}"
                                            class="btn btn-info t-create-btn">Cập nhập ngay</a>
                                     </div>
                                 @endif
@@ -196,7 +196,7 @@
                                     </div>
                                 @else
                                     <div style="text-align: center">
-                                        <a href="{{route('university.teacher.create',['slug'=>$slug, 'year'=>$year])}}"
+                                        <a href="{{route('university.research.create',['slug'=>$slug, 'year'=>$year])}}"
                                            class="btn btn-info t-create-btn">Cập nhập ngay</a>
                                     </div>
                                 @endif
@@ -262,7 +262,7 @@
                                     </div>
                                 @else
                                     <div style="text-align: center">
-                                        <a href="{{route('university.teacher.create',['slug'=>$slug, 'year'=>$year])}}"
+                                        <a href="{{route('university.research.create',['slug'=>$slug, 'year'=>$year])}}"
                                            class="btn btn-info t-create-btn">Cập nhập ngay</a>
                                     </div>
                                 @endif
@@ -329,7 +329,7 @@
                                     </div>
                                 @else
                                     <div style="text-align: center">
-                                        <a href="{{route('university.teacher.create',['slug'=>$slug, 'year'=>$year])}}"
+                                        <a href="{{route('university.research.create',['slug'=>$slug, 'year'=>$year])}}"
                                            class="btn btn-info t-create-btn">Cập nhập ngay</a>
                                     </div>
                                 @endif
@@ -369,7 +369,7 @@
                                     </div>
                                 @else
                                     <div style="text-align: center">
-                                        <a href="{{route('university.teacher.create',['slug'=>$slug, 'year'=>$year])}}"
+                                        <a href="{{route('university.research.create',['slug'=>$slug, 'year'=>$year])}}"
                                            class="btn btn-info t-create-btn">Cập nhập ngay</a>
                                     </div>
                                 @endif
