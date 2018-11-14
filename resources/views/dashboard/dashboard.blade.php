@@ -74,7 +74,9 @@
                     </div>
 
                     <div class="card-body">
-                        {!! $gioiThieu->noi_dung !!}}
+                        <div class="t-box">
+                            {!! $gioiThieu->noi_dung !!}}
+                        </div>
                     </div>
                 </div>
             @endif
