@@ -16,9 +16,9 @@ class CreateCanBoChuChotsTable extends Migration
         Schema::create('can_bo_chu_chots', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('universities_id');
-            $table->integer('bo_phan_id');
-            $table->string('hoc_vi');
-            $table->string('chuc_vu');
+            $table->integer('bo_phan_id')->nullable();
+            $table->string('hoc_vi')->nullable();
+            $table->string('chuc_vu')->nullable();
             $table->string('ho_va_ten');
             $table->integer('nam_sinh');
             $table->integer('thong_ke_nam');

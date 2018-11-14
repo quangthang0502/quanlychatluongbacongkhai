@@ -180,3 +180,13 @@ Route::group( [
 //
 //	Route::get( 'xoa/{id}', 'Infrastructure@delete' )->name( 'university.infrastructure.delete' );
 } );
+
+Route::get('/file-mau', 'ImportData@downloadFile')->name('download');
+
+Route::group( [
+	'middleware' => [ 'auth', 'check.role' ],
+	'prefix'     => '{slug}/nhap-lieu-excel'
+], function () {
+	Route::get( '/{year}', 'ImportData@index' )->name( 'university.import.index' );
+	Route::post( 'chinh-sua/{year}', 'ImportData@create' )->name( 'university.import.create' );
+} );

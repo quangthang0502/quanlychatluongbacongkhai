@@ -78,6 +78,12 @@
                     <p>Giới thiệu</p>
                 </a>
             </li>
+            <li class="nav-item {{isActiveRoute('university.import.index')}}">
+                <a class="nav-link" href="{{route('university.import.index', ['slug'=>$slug, 'year'=> date('Y')])}}">
+                    <i class="material-icons">description</i>
+                    <p>Nhập liệu excel</p>
+                </a>
+            </li>
 
             <li class="nav-item {{isActiveRoute('university.user.index')}}">
                 <a class="nav-link" href="{{route('university.user.index', $slug)}}">
