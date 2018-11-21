@@ -10,6 +10,7 @@ use App\Models\DaoTao\DaoTao;
 use App\Models\Student\KiTucXa;
 use App\Models\Student\PhanLoaiSinhVien;
 use App\Models\Student\SinhVien;
+use App\Models\TaiChinh;
 use App\Models\TotNghiep\TinhTrangTotNghiep;
 use App\Models\TotNghiep\TotNghiep;
 use App\Models\University;
@@ -18,6 +19,8 @@ use App\Http\Controllers\Controller;
 
 class ThongKe extends Controller {
 	//
+	const VIEW_PATH = 'admin.thongke.';
+
 	public function index( $year ) {
 		$title = 'Bảng thống kê dữ liệu ba công khai năm ' . $year;
 
@@ -27,6 +30,61 @@ class ThongKe extends Controller {
 
 		foreach ( $universities as $item ) {
 			$data[] = $this->thongKe( $item, $year );
+		}
+
+		$data = json_decode( json_encode( $data, true ) );
+
+		return view( 'admin.thongke.' . __FUNCTION__, compact( 'title', 'year', 'data' ) );
+	}
+
+	public function coSoVatChat( $year ) {
+		$title = 'Bảng thống kê dữ liệu ba công khai năm ' . $year;
+
+		$universities = University::all();
+		$data         = [];
+
+		foreach ( $universities as $item ) {
+			$data[] = [
+				'name'           => $item->vi_ten,
+				'co_so_vat_chat' => $this->checkCoSoVatChat( $item->id, $year )
+			];
+		}
+
+		$data = json_decode( json_encode( $data, true ) );
+
+		return view( 'admin.thongke.' . __FUNCTION__, compact( 'title', 'year', 'data' ) );
+	}
+
+	public function giangVien( $year ) {
+		$title = 'Bảng thống kê dữ liệu ba công khai năm ' . $year;
+
+		$universities = University::all();
+		$data         = [];
+
+		foreach ( $universities as $item ) {
+			$data[] = [
+				'name'       => $item->vi_ten,
+				'giang_vien' => $this->checkGiangVien( $item->id, $year )
+			];
+		}
+
+		$data = json_decode( json_encode( $data, true ) );
+
+		return view( 'admin.thongke.' . __FUNCTION__, compact( 'title', 'year', 'data' ) );
+	}
+
+	public function sinhVien( $year ) {
+		$title = 'Bảng thống kê dữ liệu ba công khai năm ' . $year;
+
+		$universities = University::all();
+		$data         = [];
+
+		foreach ( $universities as $item ) {
+			$data[] = [
+				'name'       => $item->vi_ten,
+				'sinh_vien'  => $this->checkSinhVien( $item->id, $year, $item->type ),
+				'giang_vien' => $this->checkGiangVien( $item->id, $year )
+			];
 		}
 
 		$data = json_decode( json_encode( $data, true ) );
@@ -73,6 +131,8 @@ class ThongKe extends Controller {
 
 		$ktx = KiTucXa::findByYear( $id, $year );
 
+		$taiChinh = TaiChinh::getTaiChinhByYear( $id, $year );
+
 		return [
 			'tong_dien_tich'          => $coSoVatChat->tong_dien_tich,
 			'dien_tich_phong_hoc'     => $coSoVatChat->dien_tich_phong_hoc,
@@ -81,7 +141,9 @@ class ThongKe extends Controller {
 			'so_may_tinh'             => $coSoVatChat->so_may_tinh_vp + $coSoVatChat->so_may_tinh_sv,
 			'ty_so_mt_tren_sv'        => $coSoVatChat->ty_so_mt_tren_sv,
 			'dien_tich_ktx'           => $ktx->tong_dien_tich,
-			'sinh_vien_ktx'           => ( $ktx->duoc_o == 0 ) ? '-' : ( round( $ktx->tong_dien_tich / $ktx->duoc_o, 2 ) )
+			'sinh_vien_ktx'           => ( $ktx->duoc_o == 0 ) ? '-' : ( round( $ktx->tong_dien_tich / $ktx->duoc_o, 2 ) ),
+			'tong_kinh_phi'           =>$taiChinh->tong_kinh_phi,
+			'tong_thu_hoc_phi'           =>$taiChinh->tong_thu_hoc_phi,
 		];
 	}
 
@@ -117,11 +179,15 @@ class ThongKe extends Controller {
 	public function checkSinhVien( $id, $year, $loaiTruong ) {
 		$sinhVien = PhanLoaiSinhVien::findByYear( $id, $year );
 
-		$sinhVienChinhQuy = $sinhVien->nghien_cuu_sinh
-		                    + $sinhVien->hoc_vien_cao_hoc
-		                    + $sinhVien->dh_he_chinh_quy
-		                    + $sinhVien->cd_he_chinh_quy
-		                    + $sinhVien->tccn_he_chinh_quy;
+		if ( is_null( $sinhVien ) ) {
+			$sinhVienChinhQuy = 0;
+		} else {
+			$sinhVienChinhQuy = $sinhVien->nghien_cuu_sinh
+			                    + $sinhVien->hoc_vien_cao_hoc
+			                    + $sinhVien->dh_he_chinh_quy
+			                    + $sinhVien->cd_he_chinh_quy
+			                    + $sinhVien->tccn_he_chinh_quy;
+		}
 
 
 		if ( $loaiTruong == 'dai_hoc' ) {

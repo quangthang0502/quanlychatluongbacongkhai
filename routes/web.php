@@ -47,6 +47,10 @@ Route::group( [
 	'middleware' => [ 'auth', 'check.role' ]
 ], function () {
 	Route::get( '/{year}', 'ThongKe@index' )->name( 'admin.thongke.index' );
+
+	Route::get( '/co-so-vat-chat/{year}', 'ThongKe@coSoVatChat' )->name( 'admin.thongke.coSoVatChat' );
+	Route::get( '/giang-vien/{year}', 'ThongKe@giangVien' )->name( 'admin.thongke.giangVien' );
+	Route::get( '/sinh-vien/{year}', 'ThongKe@sinhVien' )->name( 'admin.thongke.sinhVien' );
 } );
 
 Route::group( [

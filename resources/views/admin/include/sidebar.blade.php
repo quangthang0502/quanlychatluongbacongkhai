@@ -23,6 +23,24 @@
                     <p>Thống kê dữ liệu các trường</p>
                 </a>
             </li>
+            <li class="nav-item {{isActiveRoute('admin.thongke.coSoVatChat')}}">
+                <a class="nav-link" href="{{route('admin.thongke.coSoVatChat', ['year' => date('Y')])}}">
+                    <i class="material-icons">person</i>
+                    <p>Thống kê cơ sở vật chất</p>
+                </a>
+            </li>
+            <li class="nav-item {{isActiveRoute('admin.thongke.sinhVien')}}">
+                <a class="nav-link" href="{{route('admin.thongke.sinhVien', ['year' => date('Y')])}}">
+                    <i class="material-icons">person</i>
+                    <p>Thống kê sinh viên</p>
+                </a>
+            </li>
+            <li class="nav-item {{isActiveRoute('admin.thongke.giangVien')}}">
+                <a class="nav-link" href="{{route('admin.thongke.giangVien', ['year' => date('Y')])}}">
+                    <i class="material-icons">person</i>
+                    <p>Thống kê giảng viên</p>
+                </a>
+            </li>
             <li class="nav-item {{isActiveRoute('admin.user.index')}}">
                 <a class="nav-link" href="{{route('admin.user.index')}}">
                     <i class="material-icons">person</i>
