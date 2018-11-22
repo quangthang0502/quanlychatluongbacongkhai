@@ -18,22 +18,29 @@ class UserController extends Controller {
 		$this->_user = $user;
 	}
 
-	public function index() {
+	public function index($slug) {
 		/** @var User $manager */
 		$manager    = Auth::user();
-		$university = University::find( $manager->university_id );
-		$slug       = $university->slug;
-		$users      = User::findUserBySomeFeilds( $manager->university_id, $manager->type );
+		if ($manager->type != 0 && $manager->type != 3) {
+			return redirect()->route('dashboard');
+		}
+		$university = University::findBySlug( $slug);
+
+		$users      = User::findUserBySomeFeilds( $university->id, 3 );
 		$title      = 'Quản lý tài khoản trường ' . $university->vi_ten;
 
 		return view( self::VIEW_PATH . __FUNCTION__, compact( 'title', 'users', 'slug' ) );
 	}
 
-	public function create() {
+	public function create($slug) {
 		/** @var User $manager */
 		$manager    = Auth::user();
-		$university = University::find( $manager->university_id );
-		$slug       = $university->slug;
+		if ($manager->type != 0 && $manager->type != 3) {
+			return redirect()->route('dashboard');
+		}
+
+		$university = University::findBySlug( $slug);
+
 		$title      = 'Tạo tài khoản trường ' . $university->vi_ten;
 
 		return view( self::VIEW_PATH . __FUNCTION__, compact( 'title', 'slug', 'university' ) );

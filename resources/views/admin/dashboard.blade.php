@@ -38,7 +38,7 @@
                                             <td class="text-primary">
                                                 <div class="btn-group" style="color: #fff !important;">
                                                     <a href="{{route('dashboard.university', $item->slug)}}"
-                                                       type="button" class="btn btn-sm btn-danger">Xem</a>
+                                                       type="button" class="btn btn-sm btn-success">Xem</a>
                                                 </div>
                                             </td>
                                         </tr>

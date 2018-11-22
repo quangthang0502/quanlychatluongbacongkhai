@@ -111,8 +111,30 @@ class ThongKe extends Controller {
 
 		/** @var DaoTao $daoTao */
 		$daoTao = DaoTao::findByYear( $id, $year );
+		if ( is_null( $daoTao ) ) {
+			return [
+				'dao_tao_tien_sy'  => '-',
+				'dao_tao_thac_sy'  => '-',
+				'dao_tao_dai_hoc'  => '-',
+				'dao_tao_cao_dang' => '-',
+				'dao_tao_tccn'     => '-',
+				'dao_tao_nghe'     => '-',
+				'dao_tao_khac'     => '-',
+			];
+		}
 		/** @var ChuyenNganhDaoTao $chuyenNganhDaoTao */
 		$chuyenNganhDaoTao = $daoTao->chuyenNganhDaoTao();
+		if ( is_null( $chuyenNganhDaoTao ) ) {
+			return [
+				'dao_tao_tien_sy'  => '-',
+				'dao_tao_thac_sy'  => '-',
+				'dao_tao_dai_hoc'  => '-',
+				'dao_tao_cao_dang' => '-',
+				'dao_tao_tccn'     => '-',
+				'dao_tao_nghe'     => '-',
+				'dao_tao_khac'     => '-',
+			];
+		}
 
 		return [
 			'dao_tao_tien_sy'  => $chuyenNganhDaoTao->dao_tao_tien_sy,
@@ -133,6 +155,21 @@ class ThongKe extends Controller {
 
 		$taiChinh = TaiChinh::getTaiChinhByYear( $id, $year );
 
+		if ( is_null( $coSoVatChat ) || is_null( $ktx ) || is_null( $taiChinh ) ) {
+			return [
+				'tong_dien_tich'          => '-',
+				'dien_tich_phong_hoc'     => '-',
+				'ty_so_dien_tich_tren_sv' => '-',
+				'so_sach_tv'              => '-',
+				'so_may_tinh'             => '-',
+				'ty_so_mt_tren_sv'        => '-',
+				'dien_tich_ktx'           => '-',
+				'sinh_vien_ktx'           => '-',
+				'tong_kinh_phi'           => '-',
+				'tong_thu_hoc_phi'        => '-',
+			];
+		}
+
 		return [
 			'tong_dien_tich'          => $coSoVatChat->tong_dien_tich,
 			'dien_tich_phong_hoc'     => $coSoVatChat->dien_tich_phong_hoc,
@@ -142,18 +179,25 @@ class ThongKe extends Controller {
 			'ty_so_mt_tren_sv'        => $coSoVatChat->ty_so_mt_tren_sv,
 			'dien_tich_ktx'           => $ktx->tong_dien_tich,
 			'sinh_vien_ktx'           => ( $ktx->duoc_o == 0 ) ? '-' : ( round( $ktx->tong_dien_tich / $ktx->duoc_o, 2 ) ),
-			'tong_kinh_phi'           =>$taiChinh->tong_kinh_phi,
-			'tong_thu_hoc_phi'           =>$taiChinh->tong_thu_hoc_phi,
+			'tong_kinh_phi'           => $taiChinh->tong_kinh_phi,
+			'tong_thu_hoc_phi'        => $taiChinh->tong_thu_hoc_phi,
 		];
 	}
 
 	private function checkGiangVien( $id, $year ) {
 		$canBo = PhanLoaiCanBo::findByYear( $id, $year );
 
-		$canBoCoHuu = $canBo->bien_che_nam + $canBo->bien_che_nu + $canBo->hop_dong_nam + $canBo->hop_dong_nu;
-
 		$giangVien = GiangVien::findByYear( $id, $year );
 
+		if ( is_null( $canBo ) || is_null( $giangVien ) ) {
+			$result['giang_vien_co_huu'] = '-';
+			$result['giang_vien_can_bo'] = '-';
+			$result['tien_si_can_bo']    = '-';
+			$result['thac_si_can_bo']    = '-';
+			return $result;
+		}
+
+		$canBoCoHuu     = $canBo->bien_che_nam + $canBo->bien_che_nu + $canBo->hop_dong_nam + $canBo->hop_dong_nu;
 		$giangVienCoHuu = 0;
 		$tienSi         = 0;
 		$thacSi         = 0;
@@ -192,14 +236,34 @@ class ThongKe extends Controller {
 
 		if ( $loaiTruong == 'dai_hoc' ) {
 			$tinhTrangTN = TinhTrangTotNghiep::findByYearAndType( $id, $year, 'chinh_quy' );
+			if (is_null($tinhTrangTN)){
+				$tinhTrangTN = TinhTrangTotNghiep::create( [
+					'universities_id' => $id,
+					'thong_ke_nam'    => $year,
+					'type'            => 'chinh_quy'
+				] )->refresh();
+			}
 		} else {
 			$tinhTrangTN = TinhTrangTotNghiep::findByYearAndType( $id, $year, 'cao_dang' );
+			if (is_null($tinhTrangTN)){
+				$tinhTrangTN = TinhTrangTotNghiep::create( [
+					'universities_id' => $id,
+					'thong_ke_nam'    => $year,
+					'type'            => 'cao_dang'
+				] )->refresh();
+			}
 		}
 
+
 		$totNghiep     = TotNghiep::findByYear( $id, $year );
-		$sinhTotNghiep = $totNghiep->dh_he_chinh_quy
-		                 + $totNghiep->cd_he_chinh_quy
-		                 + $totNghiep->tccn_he_chinh_quy;
+		if (is_null($totNghiep)){
+			$sinhTotNghiep = 0;
+		}else {
+			$sinhTotNghiep = $totNghiep->dh_he_chinh_quy
+			                 + $totNghiep->cd_he_chinh_quy
+			                 + $totNghiep->tccn_he_chinh_quy;
+		}
+
 
 		return [
 			'sinh_vien_chinh_quy'      => $sinhVienChinhQuy,

@@ -14,7 +14,7 @@
 <!-- Material Dashboard DEMO methods, don't include it in your project! -->
 <script src="{{url('js/demo.js')}}"></script>
 
-@if(getUser()->type == 3 || getUser()->type == 4)
+@if(getUser()->type == 3 || getUser()->type == 4 || getUser()->type == 0)
     <script src="{{url('node_modules/trumbowyg/dist/trumbowyg.min.js')}}"></script>
 @endif
 

@@ -34,6 +34,7 @@ class UserController extends Controller {
 	}
 
 	public function postCreate( CreateUser $request ) {
+
 		$result = $request->only( [
 			'name',
 			'email',
@@ -45,17 +46,14 @@ class UserController extends Controller {
 		$result['role']     = '';
 		$schoolName         = $request['school_name'];
 
+
 		if ( $result['type'] == 2 ) {
 			$this->_user->create( $result );
 
 			return redirect()->route( 'admin.user.index' )->with( 'success', 'Tạo mới thành công' );
 		} else {
-			$univercityID = University::create( [
-				'vi_ten' => $schoolName,
-				'slug'   => str_slug( $schoolName )
-			] )->id;
 
-			$result['university_id'] = $univercityID;
+			$result['university_id'] = $schoolName;
 			$this->_user->create( $result );
 
 			return redirect()->route( 'admin.user.index' )->with( 'success', 'Tạo mới thành công' );

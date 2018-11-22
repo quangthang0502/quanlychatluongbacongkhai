@@ -22,5 +22,9 @@ Route::group( [ 'namespace' => 'Api' ], function () {
 
 	Route::post( 'bo-phan', 'ApiController@postBoPhan' );
 
+	Route::get( 'truong-hoc', 'ApiController@getUniversities' )->name( 'api.university' );
+
+	Route::post( 'truong-hoc', 'ApiController@createUniversity' );
+
 } );
 
