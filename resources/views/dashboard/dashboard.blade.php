@@ -202,6 +202,38 @@
                 </div>
             </div>
         </div>
+        <div class="col-md-6">
+            <div class="card card-chart">
+                <div class="card-header card-header-warning">
+                    <canvas class="ct-chart" id="nhuCauKiTucXa"
+                            style="width: 100%; height: 200px; color:#fff;"></canvas>
+                </div>
+                <div class="card-body">
+                    <h4 class="card-title">Số lượng sinh viên có nhu cầu về phòng ở (trong và ngoài ký túc xá)</h4>
+                    <p class="card-category">
+                        @if($nhuCauKiTucXa[date('Y')] >= $nhuCauKiTucXa[date('Y')-1] && $nhuCauKiTucXa[date('Y')-1] != 0)
+                            <span class="text-success"><i class="fa fa-long-arrow-up"></i>
+                                {{$nhuCauKiTucXa[date('Y')]/($nhuCauKiTucXa[date('Y')-1])*100}}% so với năm ngoái</span>
+                    </p>
+                    @elseif($nhuCauKiTucXa[date('Y')-1] != 0)
+                        <span class="text-danger"><i class="fa fa-long-arrow-down"></i>
+                            {{$nhuCauKiTucXa[date('Y')]/($nhuCauKiTucXa[date('Y')-1])*100}}% so với năm ngoái</span></p>
+                    @endif
+
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card card-chart">
+                <div class="card-header card-header-warning">
+                    <canvas class="ct-chart" id="giangVien"
+                            style="width: 100%; height: 200px; color:#fff;"></canvas>
+                </div>
+                <div class="card-body">
+                    <h4 class="card-title">Số lượng sinh viên có nhu cầu về phòng ở (trong và ngoài ký túc xá)</h4>
+                </div>
+            </div>
+        </div>
     </div>
 @endsection
 @section('script')
@@ -245,6 +277,25 @@
                 {{$item}},
                 @endforeach
             ];
+            let nhuCauKiTucXa = [
+                @foreach ($nhuCauKiTucXa as $item)
+                {{$item}},
+                @endforeach
+            ];
+            let giangVien = [];
+
+            @foreach($giangVien as $key=>$item)
+            giangVien.push({
+                label: "{{getNameTeacher($key)}}",
+                data: [
+                    @foreach ($item as $a)
+                    {{$a}},
+                    @endforeach
+                ],
+                backgroundColor: '#'+((1<<24)*Math.random()|0).toString(16)
+            });
+            @endforeach
+
 
             new Chart(ctx, {
                 type: 'line',
@@ -293,7 +344,7 @@
                     labels: myLabel,
                     bodyFontColor: '#fff'
                 },
-            }) ;
+            });
             new Chart($('#nhapHoc'), {
                 type: 'line',
                 data: {
@@ -314,6 +365,26 @@
                         data: taiChinh,
                         backgroundColor: '#fff'
                     }],
+                    labels: myLabel,
+                    bodyFontColor: '#fff'
+                },
+            })
+            new Chart($('#nhuCauKiTucXa'), {
+                type: 'line',
+                data: {
+                    datasets: [{
+                        label: 'Nhu cầu',
+                        data: nhuCauKiTucXa,
+                        backgroundColor: '#fff'
+                    }],
+                    labels: myLabel,
+                    bodyFontColor: '#fff'
+                },
+            })
+            new Chart($('#giangVien'), {
+                type: 'line',
+                data: {
+                    datasets: giangVien,
                     labels: myLabel,
                     bodyFontColor: '#fff'
                 },

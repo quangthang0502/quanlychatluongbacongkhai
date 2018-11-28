@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Canbo\GiangVien;
 use App\Models\NghienCuuKhoaHoc\HoiThao;
 use App\Models\NghienCuuKhoaHoc\NckhNghiemThu;
 use App\Models\NghienCuuKhoaHoc\VietSach;
+use App\Models\Student\KiTucXa;
 use App\Models\Student\SinhVien;
 use App\Models\TaiChinh;
 use App\Models\TotNghiep\TinhTrangTotNghiep;
@@ -51,15 +53,19 @@ class MainController extends Controller {
 
 		$svTotNghiep = $this->sinhVienTotNghiep( $university->id, $thisYear );
 
-		$nckh    = $this->duLieuNckh( $university, $thisYear );
-		$sach    = $this->sach( $university, $thisYear );
-		$hoiThao = $this->hoiThao( $university, $thisYear );
-		$nhapHoc = $this->nhapHoc( $university, $thisYear );
-		$taiChinh = $this->taiChinh( $university, $thisYear );
+		$nckh          = $this->duLieuNckh( $university, $thisYear );
+		$sach          = $this->sach( $university, $thisYear );
+		$hoiThao       = $this->hoiThao( $university, $thisYear );
+		$nhapHoc       = $this->nhapHoc( $university, $thisYear );
+		$taiChinh      = $this->taiChinh( $university, $thisYear );
+		$nhuCauKiTucXa = $this->nhuCauKiTucXa( $university, $thisYear );
+		$giangVien     = $this->giangVien( $university, $thisYear );
+
+//		echo json_encode($giangVien);die;
 
 		return view( 'dashboard.dashboard',
 			compact( 'title', 'university', 'slug', 'gioiThieu',
-				'label', 'svTotNghiep', 'nckh', 'sach', 'hoiThao', 'nhapHoc', 'taiChinh' ) );
+				'label', 'svTotNghiep', 'nckh', 'sach', 'hoiThao', 'nhapHoc', 'taiChinh', 'nhuCauKiTucXa', 'giangVien' ) );
 	}
 
 	private function sinhVienTotNghiep( $id, $year ) {
@@ -135,6 +141,7 @@ class MainController extends Controller {
 
 		return $result;
 	}
+
 	private function taiChinh( $university, $year ) {
 
 		$result = [];
@@ -144,6 +151,41 @@ class MainController extends Controller {
 				$result[ $year - $i ] = 0;
 			} else {
 				$result[ $year - $i ] = $taiChinh->tong_kinh_phi;
+			}
+		}
+
+		return $result;
+	}
+
+	private function nhuCauKiTucXa( $university, $year ) {
+
+		$result = [];
+		for ( $i = 0; $i < 5; $i ++ ) {
+			$kiTucXa = KiTucXa::findByYear( $university->id, $year - $i );
+			if ( is_null( $kiTucXa ) ) {
+				$result[ $year - $i ] = 0;
+			} else {
+				$result[ $year - $i ] = $kiTucXa->nhu_cau;
+			}
+		}
+
+		return $result;
+	}
+
+	private function giangVien( $university, $year ) {
+
+		$result = [];
+		for ( $i = 0; $i < 5; $i ++ ) {
+			$giangVien = GiangVien::findByYear( $university->id, $year - $i );
+			if ( count( $giangVien ) == 0 ) {
+				for ( $j = 1; $j < 10; $j ++ ) {
+					$result[ $j ][ $year - $i ] = 0;
+				}
+			} else {
+				foreach ( $giangVien as $item ) {
+					$result[ $item->trinh_do ][ $year - $i ] = $item->so_luong;
+				}
+
 			}
 		}
 
