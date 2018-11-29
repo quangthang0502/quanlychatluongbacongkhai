@@ -103,3 +103,39 @@ function heSoQuyDoi( $id, $type ) {
 		return $data[ $id ];
 	}
 }
+
+function getRoleName( $key ) {
+	$role = [
+		'user'           => "Người dùng",
+		'intro'          => "Giới thiệu",
+		'leaders'        => "Cán bộ",
+		'training'       => 'Đào tạo',
+		'teacher'        => 'Giảng viên',
+		'student'        => 'Sinh viên',
+		'sv'             => 'Sv tốt nghiệp',
+		'research'       => 'Thành tựu',
+		'infrastructure' => 'Vật chất',
+		'role'           => 'Phân quyền'
+	];
+
+	return $role[ $key ];
+}
+
+function showSideBar( $route ) {
+	$user = session()->get( 'userData' );
+	if ( $user->type != 4 ) {
+		return 'block';
+	}
+
+	$role  = json_decode( $user->role );
+
+	if ( in_array( $route, [ 'dashboard', 'thongke', 'import' ] ) ) {
+		return 'block';
+	}
+
+	if ( in_array( $route, $role ) ) {
+		return 'block';
+	}
+
+	return 'none';
+}

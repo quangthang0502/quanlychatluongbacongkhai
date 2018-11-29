@@ -23,6 +23,10 @@ Route::group( [ 'middleware' => 'auth' ], function () {
 	Route::get( '/dashboard', 'MainController@dashboard' )->name( 'dashboard' );
 
 	Route::get( '{slug}/dashboard', 'MainController@dashboardUniversity' )->name( 'dashboard.university' );
+
+	Route::get('{slug}/phan-quyen', "RoleController@index")->name('university.role.index');
+
+	Route::get('phan-quyen', "RoleController@post")->name('university.role.post');
 } );
 
 Route::group( [

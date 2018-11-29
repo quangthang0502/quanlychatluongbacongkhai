@@ -24,76 +24,78 @@
                 </a>
             </li>
 
-            <li class="nav-item {{isActiveRoute('university.leaders.index')}}">
+            <li style="display: {{showSideBar('leaders')}}"  class="nav-item {{isActiveRoute('university.leaders.index')}}">
                 <a class="nav-link" href="{{route('university.leaders.index', ['slug'=>$slug, 'year'=> date('Y')])}}">
                     <i class="material-icons">person</i>
                     <p>Cán bộ chủ chốt</p>
                 </a>
             </li>
 
-            <li class="nav-item {{isActiveRoute('university.training.index')}}">
+            <li style="display: {{showSideBar('training')}}"  class="nav-item {{isActiveRoute('university.training.index')}}">
                 <a class="nav-link" href="{{route('university.training.index', ['slug'=>$slug, 'year'=> date('Y')])}}">
                     <i class="material-icons">chrome_reader_mode</i>
                     <p>Đào tạo</p>
                 </a>
             </li>
 
-            <li class="nav-item {{isActiveRoute('university.teacher.index')}}">
+            <li style="display: {{showSideBar('teacher')}}"  class="nav-item {{isActiveRoute('university.teacher.index')}}">
                 <a class="nav-link" href="{{route('university.teacher.index', ['slug'=>$slug, 'year'=> date('Y')])}}">
                     <i class="material-icons">local_library</i>
                     <p>Giảng viên</p>
                 </a>
             </li>
 
-            <li class="nav-item {{isActiveRoute('university.student.index')}}">
+            <li style="display: {{showSideBar('student')}}"  class="nav-item {{isActiveRoute('university.student.index')}}">
                 <a class="nav-link" href="{{route('university.student.index', ['slug'=>$slug, 'year'=> date('Y')])}}">
                     <i class="material-icons">assignment_ind</i>
                     <p>Học viên</p>
                 </a>
             </li>
-            <li class="nav-item {{isActiveRoute('university.sv.index')}}">
+
+            <li style="display: {{showSideBar('sv')}}"  class="nav-item {{isActiveRoute('university.sv.index')}}">
                 <a class="nav-link" href="{{route('university.sv.index', ['slug'=>$slug, 'year'=> date('Y')])}}">
                     <i class="material-icons">assignment_ind</i>
                     <p>Sinh viên tốt nghiệp</p>
                 </a>
             </li>
 
-            <li class="nav-item {{isActiveRoute('university.research.index')}}">
+            <li style="display: {{showSideBar('research')}}"  class="nav-item {{isActiveRoute('university.research.index')}}">
                 <a class="nav-link" href="{{route('university.research.index', ['slug'=>$slug, 'year'=> date('Y')])}}">
                     <i class="material-icons">assignment_ind</i>
                     <p>Nghiên cứu khoa học</p>
                 </a>
             </li>
 
-            <li class="nav-item {{isActiveRoute('university.infrastructure.index')}}">
+            <li style="display: {{showSideBar('infrastructure')}}"  class="nav-item {{isActiveRoute('university.infrastructure.index')}}">
                 <a class="nav-link" href="{{route('university.infrastructure.index', ['slug'=>$slug, 'year'=> date('Y')])}}">
                     <i class="material-icons">assignment_ind</i>
                     <p>Cơ sở vật chất và tài chính</p>
                 </a>
             </li>
 
-            <li class="nav-item {{isActiveRoute('university.intro.index')}}">
+            <li style="display: {{showSideBar('intro')}}"  class="nav-item {{isActiveRoute('university.intro.index')}}">
                 <a class="nav-link" href="{{route('university.intro.index', $slug)}}">
                     <i class="material-icons">description</i>
                     <p>Giới thiệu</p>
                 </a>
             </li>
-            <li class="nav-item {{isActiveRoute('university.import.index')}}">
+
+            <li style="display: {{showSideBar('import')}}"  class="nav-item {{isActiveRoute('university.import.index')}}">
                 <a class="nav-link" href="{{route('university.import.index', ['slug'=>$slug, 'year'=> date('Y')])}}">
                     <i class="material-icons">description</i>
                     <p>Nhập liệu excel</p>
                 </a>
             </li>
 
-            <li class="nav-item {{isActiveRoute('university.user.index')}}">
+            <li style="display: {{showSideBar('user')}}" class="nav-item {{isActiveRoute('university.user.index')}}">
                 <a class="nav-link" href="{{route('university.user.index', $slug)}}">
                     <i class="material-icons">person</i>
                     <p>Quản lý tài khoản</p>
                 </a>
             </li>
 
-            <li class="nav-item ">
-                <a class="nav-link" href="">
+            <li style="display: {{showSideBar('role')}}"  class="nav-item {{isActiveRoute('university.role.index')}}">
+                <a class="nav-link" href="{{route('university.role.index', $slug)}}">
                     <i class="material-icons">content_paste</i>
                     <p>Phân quyền</p>
                 </a>
