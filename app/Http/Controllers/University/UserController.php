@@ -18,30 +18,30 @@ class UserController extends Controller {
 		$this->_user = $user;
 	}
 
-	public function index($slug) {
+	public function index( $slug ) {
 		/** @var User $manager */
-		$manager    = Auth::user();
-		if ($manager->type != 0 && $manager->type != 3) {
-			return redirect()->route('dashboard');
+		$manager = Auth::user();
+		if ( $manager->type != 0 && $manager->type != 3 ) {
+			return redirect()->route( 'dashboard' );
 		}
-		$university = University::findBySlug( $slug);
+		$university = University::findBySlug( $slug );
 
-		$users      = User::findUserBySomeFeilds( $university->id, 3 );
-		$title      = 'Quản lý tài khoản trường ' . $university->vi_ten;
+		$users = User::findUserBySomeFeilds( $university->id, 3 );
+		$title = 'Quản lý tài khoản trường ' . $university->vi_ten;
 
 		return view( self::VIEW_PATH . __FUNCTION__, compact( 'title', 'users', 'slug' ) );
 	}
 
-	public function create($slug) {
+	public function create( $slug ) {
 		/** @var User $manager */
-		$manager    = Auth::user();
-		if ($manager->type != 0 && $manager->type != 3) {
-			return redirect()->route('dashboard');
+		$manager = Auth::user();
+		if ( $manager->type != 0 && $manager->type != 3 ) {
+			return redirect()->route( 'dashboard' );
 		}
 
-		$university = University::findBySlug( $slug);
+		$university = University::findBySlug( $slug );
 
-		$title      = 'Tạo tài khoản trường ' . $university->vi_ten;
+		$title = 'Tạo tài khoản trường ' . $university->vi_ten;
 
 		return view( self::VIEW_PATH . __FUNCTION__, compact( 'title', 'slug', 'university' ) );
 	}
@@ -55,7 +55,7 @@ class UserController extends Controller {
 		] );
 
 		$result['password']      = bcrypt( $result['password'] );
-		$result['role']          = '';
+		$result['role']          = json_encode( [] );
 		$result['university_id'] = $request['school_id'];
 		$this->_user->create( $result );
 
