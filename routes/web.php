@@ -197,4 +197,12 @@ Route::group( [
 ], function () {
 	Route::get( '/{year}', 'ImportData@index' )->name( 'university.import.index' );
 	Route::post( 'chinh-sua/{year}', 'ImportData@create' )->name( 'university.import.create' );
+
+} );
+Route::group( [
+	'middleware' => [ 'auth', 'check.role' ],
+	'prefix'     => '{slug}/xuat-ban'
+], function () {
+	Route::get( '/{year}', 'PrintController@index' )->name( 'university.print.index' );
+
 } );
