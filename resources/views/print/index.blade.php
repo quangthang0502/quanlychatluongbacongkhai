@@ -1597,6 +1597,8 @@
     function printxxx(obj) {
         $(obj).css('display', 'none');
         w = window.open();
+
+        w.document.write($('head').html());
         w.document.write($('#cjghsdfkjhg').html());
         w.print();
         w.close();
