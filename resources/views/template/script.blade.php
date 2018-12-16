@@ -1,5 +1,6 @@
 <!--   Core JS Files   -->
-<script src="{{url('node_modules/jquery/dist/jquery.min.js')}}" type="text/javascript"></script>
+{{--<script src="{{url('node_modules/jquery/dist/jquery.min.js')}}" type="text/javascript"></script>--}}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="{{url('js/core/popper.min.js')}}" type="text/javascript"></script>
 <script src="{{url('js/core/bootstrap-material-design.min.js')}}" type="text/javascript"></script>
 <script src="{{url('js/plugins/perfect-scrollbar.jquery.min.js')}}"></script>
@@ -15,7 +16,7 @@
 <script src="{{url('js/demo.js')}}"></script>
 
 @if(getUser()->type == 3 || getUser()->type == 4 || getUser()->type == 0)
-    <script src="{{url('node_modules/trumbowyg/dist/trumbowyg.min.js')}}"></script>
+    <script src="{{url('trumbowyg/dist/trumbowyg.min.js')}}"></script>
 @endif
 
 

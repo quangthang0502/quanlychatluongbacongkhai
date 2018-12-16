@@ -15,7 +15,7 @@
 <link href="{{url('css/material-dashboard.css')}}" rel="stylesheet"/>
 
 <!-- CSS Just for demo purpose, don't include it in your project -->
-<link rel="stylesheet" href="{{url('node_modules/trumbowyg/dist/ui/trumbowyg.min.css')}}">
+<link rel="stylesheet" href="{{url('trumbowyg/dist/ui/trumbowyg.min.css')}}">
 <link href="{{url('css/demo.css')}}" rel="stylesheet"/>
 
 <link rel="stylesheet" href="{{url('css/thang.css')}}">
